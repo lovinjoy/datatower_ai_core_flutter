@@ -1,5 +1,6 @@
 package com.example.datatower_ai_core_flutter
 
+import android.content.Context
 import androidx.annotation.NonNull
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin
@@ -10,6 +11,7 @@ import io.flutter.plugin.common.MethodChannel.Result
 import com.roiquery.analytics.DT
 import com.roiquery.analytics.DTAnalytics
 import com.roiquery.analytics.OnDataTowerIdListener
+import org.json.JSONObject
 
 /** DatatowerAiCoreFlutterPlugin */
 class DatatowerAiCoreFlutterPlugin: FlutterPlugin, MethodCallHandler {
@@ -18,8 +20,11 @@ class DatatowerAiCoreFlutterPlugin: FlutterPlugin, MethodCallHandler {
   /// This local reference serves to register the plugin with the Flutter Engine and unregister it
   /// when the Flutter Engine is detached from the Activity
   private lateinit var channel : MethodChannel
+  private lateinit var context: Context
 
   override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
+    context = flutterPluginBinding.applicationContext
+
     channel = MethodChannel(flutterPluginBinding.binaryMessenger, "datatower_ai_core_flutter")
     channel.setMethodCallHandler(this)
   }
@@ -35,7 +40,7 @@ class DatatowerAiCoreFlutterPlugin: FlutterPlugin, MethodCallHandler {
       val isDebug = args["isDebug"] as Boolean
       val logLevel =  args["logLevel"] as Int
 
-//      DT.initSDK(null,appId,)
+      DT.initSDK(context, appId, serverUrl, channel, isDebug, logLevel)
       result.success(null)
     } 
     else if (call.method == "trackEvent") {
