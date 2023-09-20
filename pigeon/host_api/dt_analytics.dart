@@ -1,23 +1,18 @@
 import 'package:pigeon/pigeon.dart';
 
-@ConfigurePigeon(
-    PigeonOptions(
-      dartOut: 'lib/src/pigeon/dt_analytics.g.dart',
-      dartOptions: DartOptions(),
-      kotlinOut: 'android/src/main/kotlin/com/example/datatower_ai_core_flutter/pigeon/DtAnalytics.g.kt',
-      kotlinOptions: KotlinOptions(
-          errorClassName: "DtAnalyticsFlutterError"
-      ),
-      objcHeaderOut: 'ios/Runner/pigeon/dt_analytics.g.h',
-      objcSourceOut: 'ios/Runner/pigeon/dt_analytics.g.m',
-      objcOptions: ObjcOptions(prefix: 'DT'),
-      dartPackageName: 'datatower_ai_core_flutter',
-    )
-)
-
+@ConfigurePigeon(PigeonOptions(
+  dartOut: 'lib/src/pigeon/dt_analytics.g.dart',
+  dartOptions: DartOptions(),
+  kotlinOut:
+      'android/src/main/kotlin/com/example/datatower_ai_core_flutter/pigeon/DtAnalytics.g.kt',
+  kotlinOptions: KotlinOptions(errorClassName: "DtAnalyticsFlutterError"),
+  objcHeaderOut: 'ios/Classes/pigeon/dt_analytics.g.h',
+  objcSourceOut: 'ios/Classes/pigeon/dt_analytics.g.m',
+  objcOptions: ObjcOptions(prefix: 'DT'),
+  dartPackageName: 'datatower_ai_core_flutter',
+))
 @HostApi()
 abstract class DTAnalyticsPigeon {
-
   void trackEvent(String eventName, Map<String, Object> properties);
 
   void userSet(Map<String, Object> properties);

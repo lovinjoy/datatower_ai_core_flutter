@@ -1,21 +1,17 @@
 // ignore_for_file: constant_identifier_names
 import 'package:pigeon/pigeon.dart';
 
-@ConfigurePigeon(
-    PigeonOptions(
-      dartOut: 'lib/src/pigeon/dt_ad.g.dart',
-      dartOptions: DartOptions(),
-      kotlinOut: 'android/src/main/kotlin/com/example/datatower_ai_core_flutter/pigeon/DtAd.g.kt',
-      kotlinOptions: KotlinOptions(
-          errorClassName: "DtAdFlutterError"
-      ),
-      objcHeaderOut: 'ios/Runner/pigeon/dt_ad.g.h',
-      objcSourceOut: 'ios/Runner/pigeon/dt_ad.g.m',
-      objcOptions: ObjcOptions(prefix: 'DT'),
-      dartPackageName: 'datatower_ai_core_flutter',
-    )
-)
-
+@ConfigurePigeon(PigeonOptions(
+  dartOut: 'lib/src/pigeon/dt_ad.g.dart',
+  dartOptions: DartOptions(),
+  kotlinOut:
+      'android/src/main/kotlin/com/example/datatower_ai_core_flutter/pigeon/DtAd.g.kt',
+  kotlinOptions: KotlinOptions(errorClassName: "DtAdFlutterError"),
+  objcHeaderOut: 'ios/Classes/pigeon/dt_ad.g.h',
+  objcSourceOut: 'ios/Classes/pigeon/dt_ad.g.m',
+  objcOptions: ObjcOptions(prefix: 'DT'),
+  dartPackageName: 'datatower_ai_core_flutter',
+))
 enum AdType {
   IDLE(-1),
   BANNER(0),
@@ -71,13 +67,8 @@ enum AdPlatform {
 
 @HostApi()
 abstract class DTAdPigeon {
-  void reportLoadBegin(
-      String id,
-      AdType type,
-      AdPlatform platform,
-      String seq,
-      Map<String, Object> properties
-  );
+  void reportLoadBegin(String id, AdType type, AdPlatform platform, String seq,
+      Map<String, Object> properties);
 
   void reportLoadEnd(
       String id,
@@ -88,8 +79,7 @@ abstract class DTAdPigeon {
       String seq,
       int errorCode,
       String errorMessage,
-      Map<String, Object> properties
-  );
+      Map<String, Object> properties);
 
   void reportToShow(
       String id,
@@ -98,18 +88,10 @@ abstract class DTAdPigeon {
       String location,
       String seq,
       Map<String, Object> properties,
-      String entrance
-  );
+      String entrance);
 
-  void reportShow(
-      String id,
-      AdType type,
-      AdPlatform platform,
-      String location,
-      String seq,
-      Map<String, Object> properties,
-      String entrance
-  );
+  void reportShow(String id, AdType type, AdPlatform platform, String location,
+      String seq, Map<String, Object> properties, String entrance);
 
   void reportShowFailed(
       String id,
@@ -120,28 +102,13 @@ abstract class DTAdPigeon {
       int errorCode,
       String errorMessage,
       Map<String, Object> properties,
-      String entrance
-  );
+      String entrance);
 
-  void reportClose(
-      String id,
-      AdType type,
-      AdPlatform platform,
-      String location,
-      String seq,
-      Map<String, Object> properties,
-      String entrance
-  );
+  void reportClose(String id, AdType type, AdPlatform platform, String location,
+      String seq, Map<String, Object> properties, String entrance);
 
-  void reportClick(
-      String id,
-      AdType type,
-      AdPlatform platform,
-      String location,
-      String seq,
-      Map<String, Object> properties,
-      String entrance
-  );
+  void reportClick(String id, AdType type, AdPlatform platform, String location,
+      String seq, Map<String, Object> properties, String entrance);
 
   void reportRewarded(
       String id,
@@ -150,8 +117,7 @@ abstract class DTAdPigeon {
       String location,
       String seq,
       Map<String, Object> properties,
-      String entrance
-  );
+      String entrance);
 
   void reportConversionByClick(
       String id,
@@ -160,8 +126,7 @@ abstract class DTAdPigeon {
       String location,
       String seq,
       Map<String, Object> properties,
-      String entrance
-  );
+      String entrance);
 
   void reportConversionByLeftApp(
       String id,
@@ -170,8 +135,7 @@ abstract class DTAdPigeon {
       String location,
       String seq,
       Map<String, Object> properties,
-      String entrance
-  );
+      String entrance);
 
   void reportConversionByRewarded(
       String id,
@@ -180,8 +144,7 @@ abstract class DTAdPigeon {
       String location,
       String seq,
       Map<String, Object> properties,
-      String entrance
-  );
+      String entrance);
 
   void reportPaid(
       String id,
@@ -193,21 +156,20 @@ abstract class DTAdPigeon {
       String currency,
       String precision,
       Map<String, Object> properties,
-      String entrance
-  );
+      String entrance);
 
   void reportPaidWithMediation(
-      String id,
-      AdType type,
-      AdPlatform platform,
-      String location,
-      String seq,
-      AdMediation mediation,
-      String mediationId,
-      String value,
-      String precision,
-      String country,
-      Map<String, Object> properties,
+    String id,
+    AdType type,
+    AdPlatform platform,
+    String location,
+    String seq,
+    AdMediation mediation,
+    String mediationId,
+    String value,
+    String precision,
+    String country,
+    Map<String, Object> properties,
   );
 
   void reportLeftApp(
@@ -217,6 +179,5 @@ abstract class DTAdPigeon {
       String location,
       String seq,
       Map<String, Object> properties,
-      String entrance
-  );
+      String entrance);
 }
