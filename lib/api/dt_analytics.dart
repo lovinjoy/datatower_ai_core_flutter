@@ -34,7 +34,7 @@ class DTAnalytics {
     DatatowerAiCoreFlutterPlatform.instance.dtAnalyticsService.userUniqAppend(properties);
   }
 
-  Future<String?> getDataTowerId() {
+  static Future<String?> getDataTowerId() {
     return DatatowerAiCoreFlutterPlatform.instance.dtAnalyticsService.getDataTowerId();
   }
 

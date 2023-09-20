@@ -7,7 +7,7 @@ class DT {
       int channel,
       bool isDebug,
       int logLevel,
-      Map<String, dynamic> commonProperties,
+      { Map<String, dynamic> commonProperties = const {} }
   ) {
     DatatowerAiCoreFlutterPlatform.instance.dtService.initSDK(appId, url, channel, isDebug, logLevel, commonProperties);
   }
