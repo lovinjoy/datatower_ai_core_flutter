@@ -5,17 +5,13 @@ export 'package:datatower_ai_core_flutter/api/dt_analytics.dart';
 export 'package:datatower_ai_core_flutter/api/dt_analytics_util.dart';
 export 'package:datatower_ai_core_flutter/api/dt_iap.dart';
 export 'package:datatower_ai_core_flutter/api/dt_ias.dart';
+export 'package:datatower_ai_core_flutter/src/pigeon/dt_ad.g.dart' show AdType, AdMediation, AdPlatform;
 
 import 'package:datatower_ai_core_flutter/api/dt.dart';
-import 'package:datatower_ai_core_flutter/src/method_channel/datatower_ai_core_flutter_platform_interface.dart';
 
 class DatatowerAiCoreFlutter {
-  Future<String?> getPlatformVersion() {
-    return DatatowerAiCoreFlutterPlatform.instance.getPlatformVersion();
-  }
-
   void initSDK(
-    String appId, String url, int channel, bool isDebug, int logLevel,
+    String appId, String url, String channel, bool isDebug, int logLevel,
     {
       Map<String, dynamic> commonProperties = const {}
     }

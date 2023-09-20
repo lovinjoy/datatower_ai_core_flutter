@@ -1,14 +1,14 @@
-import 'package:datatower_ai_core_flutter/src/method_channel/datatower_ai_core_flutter_platform_interface.dart';
+import 'package:datatower_ai_core_flutter/src/pigeon/dt.g.dart';
 
 class DT {
   static void initSDK(
       String appId,
       String url,
-      int channel,
+      String channel,
       bool isDebug,
       int logLevel,
       { Map<String, dynamic> commonProperties = const {} }
   ) {
-    DatatowerAiCoreFlutterPlatform.instance.dtService.initSDK(appId, url, channel, isDebug, logLevel, commonProperties);
+    DTPigeon().initSDK(appId, url, channel, isDebug, logLevel, commonProperties);
   }
 }

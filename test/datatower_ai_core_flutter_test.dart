@@ -1,5 +1,3 @@
-import 'package:datatower_ai_core_flutter/src/method_channel/datatower_ai_core_flutter_method_channel.dart';
-import 'package:datatower_ai_core_flutter/src/method_channel/datatower_ai_core_flutter_platform_interface.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 // class MockDatatowerAiCoreFlutterPlatform
@@ -17,13 +15,13 @@ import 'package:flutter_test/flutter_test.dart';
 // }
 
 void main() {
-  final DatatowerAiCoreFlutterPlatform initialPlatform =
-      DatatowerAiCoreFlutterPlatform.instance;
-
-  test('$MethodChannelDatatowerAiCoreFlutter is the default instance', () {
-    expect(
-        initialPlatform, isInstanceOf<MethodChannelDatatowerAiCoreFlutter>());
-  });
+  // final DatatowerAiCoreFlutterPlatform initialPlatform =
+  //     DatatowerAiCoreFlutterPlatform.instance;
+  //
+  // test('$MethodChannelDatatowerAiCoreFlutter is the default instance', () {
+  //   expect(
+  //       initialPlatform, isInstanceOf<MethodChannelDatatowerAiCoreFlutter>());
+  // });
 
   // test('getPlatformVersion', () async {
   //   DatatowerAiCoreFlutter datatowerAiCoreFlutterPlugin =

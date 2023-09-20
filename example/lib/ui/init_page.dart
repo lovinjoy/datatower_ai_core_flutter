@@ -53,7 +53,7 @@ class _State extends State<InitPage> {
                 onPressed: () {
                   if (appId.isNotEmpty && url.isNotEmpty) {
                     sdkInfo = SdkInfo(appId, url);
-                    DT.initSDK(appId, url, 1, true, 1);
+                    DT.initSDK(appId, url, "", true, 1);
                     Navigator.of(context).pushNamed("/home");
                   }
                 },
