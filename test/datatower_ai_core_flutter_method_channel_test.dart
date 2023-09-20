@@ -1,6 +1,6 @@
+import 'package:datatower_ai_core_flutter/src/method_channel/datatower_ai_core_flutter_method_channel.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:datatower_ai_core_flutter/datatower_ai_core_flutter_method_channel.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();

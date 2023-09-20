@@ -1,17 +1,21 @@
 package com.example.datatower_ai_core_flutter
 
+import BaseDTMethodHandler
+import DTMethodResult
 import android.content.Context
-import androidx.annotation.NonNull
+import android.util.Log
+import com.example.datatower_ai_core_flutter.handler.DTHandler
+import com.example.datatower_ai_core_flutter.handler.DTAdHandler
+import com.example.datatower_ai_core_flutter.handler.DTAnalyticsHandler
+import com.example.datatower_ai_core_flutter.handler.DTAnalyticsUtilHandler
+import com.example.datatower_ai_core_flutter.handler.DTIapHandler
+import com.example.datatower_ai_core_flutter.handler.DTIasHandler
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
-import com.roiquery.analytics.DT
-import com.roiquery.analytics.DTAnalytics
-import com.roiquery.analytics.OnDataTowerIdListener
-import org.json.JSONObject
 
 /** DatatowerAiCoreFlutterPlugin */
 class DatatowerAiCoreFlutterPlugin: FlutterPlugin, MethodCallHandler {
@@ -22,6 +26,15 @@ class DatatowerAiCoreFlutterPlugin: FlutterPlugin, MethodCallHandler {
   private lateinit var channel : MethodChannel
   private lateinit var context: Context
 
+  private val handlerMap: Map<String, BaseDTMethodHandler> = mapOf(
+    "dt" to DTHandler,
+    "dt_ad" to DTAdHandler,
+    "dt_analytics" to DTAnalyticsHandler,
+    "dt_analytics_util" to DTAnalyticsUtilHandler,
+    "dt_iap" to DTIapHandler,
+    "dt_ias" to DTIasHandler,
+  )
+
   override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
     context = flutterPluginBinding.applicationContext
 
@@ -29,29 +42,31 @@ class DatatowerAiCoreFlutterPlugin: FlutterPlugin, MethodCallHandler {
     channel.setMethodCallHandler(this)
   }
 
+  @Suppress("UNCHECKED_CAST")
   override fun onMethodCall(call: MethodCall, result: Result) {
     if (call.method == "getPlatformVersion") {
       result.success("Android ${android.os.Build.VERSION.RELEASE}")
-    } else if (call.method == "initSDK") {
-      val args = call.arguments as Map<String, Any>
-      val appId = args["appId"] as String;
-      val serverUrl = args["url"] as String
-      val channel = "${args["channel"]}"
-      val isDebug = args["isDebug"] as Boolean
-      val logLevel =  args["logLevel"] as Int
+      return
+    }
 
-      DT.initSDK(context, appId, serverUrl, channel, isDebug, logLevel)
-      result.success(null)
-    } 
-    else if (call.method == "trackEvent") {
-      val args = call.arguments as Map<String, Any>
-      val eventName = args["eventName"] as String;
-      val properties = args["properties"] as Map<String, Any>
-      DTAnalytics.track(eventName, properties)
+    val args: Map<String, Any> = call.arguments as? Map<String, Any> ?: mapOf()
 
-      result.success(null)
+    val serviceName = args["#service_name"] as? String ?: ""
+    val handler = handlerMap[serviceName]
+    if (handler != null) {
+      when (val methodResult = handler.onMethodCall(context, call, result, args)) {
+        DTMethodResult.Success -> result.success(null)
+        is DTMethodResult.SuccessWith<*> -> result.success(methodResult.result)
+        DTMethodResult.NotImplemented -> result.notImplemented()
+        is DTMethodResult.Error -> result.error(methodResult.errCode, methodResult.errMsg, null)
+        else -> {}
+      }
     } else {
-      result.notImplemented()
+      result.error(
+        "Handler_Not_Found",
+        "Cannot found handler for current call (call.method: ${call.method}, call.arguments: ${call.arguments})",
+        null
+      );
     }
   }
 

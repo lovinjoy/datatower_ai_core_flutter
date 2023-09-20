@@ -1,3 +1,9 @@
+import 'package:datatower_ai_core_flutter/src/services/dt_ad_service.dart';
+import 'package:datatower_ai_core_flutter/src/services/dt_analytics_service.dart';
+import 'package:datatower_ai_core_flutter/src/services/dt_analytics_util_service.dart';
+import 'package:datatower_ai_core_flutter/src/services/dt_iap_service.dart';
+import 'package:datatower_ai_core_flutter/src/services/dt_ias_service.dart';
+import 'package:datatower_ai_core_flutter/src/services/dt_service.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'datatower_ai_core_flutter_method_channel.dart';
@@ -24,16 +30,15 @@ abstract class DatatowerAiCoreFlutterPlatform extends PlatformInterface {
     _instance = instance;
   }
 
+  late final DTAdService dtAdService;
+  late final DTAnalyticsService dtAnalyticsService;
+  late final DTAnalyticsUtilService dtAnalyticsUtilService;
+  late final DTIapService dtIapService;
+  late final DTIasService dtIasService;
+  late final DTService dtService;
+
+
   Future<String?> getPlatformVersion() {
-    throw UnimplementedError('platformVersion() has not been implemented.');
-  }
-
-  void initSDK(
-      String appId, String url, int channel, bool isDebug, int logLevel) {
-    throw UnimplementedError('platformVersion() has not been implemented.');
-  }
-
-  void trackEvent(String eventName, Map properties) {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
 }

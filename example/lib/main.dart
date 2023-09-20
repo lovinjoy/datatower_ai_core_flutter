@@ -32,7 +32,7 @@ class _MyAppState extends State<MyApp> {
     // We also handle the message potentially returning null.
     try {
       _datatowerAiCoreFlutterPlugin.initSDK("appId", "url", 1, true, 1);
-      _datatowerAiCoreFlutterPlugin.trackEvent("aEvent", {"akey": "aValue"});
+      DTAnalytics.trackEvent("aEvent", {"akey": "aValue"});
       platformVersion =
           await _datatowerAiCoreFlutterPlugin.getPlatformVersion() ??
               'Unknown platform version';
