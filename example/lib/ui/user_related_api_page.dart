@@ -101,7 +101,11 @@ final List<_UraItem> _items = [
   _UraItem(name: "userSet", onRun: (p) => DTAnalytics.userSet(p.isNotEmpty ? jsonDecode(p) : {})),
   _UraItem(name: "userSetOnce", onRun: (p) => DTAnalytics.userSetOnce(p.isNotEmpty ? jsonDecode(p) : {})),
   _UraItem(name: "userAdd", onRun: (p) => DTAnalytics.userAdd(p.isNotEmpty ? jsonDecode(p) : {})),
-  _UraItem(name: "userUnset", onRun: (p) => DTAnalytics.userUnset(p.isNotEmpty ? jsonDecode(p) : {})),
+  _UraItem(name: "userUnset", onRun: (p) {
+    final lst = jsonDecode(p) as List<dynamic>;
+    final param = lst.map((e) => e.toString()).toList();
+    DTAnalytics.userUnset(p.isEmpty ? [] : param);
+  }),
   _UraItem(name: "userDelete", onRun: (p) => DTAnalytics.userDelete()),
   _UraItem(name: "userAppend", onRun: (p) => DTAnalytics.userAppend(p.isNotEmpty ? jsonDecode(p) : {})),
   _UraItem(name: "userUniqAppend", onRun: (p) => DTAnalytics.userUniqAppend(p.isNotEmpty ? jsonDecode(p) : {})),
