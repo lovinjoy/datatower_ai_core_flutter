@@ -12,7 +12,7 @@ import 'package:pigeon/pigeon.dart';
   objcOptions: ObjcOptions(prefix: 'DT'),
   dartPackageName: 'datatower_ai_core_flutter',
 ))
-enum AdType {
+enum AdTypeDart {
   IDLE(-1),
   BANNER(0),
   INTERSTITIAL(1),
@@ -23,10 +23,10 @@ enum AdType {
   MREC(6);
 
   final int value;
-  const AdType(this.value);
+  const AdTypeDart(this.value);
 }
 
-enum AdMediation {
+enum AdMediationDart {
   IDLE(-1),
   MOPUB(0),
   MAX(1),
@@ -34,10 +34,10 @@ enum AdMediation {
   COMBO(3);
 
   final int value;
-  const AdMediation(this.value);
+  const AdMediationDart(this.value);
 }
 
-enum AdPlatform {
+enum AdPlatformDart {
   UNDISCLOSED(-2),
   IDLE(-1),
   ADMOB(0),
@@ -62,18 +62,18 @@ enum AdPlatform {
   LOVINJOYADS(33);
 
   final int value;
-  const AdPlatform(this.value);
+  const AdPlatformDart(this.value);
 }
 
 @HostApi()
 abstract class DTAdPigeon {
-  void reportLoadBegin(String id, AdType type, AdPlatform platform, String seq,
-      Map<String, Object> properties);
+  void reportLoadBegin(String id, AdTypeDart type, AdPlatformDart platform,
+      String seq, Map<String, Object> properties);
 
   void reportLoadEnd(
       String id,
-      AdType type,
-      AdPlatform platform,
+      AdTypeDart type,
+      AdPlatformDart platform,
       int duration,
       bool result,
       String seq,
@@ -83,20 +83,26 @@ abstract class DTAdPigeon {
 
   void reportToShow(
       String id,
-      AdType type,
-      AdPlatform platform,
+      AdTypeDart type,
+      AdPlatformDart platform,
       String location,
       String seq,
       Map<String, Object> properties,
       String entrance);
 
-  void reportShow(String id, AdType type, AdPlatform platform, String location,
-      String seq, Map<String, Object> properties, String entrance);
+  void reportShow(
+      String id,
+      AdTypeDart type,
+      AdPlatformDart platform,
+      String location,
+      String seq,
+      Map<String, Object> properties,
+      String entrance);
 
   void reportShowFailed(
       String id,
-      AdType type,
-      AdPlatform platform,
+      AdTypeDart type,
+      AdPlatformDart platform,
       String location,
       String seq,
       int errorCode,
@@ -104,16 +110,28 @@ abstract class DTAdPigeon {
       Map<String, Object> properties,
       String entrance);
 
-  void reportClose(String id, AdType type, AdPlatform platform, String location,
-      String seq, Map<String, Object> properties, String entrance);
+  void reportClose(
+      String id,
+      AdTypeDart type,
+      AdPlatformDart platform,
+      String location,
+      String seq,
+      Map<String, Object> properties,
+      String entrance);
 
-  void reportClick(String id, AdType type, AdPlatform platform, String location,
-      String seq, Map<String, Object> properties, String entrance);
+  void reportClick(
+      String id,
+      AdTypeDart type,
+      AdPlatformDart platform,
+      String location,
+      String seq,
+      Map<String, Object> properties,
+      String entrance);
 
   void reportRewarded(
       String id,
-      AdType type,
-      AdPlatform platform,
+      AdTypeDart type,
+      AdPlatformDart platform,
       String location,
       String seq,
       Map<String, Object> properties,
@@ -121,8 +139,8 @@ abstract class DTAdPigeon {
 
   void reportConversionByClick(
       String id,
-      AdType type,
-      AdPlatform platform,
+      AdTypeDart type,
+      AdPlatformDart platform,
       String location,
       String seq,
       Map<String, Object> properties,
@@ -130,8 +148,8 @@ abstract class DTAdPigeon {
 
   void reportConversionByLeftApp(
       String id,
-      AdType type,
-      AdPlatform platform,
+      AdTypeDart type,
+      AdPlatformDart platform,
       String location,
       String seq,
       Map<String, Object> properties,
@@ -139,8 +157,8 @@ abstract class DTAdPigeon {
 
   void reportConversionByRewarded(
       String id,
-      AdType type,
-      AdPlatform platform,
+      AdTypeDart type,
+      AdPlatformDart platform,
       String location,
       String seq,
       Map<String, Object> properties,
@@ -148,8 +166,8 @@ abstract class DTAdPigeon {
 
   void reportPaid(
       String id,
-      AdType type,
-      AdPlatform platform,
+      AdTypeDart type,
+      AdPlatformDart platform,
       String location,
       String seq,
       String value,
@@ -160,11 +178,11 @@ abstract class DTAdPigeon {
 
   void reportPaidWithMediation(
     String id,
-    AdType type,
-    AdPlatform platform,
+    AdTypeDart type,
+    AdPlatformDart platform,
     String location,
     String seq,
-    AdMediation mediation,
+    AdMediationDart mediation,
     String mediationId,
     String value,
     String precision,
@@ -174,8 +192,8 @@ abstract class DTAdPigeon {
 
   void reportLeftApp(
       String id,
-      AdType type,
-      AdPlatform platform,
+      AdTypeDart type,
+      AdPlatformDart platform,
       String location,
       String seq,
       Map<String, Object> properties,

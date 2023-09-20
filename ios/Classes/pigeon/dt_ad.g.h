@@ -10,66 +10,66 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef NS_ENUM(NSUInteger, DTAdType) {
-  DTAdTypeIDLE = 0,
-  DTAdTypeBANNER = 1,
-  DTAdTypeINTERSTITIAL = 2,
-  DTAdTypeNATIVE = 3,
-  DTAdTypeREWARDED = 4,
-  DTAdTypeREWARDED_INTERSTITIAL = 5,
-  DTAdTypeAPP_OPEN = 6,
-  DTAdTypeMREC = 7,
+typedef NS_ENUM(NSUInteger, DTAdTypeDart) {
+  DTAdTypeDartIDLE = 0,
+  DTAdTypeDartBANNER = 1,
+  DTAdTypeDartINTERSTITIAL = 2,
+  DTAdTypeDartNATIVE = 3,
+  DTAdTypeDartREWARDED = 4,
+  DTAdTypeDartREWARDED_INTERSTITIAL = 5,
+  DTAdTypeDartAPP_OPEN = 6,
+  DTAdTypeDartMREC = 7,
 };
 
-/// Wrapper for DTAdType to allow for nullability.
-@interface DTAdTypeBox : NSObject
-@property(nonatomic, assign) DTAdType value;
-- (instancetype)initWithValue:(DTAdType)value;
+/// Wrapper for DTAdTypeDart to allow for nullability.
+@interface DTAdTypeDartBox : NSObject
+@property(nonatomic, assign) DTAdTypeDart value;
+- (instancetype)initWithValue:(DTAdTypeDart)value;
 @end
 
-typedef NS_ENUM(NSUInteger, DTAdMediation) {
-  DTAdMediationIDLE = 0,
-  DTAdMediationMOPUB = 1,
-  DTAdMediationMAX = 2,
-  DTAdMediationHISAVANA = 3,
-  DTAdMediationCOMBO = 4,
+typedef NS_ENUM(NSUInteger, DTAdMediationDart) {
+  DTAdMediationDartIDLE = 0,
+  DTAdMediationDartMOPUB = 1,
+  DTAdMediationDartMAX = 2,
+  DTAdMediationDartHISAVANA = 3,
+  DTAdMediationDartCOMBO = 4,
 };
 
-/// Wrapper for DTAdMediation to allow for nullability.
-@interface DTAdMediationBox : NSObject
-@property(nonatomic, assign) DTAdMediation value;
-- (instancetype)initWithValue:(DTAdMediation)value;
+/// Wrapper for DTAdMediationDart to allow for nullability.
+@interface DTAdMediationDartBox : NSObject
+@property(nonatomic, assign) DTAdMediationDart value;
+- (instancetype)initWithValue:(DTAdMediationDart)value;
 @end
 
-typedef NS_ENUM(NSUInteger, DTAdPlatform) {
-  DTAdPlatformUNDISCLOSED = 0,
-  DTAdPlatformIDLE = 1,
-  DTAdPlatformADMOB = 2,
-  DTAdPlatformMOPUB = 3,
-  DTAdPlatformADCOLONY = 4,
-  DTAdPlatformAPPLOVIN = 5,
-  DTAdPlatformCHARTBOOST = 6,
-  DTAdPlatformFACEBOOK = 7,
-  DTAdPlatformINMOBI = 8,
-  DTAdPlatformIRONSOURCE = 9,
-  DTAdPlatformPANGLE = 10,
-  DTAdPlatformSNAP_AUDIENCE_NETWORK = 11,
-  DTAdPlatformTAPJOY = 12,
-  DTAdPlatformUNITY_ADS = 13,
-  DTAdPlatformVERIZON_MEDIA = 14,
-  DTAdPlatformVUNGLE = 15,
-  DTAdPlatformADX = 16,
-  DTAdPlatformCOMBO = 17,
-  DTAdPlatformBIGO = 18,
-  DTAdPlatformHISAVANA = 19,
-  DTAdPlatformAPPLOVIN_EXCHANGE = 20,
-  DTAdPlatformLOVINJOYADS = 21,
+typedef NS_ENUM(NSUInteger, DTAdPlatformDart) {
+  DTAdPlatformDartUNDISCLOSED = 0,
+  DTAdPlatformDartIDLE = 1,
+  DTAdPlatformDartADMOB = 2,
+  DTAdPlatformDartMOPUB = 3,
+  DTAdPlatformDartADCOLONY = 4,
+  DTAdPlatformDartAPPLOVIN = 5,
+  DTAdPlatformDartCHARTBOOST = 6,
+  DTAdPlatformDartFACEBOOK = 7,
+  DTAdPlatformDartINMOBI = 8,
+  DTAdPlatformDartIRONSOURCE = 9,
+  DTAdPlatformDartPANGLE = 10,
+  DTAdPlatformDartSNAP_AUDIENCE_NETWORK = 11,
+  DTAdPlatformDartTAPJOY = 12,
+  DTAdPlatformDartUNITY_ADS = 13,
+  DTAdPlatformDartVERIZON_MEDIA = 14,
+  DTAdPlatformDartVUNGLE = 15,
+  DTAdPlatformDartADX = 16,
+  DTAdPlatformDartCOMBO = 17,
+  DTAdPlatformDartBIGO = 18,
+  DTAdPlatformDartHISAVANA = 19,
+  DTAdPlatformDartAPPLOVIN_EXCHANGE = 20,
+  DTAdPlatformDartLOVINJOYADS = 21,
 };
 
-/// Wrapper for DTAdPlatform to allow for nullability.
-@interface DTAdPlatformBox : NSObject
-@property(nonatomic, assign) DTAdPlatform value;
-- (instancetype)initWithValue:(DTAdPlatform)value;
+/// Wrapper for DTAdPlatformDart to allow for nullability.
+@interface DTAdPlatformDartBox : NSObject
+@property(nonatomic, assign) DTAdPlatformDart value;
+- (instancetype)initWithValue:(DTAdPlatformDart)value;
 @end
 
 
@@ -77,20 +77,20 @@ typedef NS_ENUM(NSUInteger, DTAdPlatform) {
 NSObject<FlutterMessageCodec> *DTDTAdPigeonGetCodec(void);
 
 @protocol DTDTAdPigeon
-- (void)reportLoadBeginId:(NSString *)id type:(DTAdType)type platform:(DTAdPlatform)platform seq:(NSString *)seq properties:(NSDictionary<NSString *, id> *)properties error:(FlutterError *_Nullable *_Nonnull)error;
-- (void)reportLoadEndId:(NSString *)id type:(DTAdType)type platform:(DTAdPlatform)platform duration:(NSNumber *)duration result:(NSNumber *)result seq:(NSString *)seq errorCode:(NSNumber *)errorCode errorMessage:(NSString *)errorMessage properties:(NSDictionary<NSString *, id> *)properties error:(FlutterError *_Nullable *_Nonnull)error;
-- (void)reportToShowId:(NSString *)id type:(DTAdType)type platform:(DTAdPlatform)platform location:(NSString *)location seq:(NSString *)seq properties:(NSDictionary<NSString *, id> *)properties entrance:(NSString *)entrance error:(FlutterError *_Nullable *_Nonnull)error;
-- (void)reportShowId:(NSString *)id type:(DTAdType)type platform:(DTAdPlatform)platform location:(NSString *)location seq:(NSString *)seq properties:(NSDictionary<NSString *, id> *)properties entrance:(NSString *)entrance error:(FlutterError *_Nullable *_Nonnull)error;
-- (void)reportShowFailedId:(NSString *)id type:(DTAdType)type platform:(DTAdPlatform)platform location:(NSString *)location seq:(NSString *)seq errorCode:(NSNumber *)errorCode errorMessage:(NSString *)errorMessage properties:(NSDictionary<NSString *, id> *)properties entrance:(NSString *)entrance error:(FlutterError *_Nullable *_Nonnull)error;
-- (void)reportCloseId:(NSString *)id type:(DTAdType)type platform:(DTAdPlatform)platform location:(NSString *)location seq:(NSString *)seq properties:(NSDictionary<NSString *, id> *)properties entrance:(NSString *)entrance error:(FlutterError *_Nullable *_Nonnull)error;
-- (void)reportClickId:(NSString *)id type:(DTAdType)type platform:(DTAdPlatform)platform location:(NSString *)location seq:(NSString *)seq properties:(NSDictionary<NSString *, id> *)properties entrance:(NSString *)entrance error:(FlutterError *_Nullable *_Nonnull)error;
-- (void)reportRewardedId:(NSString *)id type:(DTAdType)type platform:(DTAdPlatform)platform location:(NSString *)location seq:(NSString *)seq properties:(NSDictionary<NSString *, id> *)properties entrance:(NSString *)entrance error:(FlutterError *_Nullable *_Nonnull)error;
-- (void)reportConversionByClickId:(NSString *)id type:(DTAdType)type platform:(DTAdPlatform)platform location:(NSString *)location seq:(NSString *)seq properties:(NSDictionary<NSString *, id> *)properties entrance:(NSString *)entrance error:(FlutterError *_Nullable *_Nonnull)error;
-- (void)reportConversionByLeftAppId:(NSString *)id type:(DTAdType)type platform:(DTAdPlatform)platform location:(NSString *)location seq:(NSString *)seq properties:(NSDictionary<NSString *, id> *)properties entrance:(NSString *)entrance error:(FlutterError *_Nullable *_Nonnull)error;
-- (void)reportConversionByRewardedId:(NSString *)id type:(DTAdType)type platform:(DTAdPlatform)platform location:(NSString *)location seq:(NSString *)seq properties:(NSDictionary<NSString *, id> *)properties entrance:(NSString *)entrance error:(FlutterError *_Nullable *_Nonnull)error;
-- (void)reportPaidId:(NSString *)id type:(DTAdType)type platform:(DTAdPlatform)platform location:(NSString *)location seq:(NSString *)seq value:(NSString *)value currency:(NSString *)currency precision:(NSString *)precision properties:(NSDictionary<NSString *, id> *)properties entrance:(NSString *)entrance error:(FlutterError *_Nullable *_Nonnull)error;
-- (void)reportPaidWithMediationId:(NSString *)id type:(DTAdType)type platform:(DTAdPlatform)platform location:(NSString *)location seq:(NSString *)seq mediation:(DTAdMediation)mediation mediationId:(NSString *)mediationId value:(NSString *)value precision:(NSString *)precision country:(NSString *)country properties:(NSDictionary<NSString *, id> *)properties error:(FlutterError *_Nullable *_Nonnull)error;
-- (void)reportLeftAppId:(NSString *)id type:(DTAdType)type platform:(DTAdPlatform)platform location:(NSString *)location seq:(NSString *)seq properties:(NSDictionary<NSString *, id> *)properties entrance:(NSString *)entrance error:(FlutterError *_Nullable *_Nonnull)error;
+- (void)reportLoadBeginId:(NSString *)id type:(DTAdTypeDart)type platform:(DTAdPlatformDart)platform seq:(NSString *)seq properties:(NSDictionary<NSString *, id> *)properties error:(FlutterError *_Nullable *_Nonnull)error;
+- (void)reportLoadEndId:(NSString *)id type:(DTAdTypeDart)type platform:(DTAdPlatformDart)platform duration:(NSNumber *)duration result:(NSNumber *)result seq:(NSString *)seq errorCode:(NSNumber *)errorCode errorMessage:(NSString *)errorMessage properties:(NSDictionary<NSString *, id> *)properties error:(FlutterError *_Nullable *_Nonnull)error;
+- (void)reportToShowId:(NSString *)id type:(DTAdTypeDart)type platform:(DTAdPlatformDart)platform location:(NSString *)location seq:(NSString *)seq properties:(NSDictionary<NSString *, id> *)properties entrance:(NSString *)entrance error:(FlutterError *_Nullable *_Nonnull)error;
+- (void)reportShowId:(NSString *)id type:(DTAdTypeDart)type platform:(DTAdPlatformDart)platform location:(NSString *)location seq:(NSString *)seq properties:(NSDictionary<NSString *, id> *)properties entrance:(NSString *)entrance error:(FlutterError *_Nullable *_Nonnull)error;
+- (void)reportShowFailedId:(NSString *)id type:(DTAdTypeDart)type platform:(DTAdPlatformDart)platform location:(NSString *)location seq:(NSString *)seq errorCode:(NSNumber *)errorCode errorMessage:(NSString *)errorMessage properties:(NSDictionary<NSString *, id> *)properties entrance:(NSString *)entrance error:(FlutterError *_Nullable *_Nonnull)error;
+- (void)reportCloseId:(NSString *)id type:(DTAdTypeDart)type platform:(DTAdPlatformDart)platform location:(NSString *)location seq:(NSString *)seq properties:(NSDictionary<NSString *, id> *)properties entrance:(NSString *)entrance error:(FlutterError *_Nullable *_Nonnull)error;
+- (void)reportClickId:(NSString *)id type:(DTAdTypeDart)type platform:(DTAdPlatformDart)platform location:(NSString *)location seq:(NSString *)seq properties:(NSDictionary<NSString *, id> *)properties entrance:(NSString *)entrance error:(FlutterError *_Nullable *_Nonnull)error;
+- (void)reportRewardedId:(NSString *)id type:(DTAdTypeDart)type platform:(DTAdPlatformDart)platform location:(NSString *)location seq:(NSString *)seq properties:(NSDictionary<NSString *, id> *)properties entrance:(NSString *)entrance error:(FlutterError *_Nullable *_Nonnull)error;
+- (void)reportConversionByClickId:(NSString *)id type:(DTAdTypeDart)type platform:(DTAdPlatformDart)platform location:(NSString *)location seq:(NSString *)seq properties:(NSDictionary<NSString *, id> *)properties entrance:(NSString *)entrance error:(FlutterError *_Nullable *_Nonnull)error;
+- (void)reportConversionByLeftAppId:(NSString *)id type:(DTAdTypeDart)type platform:(DTAdPlatformDart)platform location:(NSString *)location seq:(NSString *)seq properties:(NSDictionary<NSString *, id> *)properties entrance:(NSString *)entrance error:(FlutterError *_Nullable *_Nonnull)error;
+- (void)reportConversionByRewardedId:(NSString *)id type:(DTAdTypeDart)type platform:(DTAdPlatformDart)platform location:(NSString *)location seq:(NSString *)seq properties:(NSDictionary<NSString *, id> *)properties entrance:(NSString *)entrance error:(FlutterError *_Nullable *_Nonnull)error;
+- (void)reportPaidId:(NSString *)id type:(DTAdTypeDart)type platform:(DTAdPlatformDart)platform location:(NSString *)location seq:(NSString *)seq value:(NSString *)value currency:(NSString *)currency precision:(NSString *)precision properties:(NSDictionary<NSString *, id> *)properties entrance:(NSString *)entrance error:(FlutterError *_Nullable *_Nonnull)error;
+- (void)reportPaidWithMediationId:(NSString *)id type:(DTAdTypeDart)type platform:(DTAdPlatformDart)platform location:(NSString *)location seq:(NSString *)seq mediation:(DTAdMediationDart)mediation mediationId:(NSString *)mediationId value:(NSString *)value precision:(NSString *)precision country:(NSString *)country properties:(NSDictionary<NSString *, id> *)properties error:(FlutterError *_Nullable *_Nonnull)error;
+- (void)reportLeftAppId:(NSString *)id type:(DTAdTypeDart)type platform:(DTAdPlatformDart)platform location:(NSString *)location seq:(NSString *)seq properties:(NSDictionary<NSString *, id> *)properties entrance:(NSString *)entrance error:(FlutterError *_Nullable *_Nonnull)error;
 @end
 
 extern void DTDTAdPigeonSetup(id<FlutterBinaryMessenger> binaryMessenger, NSObject<DTDTAdPigeon> *_Nullable api);
