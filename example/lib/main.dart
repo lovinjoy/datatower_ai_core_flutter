@@ -1,8 +1,9 @@
+import 'package:datatower_ai_core_flutter_example/bean/sdk_info.dart';
+import 'package:datatower_ai_core_flutter_example/ui/home_page.dart';
+import 'package:datatower_ai_core_flutter_example/ui/init_page.dart';
+import 'package:datatower_ai_core_flutter_example/ui/track_event_page.dart';
+import 'package:datatower_ai_core_flutter_example/ui/user_related_api_page.dart';
 import 'package:flutter/material.dart';
-import 'dart:async';
-
-import 'package:flutter/services.dart';
-import 'package:datatower_ai_core_flutter/datatower_ai_core_flutter.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,51 +17,19 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
-  final _datatowerAiCoreFlutterPlugin = DatatowerAiCoreFlutter();
-
-  @override
-  void initState() {
-    super.initState();
-    initPlatformState();
-  }
-
-  // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPlatformState() async {
-    String platformVersion;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    // We also handle the message potentially returning null.
-    try {
-      _datatowerAiCoreFlutterPlugin.initSDK("appId", "url", 1, true, 1);
-      DTAnalytics.trackEvent("aEvent", {"akey": "aValue"});
-      platformVersion =
-          await _datatowerAiCoreFlutterPlugin.getPlatformVersion() ??
-              'Unknown platform version';
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
-    }
-
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
-
-    setState(() {
-      _platformVersion = platformVersion;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Plugin example app'),
-        ),
-        body: Center(
-          child: Text('Running on: $_platformVersion\n'),
-        ),
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlueAccent)
       ),
+      routes: {
+        "/init": (_) => const InitPage(),
+        "/home": (_) => const HomePage(),
+        "/track_event": (_) => const TrackEventPage(),
+        "/user_related_api": (_) => const UserRelatedApiPage(),
+      },
+      initialRoute: sdkInfo == null? "/init" : "/home"
     );
   }
 }
