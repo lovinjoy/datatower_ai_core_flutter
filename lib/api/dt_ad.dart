@@ -1,9 +1,9 @@
+import 'package:datatower_ai_core_flutter/src/pigeon/dt_ad.g.dart';
 import 'package:datatower_ai_core_flutter/util/type_util.dart';
 
-import '../bean/ad_constant.dart';
-import 'package:datatower_ai_core_flutter/src/method_channel/datatower_ai_core_flutter_platform_interface.dart';
-
 class DTAdReport {
+  static final DTAdPigeon _pigeon = DTAdPigeon();
+
   static void reportLoadBegin(
     String id,
     AdType type,
@@ -11,7 +11,7 @@ class DTAdReport {
     String seq,
     { JsonMap? properties }
   ) {
-    DatatowerAiCoreFlutterPlatform.instance.dtAdService.reportLoadBegin(id, type, platform, seq, properties: properties);
+    _pigeon.reportLoadBegin(id, type, platform, seq, properties ?? {});
   }
 
   static void reportLoadEnd(
@@ -27,9 +27,7 @@ class DTAdReport {
       JsonMap? properties
     }
   ) {
-    DatatowerAiCoreFlutterPlatform.instance.dtAdService.reportLoadEnd(id, type, platform, duration, result, seq,
-        properties: properties, errorCode: errorCode, errorMessage: errorMessage
-    );
+    _pigeon.reportLoadEnd(id, type, platform, duration, result, seq, errorCode, errorMessage, properties ?? {});
   }
 
   static void reportToShow(
@@ -43,9 +41,7 @@ class DTAdReport {
       String? entrance
     }
   ) {
-    DatatowerAiCoreFlutterPlatform.instance.dtAdService.reportToShow(id, type, platform, location, seq,
-        properties: properties, entrance: entrance
-    );
+    _pigeon.reportToShow(id, type, platform, location, seq, properties ?? {}, entrance ?? "");
   }
 
   static void reportShow(
@@ -59,9 +55,7 @@ class DTAdReport {
         String? entrance
       }
   ) {
-    DatatowerAiCoreFlutterPlatform.instance.dtAdService.reportShow(id, type, platform, location, seq,
-        properties: properties, entrance: entrance
-    );
+    _pigeon.reportShow(id, type, platform, location, seq, properties ?? {}, entrance ?? "");
   }
 
   static void reportShowFailed(
@@ -77,9 +71,7 @@ class DTAdReport {
         String? entrance
       }
   ) {
-    DatatowerAiCoreFlutterPlatform.instance.dtAdService.reportShowFailed(id, type, platform, location, seq, errorCode, errorMessage,
-        properties: properties, entrance: entrance
-    );
+    _pigeon.reportShowFailed(id, type, platform, location, seq, errorCode, errorMessage, properties ?? {}, entrance ?? "");
   }
 
   static void reportClose(
@@ -93,9 +85,7 @@ class DTAdReport {
         String? entrance
       }
   ) {
-    DatatowerAiCoreFlutterPlatform.instance.dtAdService.reportClose(id, type, platform, location, seq,
-        properties: properties, entrance: entrance
-    );
+    _pigeon.reportClose(id, type, platform, location, seq, properties ?? {}, entrance ?? "");
   }
 
   static void reportClick(
@@ -109,9 +99,7 @@ class DTAdReport {
         String? entrance
       }
   ) {
-    DatatowerAiCoreFlutterPlatform.instance.dtAdService.reportClick(id, type, platform, location, seq,
-        properties: properties, entrance: entrance
-    );
+    _pigeon.reportClick(id, type, platform, location, seq, properties ?? {}, entrance ?? "");
   }
 
   static void reportRewarded(
@@ -125,9 +113,7 @@ class DTAdReport {
         String? entrance
       }
   ) {
-    DatatowerAiCoreFlutterPlatform.instance.dtAdService.reportRewarded(id, type, platform, location, seq,
-        properties: properties, entrance: entrance
-    );
+    _pigeon.reportRewarded(id, type, platform, location, seq, properties ?? {}, entrance ?? "");
   }
 
   static void reportConversionByClick(
@@ -141,9 +127,7 @@ class DTAdReport {
         String? entrance
       }
   ) {
-    DatatowerAiCoreFlutterPlatform.instance.dtAdService.reportConversionByClick(id, type, platform, location, seq,
-        properties: properties, entrance: entrance
-    );
+    _pigeon.reportConversionByClick(id, type, platform, location, seq, properties ?? {}, entrance ?? "");
   }
   
   static void reportConversionByLeftApp(
@@ -157,9 +141,7 @@ class DTAdReport {
         String? entrance
       }
   ) {
-    DatatowerAiCoreFlutterPlatform.instance.dtAdService.reportConversionByLeftApp(id, type, platform, location, seq,
-        properties: properties, entrance: entrance
-    );
+    _pigeon.reportConversionByLeftApp(id, type, platform, location, seq, properties ?? {}, entrance ?? "");
   }
 
   static void reportConversionByRewarded(
@@ -173,9 +155,7 @@ class DTAdReport {
         String? entrance
       }
   ) {
-    DatatowerAiCoreFlutterPlatform.instance.dtAdService.reportConversionByRewarded(id, type, platform, location, seq,
-        properties: properties, entrance: entrance
-    );
+    _pigeon.reportConversionByRewarded(id, type, platform, location, seq, properties ?? {}, entrance ?? "");
   }
   
   static void reportPaid(
@@ -192,9 +172,7 @@ class DTAdReport {
       String? entrance
     }
   ) {
-    DatatowerAiCoreFlutterPlatform.instance.dtAdService.reportPaid(id, type, platform, location, seq, value, currency, precision,
-        properties: properties, entrance: entrance
-    );
+    _pigeon.reportPaid(id, type, platform, location, seq, value, currency, precision, properties ?? {}, entrance ?? "");
   }
 
   static void reportPaidWithMediation(
@@ -212,9 +190,7 @@ class DTAdReport {
         JsonMap? properties,
       }
   ) {
-    DatatowerAiCoreFlutterPlatform.instance.dtAdService.reportPaidWithMediation(id, type, platform, location, seq, mediation, mediationId, value, currency, precision,
-        properties: properties
-    );
+    _pigeon.reportPaidWithMediation(id, type, platform, location, seq, mediation, mediationId, value, currency, precision, properties ?? {});
   }
 
   static void reportLeftApp(
@@ -228,12 +204,6 @@ class DTAdReport {
         String? entrance
       }
   ) {
-    DatatowerAiCoreFlutterPlatform.instance.dtAdService.reportLeftApp(id, type, platform, location, seq,
-        properties: properties, entrance: entrance
-    );
-  }
-
-  static Future<String?> generateUUID() {
-    return DatatowerAiCoreFlutterPlatform.instance.dtAdService.generateUUID();
+    _pigeon.reportLeftApp(id, type, platform, location, seq, properties ?? {}, entrance ?? "");
   }
 }

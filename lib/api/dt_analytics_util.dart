@@ -1,22 +1,22 @@
+import 'package:datatower_ai_core_flutter/src/pigeon/dt_analytics_util.g.dart';
 import 'package:datatower_ai_core_flutter/util/type_util.dart';
 
-import 'package:datatower_ai_core_flutter/src/method_channel/datatower_ai_core_flutter_platform_interface.dart';
-
 class DTAnalyticsUtil {
+  static final DTAnalyticsUtilPigeon _pigeon = DTAnalyticsUtilPigeon();
 
   static void trackTimerStart(String eventName) {
-    DatatowerAiCoreFlutterPlatform.instance.dtAnalyticsUtilService.trackTimerStart(eventName);
+    _pigeon.trackTimerStart(eventName);
   }
 
   static void trackTimerPause(String eventName) {
-    DatatowerAiCoreFlutterPlatform.instance.dtAnalyticsUtilService.trackTimerPause(eventName);
+    _pigeon.trackTimerPause(eventName);
   }
 
   static void trackTimerResume(String eventName) {
-    DatatowerAiCoreFlutterPlatform.instance.dtAnalyticsUtilService.trackTimerResume(eventName);
+    _pigeon.trackTimerResume(eventName);
   }
 
   static void trackTimerEnd(String eventName, { JsonMap? properties }) {
-    DatatowerAiCoreFlutterPlatform.instance.dtAnalyticsUtilService.trackTimerEnd(eventName, properties: properties);
+    _pigeon.trackTimerEnd(eventName, properties);
   }
 }

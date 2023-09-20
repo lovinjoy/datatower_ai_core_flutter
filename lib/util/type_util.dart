@@ -1,1 +1,1 @@
-typedef JsonMap = Map<String, dynamic>;
+typedef JsonMap = Map<String, Object?>;
