@@ -4,7 +4,7 @@ import 'package:pigeon/pigeon.dart';
   dartOut: 'lib/src/pigeon/dt_iap.g.dart',
   dartOptions: DartOptions(),
   kotlinOut:
-      'android/src/main/kotlin/com/example/datatower_ai_core_flutter/pigeon/DtIap.g.kt',
+      'android/src/main/kotlin/com/lovinjoy/datatower_ai_core_flutter/pigeon/DtIap.g.kt',
   kotlinOptions: KotlinOptions(errorClassName: "DtIapFlutterError"),
   objcHeaderOut: 'ios/Classes/pigeon/dt_iap.g.h',
   objcSourceOut: 'ios/Classes/pigeon/dt_iap.g.m',
