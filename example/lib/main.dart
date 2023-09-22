@@ -1,6 +1,7 @@
 import 'package:datatower_ai_core_flutter_example/bean/sdk_info.dart';
 import 'package:datatower_ai_core_flutter_example/ui/home_page.dart';
 import 'package:datatower_ai_core_flutter_example/ui/init_page.dart';
+import 'package:datatower_ai_core_flutter_example/ui/show_all_api_page.dart';
 import 'package:datatower_ai_core_flutter_example/ui/track_event_page.dart';
 import 'package:datatower_ai_core_flutter_example/ui/user_related_api_page.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +29,7 @@ class _MyAppState extends State<MyApp> {
         "/home": (_) => const HomePage(),
         "/track_event": (_) => const TrackEventPage(),
         "/user_related_api": (_) => const UserRelatedApiPage(),
+        "/show_all_api": (_) => const ShowAllApiPage(),
       },
       initialRoute: sdkInfo == null? "/init" : "/home"
     );

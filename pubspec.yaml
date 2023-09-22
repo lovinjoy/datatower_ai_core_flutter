@@ -4,18 +4,21 @@ version: 0.0.1
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
-  flutter: '>=3.3.0'
+  flutter: '>=3.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
-  plugin_platform_interface: ^2.0.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
   pigeon: ^11.0.1
+  build_runner: ^2.4.6
+  source_gen: 1.4.0
+  analyzer: ^5.13.0
+  build: ^2.4.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -35,7 +38,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.example.datatower_ai_core_flutter
+        package: com.lovinjoy.datatower_ai_core_flutter
         pluginClass: DatatowerAiCoreFlutterPlugin
       ios:
         pluginClass: DatatowerAiCoreFlutterPlugin

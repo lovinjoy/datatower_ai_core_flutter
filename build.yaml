@@ -1,0 +1,15 @@
+builders:
+  testBuilder:
+    import: "package:datatower_ai_core_flutter/src/test/test_builder.dart"
+    builder_factories: ["dtTestScannerBuilder"]
+    build_extensions: {".dart": [".g.dart"]}
+    auto_apply: root_package
+    build_to: cache
+    runs_before: ["generated_dt_method_builder"]
+
+  generated_dt_method_builder:
+    import: "package:datatower_ai_core_flutter/src/test/test_builder.dart"
+    builder_factories: ["dtApiMethodGenBuilder"]
+    build_extensions: {".dart": [".g.dt_api.dart"]}
+    auto_apply: root_package
+    build_to: cache

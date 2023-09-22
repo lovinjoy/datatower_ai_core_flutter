@@ -1,4 +1,4 @@
-package com.example.datatower_ai_core_flutter
+package com.lovinjoy.datatower_ai_core_flutter
 
 import DTPigeon
 import DTAdPigeon
@@ -6,12 +6,12 @@ import DTAnalyticsPigeon
 import DTAnalyticsUtilPigeon
 import DTIapPigeon
 import DTIasPigeon
-import com.example.datatower_ai_core_flutter.pigeon.impl.DtAdPigeonImpl
-import com.example.datatower_ai_core_flutter.pigeon.impl.DtPigeonImpl
-import com.example.datatower_ai_core_flutter.pigeon.impl.DtAnalyticsPigeonImpl
-import com.example.datatower_ai_core_flutter.pigeon.impl.DtAnalyticsUtilPigeonImpl
-import com.example.datatower_ai_core_flutter.pigeon.impl.DtIapPigeonImpl
-import com.example.datatower_ai_core_flutter.pigeon.impl.DtIasPigeonImpl
+import com.lovinjoy.datatower_ai_core_flutter.pigeon.impl.DtAdPigeonImpl
+import com.lovinjoy.datatower_ai_core_flutter.pigeon.impl.DtPigeonImpl
+import com.lovinjoy.datatower_ai_core_flutter.pigeon.impl.DtAnalyticsPigeonImpl
+import com.lovinjoy.datatower_ai_core_flutter.pigeon.impl.DtAnalyticsUtilPigeonImpl
+import com.lovinjoy.datatower_ai_core_flutter.pigeon.impl.DtIapPigeonImpl
+import com.lovinjoy.datatower_ai_core_flutter.pigeon.impl.DtIasPigeonImpl
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 

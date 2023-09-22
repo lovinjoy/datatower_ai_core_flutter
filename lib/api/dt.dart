@@ -1,5 +1,7 @@
 import 'package:datatower_ai_core_flutter/src/pigeon/dt.g.dart';
+import 'package:datatower_ai_core_flutter/src/base/dt_api.dart';
 
+@DTApi()
 class DT {
   static void initSDK(
       String appId,

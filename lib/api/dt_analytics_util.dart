@@ -1,6 +1,8 @@
 import 'package:datatower_ai_core_flutter/src/pigeon/dt_analytics_util.g.dart';
+import 'package:datatower_ai_core_flutter/src/base/dt_api.dart';
 import 'package:datatower_ai_core_flutter/util/type_util.dart';
 
+@DTApi()
 class DTAnalyticsUtil {
   static final DTAnalyticsUtilPigeon _pigeon = DTAnalyticsUtilPigeon();
 

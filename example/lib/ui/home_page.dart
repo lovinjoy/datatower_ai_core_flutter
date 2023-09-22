@@ -38,6 +38,8 @@ class _HomePageState extends State<HomePage> {
             const EventTrackingSect(),
             const Divider(),
             const UserPropSect(),
+            const Divider(),
+            const AllApiSect(),
             const SizedBox(height: 10,),
           ]
         ),
@@ -179,6 +181,35 @@ class UserPropSect extends StatelessWidget {
             initText: "You'll have to fill in the name of the user api and its params",
             onClick: () async {
               Navigator.pushNamed(context, "/user_related_api");
+              return null;
+            }
+        )
+      ],
+    );
+  }
+}
+
+class AllApiSect extends StatelessWidget {
+  const AllApiSect({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child:Text("All APIs",
+              style: Theme.of(context).textTheme.titleLarge
+                  ?.copyWith(color: Theme.of(context).colorScheme.primary)
+          ),
+        ),
+        ClickableText(
+            title: "Show all APIs in SDK",
+            initText: "Show all api implemented in SDK",
+            onClick: () async {
+              Navigator.pushNamed(context, "/show_all_api");
               return null;
             }
         )
