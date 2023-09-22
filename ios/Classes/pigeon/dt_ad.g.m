@@ -13,8 +13,8 @@
 #error File requires ARC to be enabled.
 #endif
 
-@implementation DTAdTypeBox
-- (instancetype)initWithValue:(DTAdType)value {
+@implementation DTAdTypeDartBox
+- (instancetype)initWithValue:(DTAdTypeDart)value {
   self = [super init];
   if (self) {
     _value = value;
@@ -23,8 +23,8 @@
 }
 @end
 
-@implementation DTAdMediationBox
-- (instancetype)initWithValue:(DTAdMediation)value {
+@implementation DTAdMediationDartBox
+- (instancetype)initWithValue:(DTAdMediationDart)value {
   self = [super init];
   if (self) {
     _value = value;
@@ -33,8 +33,8 @@
 }
 @end
 
-@implementation DTAdPlatformBox
-- (instancetype)initWithValue:(DTAdPlatform)value {
+@implementation DTAdPlatformDartBox
+- (instancetype)initWithValue:(DTAdPlatformDart)value {
   self = [super init];
   if (self) {
     _value = value;
@@ -74,8 +74,8 @@ void DTDTAdPigeonSetup(id<FlutterBinaryMessenger> binaryMessenger, NSObject<DTDT
       [channel setMessageHandler:^(id _Nullable message, FlutterReply callback) {
         NSArray *args = message;
         NSString *arg_id = GetNullableObjectAtIndex(args, 0);
-        DTAdType arg_type = [GetNullableObjectAtIndex(args, 1) integerValue];
-        DTAdPlatform arg_platform = [GetNullableObjectAtIndex(args, 2) integerValue];
+        DTAdTypeDart arg_type = [GetNullableObjectAtIndex(args, 1) integerValue];
+        DTAdPlatformDart arg_platform = [GetNullableObjectAtIndex(args, 2) integerValue];
         NSString *arg_seq = GetNullableObjectAtIndex(args, 3);
         NSDictionary<NSString *, id> *arg_properties = GetNullableObjectAtIndex(args, 4);
         FlutterError *error;
@@ -97,8 +97,8 @@ void DTDTAdPigeonSetup(id<FlutterBinaryMessenger> binaryMessenger, NSObject<DTDT
       [channel setMessageHandler:^(id _Nullable message, FlutterReply callback) {
         NSArray *args = message;
         NSString *arg_id = GetNullableObjectAtIndex(args, 0);
-        DTAdType arg_type = [GetNullableObjectAtIndex(args, 1) integerValue];
-        DTAdPlatform arg_platform = [GetNullableObjectAtIndex(args, 2) integerValue];
+        DTAdTypeDart arg_type = [GetNullableObjectAtIndex(args, 1) integerValue];
+        DTAdPlatformDart arg_platform = [GetNullableObjectAtIndex(args, 2) integerValue];
         NSNumber *arg_duration = GetNullableObjectAtIndex(args, 3);
         NSNumber *arg_result = GetNullableObjectAtIndex(args, 4);
         NSString *arg_seq = GetNullableObjectAtIndex(args, 5);
@@ -124,8 +124,8 @@ void DTDTAdPigeonSetup(id<FlutterBinaryMessenger> binaryMessenger, NSObject<DTDT
       [channel setMessageHandler:^(id _Nullable message, FlutterReply callback) {
         NSArray *args = message;
         NSString *arg_id = GetNullableObjectAtIndex(args, 0);
-        DTAdType arg_type = [GetNullableObjectAtIndex(args, 1) integerValue];
-        DTAdPlatform arg_platform = [GetNullableObjectAtIndex(args, 2) integerValue];
+        DTAdTypeDart arg_type = [GetNullableObjectAtIndex(args, 1) integerValue];
+        DTAdPlatformDart arg_platform = [GetNullableObjectAtIndex(args, 2) integerValue];
         NSString *arg_location = GetNullableObjectAtIndex(args, 3);
         NSString *arg_seq = GetNullableObjectAtIndex(args, 4);
         NSDictionary<NSString *, id> *arg_properties = GetNullableObjectAtIndex(args, 5);
@@ -149,8 +149,8 @@ void DTDTAdPigeonSetup(id<FlutterBinaryMessenger> binaryMessenger, NSObject<DTDT
       [channel setMessageHandler:^(id _Nullable message, FlutterReply callback) {
         NSArray *args = message;
         NSString *arg_id = GetNullableObjectAtIndex(args, 0);
-        DTAdType arg_type = [GetNullableObjectAtIndex(args, 1) integerValue];
-        DTAdPlatform arg_platform = [GetNullableObjectAtIndex(args, 2) integerValue];
+        DTAdTypeDart arg_type = [GetNullableObjectAtIndex(args, 1) integerValue];
+        DTAdPlatformDart arg_platform = [GetNullableObjectAtIndex(args, 2) integerValue];
         NSString *arg_location = GetNullableObjectAtIndex(args, 3);
         NSString *arg_seq = GetNullableObjectAtIndex(args, 4);
         NSDictionary<NSString *, id> *arg_properties = GetNullableObjectAtIndex(args, 5);
@@ -174,8 +174,8 @@ void DTDTAdPigeonSetup(id<FlutterBinaryMessenger> binaryMessenger, NSObject<DTDT
       [channel setMessageHandler:^(id _Nullable message, FlutterReply callback) {
         NSArray *args = message;
         NSString *arg_id = GetNullableObjectAtIndex(args, 0);
-        DTAdType arg_type = [GetNullableObjectAtIndex(args, 1) integerValue];
-        DTAdPlatform arg_platform = [GetNullableObjectAtIndex(args, 2) integerValue];
+        DTAdTypeDart arg_type = [GetNullableObjectAtIndex(args, 1) integerValue];
+        DTAdPlatformDart arg_platform = [GetNullableObjectAtIndex(args, 2) integerValue];
         NSString *arg_location = GetNullableObjectAtIndex(args, 3);
         NSString *arg_seq = GetNullableObjectAtIndex(args, 4);
         NSNumber *arg_errorCode = GetNullableObjectAtIndex(args, 5);
@@ -201,8 +201,8 @@ void DTDTAdPigeonSetup(id<FlutterBinaryMessenger> binaryMessenger, NSObject<DTDT
       [channel setMessageHandler:^(id _Nullable message, FlutterReply callback) {
         NSArray *args = message;
         NSString *arg_id = GetNullableObjectAtIndex(args, 0);
-        DTAdType arg_type = [GetNullableObjectAtIndex(args, 1) integerValue];
-        DTAdPlatform arg_platform = [GetNullableObjectAtIndex(args, 2) integerValue];
+        DTAdTypeDart arg_type = [GetNullableObjectAtIndex(args, 1) integerValue];
+        DTAdPlatformDart arg_platform = [GetNullableObjectAtIndex(args, 2) integerValue];
         NSString *arg_location = GetNullableObjectAtIndex(args, 3);
         NSString *arg_seq = GetNullableObjectAtIndex(args, 4);
         NSDictionary<NSString *, id> *arg_properties = GetNullableObjectAtIndex(args, 5);
@@ -226,8 +226,8 @@ void DTDTAdPigeonSetup(id<FlutterBinaryMessenger> binaryMessenger, NSObject<DTDT
       [channel setMessageHandler:^(id _Nullable message, FlutterReply callback) {
         NSArray *args = message;
         NSString *arg_id = GetNullableObjectAtIndex(args, 0);
-        DTAdType arg_type = [GetNullableObjectAtIndex(args, 1) integerValue];
-        DTAdPlatform arg_platform = [GetNullableObjectAtIndex(args, 2) integerValue];
+        DTAdTypeDart arg_type = [GetNullableObjectAtIndex(args, 1) integerValue];
+        DTAdPlatformDart arg_platform = [GetNullableObjectAtIndex(args, 2) integerValue];
         NSString *arg_location = GetNullableObjectAtIndex(args, 3);
         NSString *arg_seq = GetNullableObjectAtIndex(args, 4);
         NSDictionary<NSString *, id> *arg_properties = GetNullableObjectAtIndex(args, 5);
@@ -251,8 +251,8 @@ void DTDTAdPigeonSetup(id<FlutterBinaryMessenger> binaryMessenger, NSObject<DTDT
       [channel setMessageHandler:^(id _Nullable message, FlutterReply callback) {
         NSArray *args = message;
         NSString *arg_id = GetNullableObjectAtIndex(args, 0);
-        DTAdType arg_type = [GetNullableObjectAtIndex(args, 1) integerValue];
-        DTAdPlatform arg_platform = [GetNullableObjectAtIndex(args, 2) integerValue];
+        DTAdTypeDart arg_type = [GetNullableObjectAtIndex(args, 1) integerValue];
+        DTAdPlatformDart arg_platform = [GetNullableObjectAtIndex(args, 2) integerValue];
         NSString *arg_location = GetNullableObjectAtIndex(args, 3);
         NSString *arg_seq = GetNullableObjectAtIndex(args, 4);
         NSDictionary<NSString *, id> *arg_properties = GetNullableObjectAtIndex(args, 5);
@@ -276,8 +276,8 @@ void DTDTAdPigeonSetup(id<FlutterBinaryMessenger> binaryMessenger, NSObject<DTDT
       [channel setMessageHandler:^(id _Nullable message, FlutterReply callback) {
         NSArray *args = message;
         NSString *arg_id = GetNullableObjectAtIndex(args, 0);
-        DTAdType arg_type = [GetNullableObjectAtIndex(args, 1) integerValue];
-        DTAdPlatform arg_platform = [GetNullableObjectAtIndex(args, 2) integerValue];
+        DTAdTypeDart arg_type = [GetNullableObjectAtIndex(args, 1) integerValue];
+        DTAdPlatformDart arg_platform = [GetNullableObjectAtIndex(args, 2) integerValue];
         NSString *arg_location = GetNullableObjectAtIndex(args, 3);
         NSString *arg_seq = GetNullableObjectAtIndex(args, 4);
         NSDictionary<NSString *, id> *arg_properties = GetNullableObjectAtIndex(args, 5);
@@ -301,8 +301,8 @@ void DTDTAdPigeonSetup(id<FlutterBinaryMessenger> binaryMessenger, NSObject<DTDT
       [channel setMessageHandler:^(id _Nullable message, FlutterReply callback) {
         NSArray *args = message;
         NSString *arg_id = GetNullableObjectAtIndex(args, 0);
-        DTAdType arg_type = [GetNullableObjectAtIndex(args, 1) integerValue];
-        DTAdPlatform arg_platform = [GetNullableObjectAtIndex(args, 2) integerValue];
+        DTAdTypeDart arg_type = [GetNullableObjectAtIndex(args, 1) integerValue];
+        DTAdPlatformDart arg_platform = [GetNullableObjectAtIndex(args, 2) integerValue];
         NSString *arg_location = GetNullableObjectAtIndex(args, 3);
         NSString *arg_seq = GetNullableObjectAtIndex(args, 4);
         NSDictionary<NSString *, id> *arg_properties = GetNullableObjectAtIndex(args, 5);
@@ -326,8 +326,8 @@ void DTDTAdPigeonSetup(id<FlutterBinaryMessenger> binaryMessenger, NSObject<DTDT
       [channel setMessageHandler:^(id _Nullable message, FlutterReply callback) {
         NSArray *args = message;
         NSString *arg_id = GetNullableObjectAtIndex(args, 0);
-        DTAdType arg_type = [GetNullableObjectAtIndex(args, 1) integerValue];
-        DTAdPlatform arg_platform = [GetNullableObjectAtIndex(args, 2) integerValue];
+        DTAdTypeDart arg_type = [GetNullableObjectAtIndex(args, 1) integerValue];
+        DTAdPlatformDart arg_platform = [GetNullableObjectAtIndex(args, 2) integerValue];
         NSString *arg_location = GetNullableObjectAtIndex(args, 3);
         NSString *arg_seq = GetNullableObjectAtIndex(args, 4);
         NSDictionary<NSString *, id> *arg_properties = GetNullableObjectAtIndex(args, 5);
@@ -351,8 +351,8 @@ void DTDTAdPigeonSetup(id<FlutterBinaryMessenger> binaryMessenger, NSObject<DTDT
       [channel setMessageHandler:^(id _Nullable message, FlutterReply callback) {
         NSArray *args = message;
         NSString *arg_id = GetNullableObjectAtIndex(args, 0);
-        DTAdType arg_type = [GetNullableObjectAtIndex(args, 1) integerValue];
-        DTAdPlatform arg_platform = [GetNullableObjectAtIndex(args, 2) integerValue];
+        DTAdTypeDart arg_type = [GetNullableObjectAtIndex(args, 1) integerValue];
+        DTAdPlatformDart arg_platform = [GetNullableObjectAtIndex(args, 2) integerValue];
         NSString *arg_location = GetNullableObjectAtIndex(args, 3);
         NSString *arg_seq = GetNullableObjectAtIndex(args, 4);
         NSString *arg_value = GetNullableObjectAtIndex(args, 5);
@@ -379,11 +379,11 @@ void DTDTAdPigeonSetup(id<FlutterBinaryMessenger> binaryMessenger, NSObject<DTDT
       [channel setMessageHandler:^(id _Nullable message, FlutterReply callback) {
         NSArray *args = message;
         NSString *arg_id = GetNullableObjectAtIndex(args, 0);
-        DTAdType arg_type = [GetNullableObjectAtIndex(args, 1) integerValue];
-        DTAdPlatform arg_platform = [GetNullableObjectAtIndex(args, 2) integerValue];
+        DTAdTypeDart arg_type = [GetNullableObjectAtIndex(args, 1) integerValue];
+        DTAdPlatformDart arg_platform = [GetNullableObjectAtIndex(args, 2) integerValue];
         NSString *arg_location = GetNullableObjectAtIndex(args, 3);
         NSString *arg_seq = GetNullableObjectAtIndex(args, 4);
-        DTAdMediation arg_mediation = [GetNullableObjectAtIndex(args, 5) integerValue];
+        DTAdMediationDart arg_mediation = [GetNullableObjectAtIndex(args, 5) integerValue];
         NSString *arg_mediationId = GetNullableObjectAtIndex(args, 6);
         NSString *arg_value = GetNullableObjectAtIndex(args, 7);
         NSString *arg_precision = GetNullableObjectAtIndex(args, 8);
@@ -408,8 +408,8 @@ void DTDTAdPigeonSetup(id<FlutterBinaryMessenger> binaryMessenger, NSObject<DTDT
       [channel setMessageHandler:^(id _Nullable message, FlutterReply callback) {
         NSArray *args = message;
         NSString *arg_id = GetNullableObjectAtIndex(args, 0);
-        DTAdType arg_type = [GetNullableObjectAtIndex(args, 1) integerValue];
-        DTAdPlatform arg_platform = [GetNullableObjectAtIndex(args, 2) integerValue];
+        DTAdTypeDart arg_type = [GetNullableObjectAtIndex(args, 1) integerValue];
+        DTAdPlatformDart arg_platform = [GetNullableObjectAtIndex(args, 2) integerValue];
         NSString *arg_location = GetNullableObjectAtIndex(args, 3);
         NSString *arg_seq = GetNullableObjectAtIndex(args, 4);
         NSDictionary<NSString *, id> *arg_properties = GetNullableObjectAtIndex(args, 5);

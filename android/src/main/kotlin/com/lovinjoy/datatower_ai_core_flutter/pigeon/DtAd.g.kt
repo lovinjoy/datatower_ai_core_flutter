@@ -42,7 +42,7 @@ class DtAdFlutterError (
   val details: Any? = null
 ) : Throwable()
 
-enum class AdType(val raw: Int) {
+enum class AdTypeDart(val raw: Int) {
   IDLE(0),
   BANNER(1),
   INTERSTITIAL(2),
@@ -53,13 +53,13 @@ enum class AdType(val raw: Int) {
   MREC(7);
 
   companion object {
-    fun ofRaw(raw: Int): AdType? {
+    fun ofRaw(raw: Int): AdTypeDart? {
       return values().firstOrNull { it.raw == raw }
     }
   }
 }
 
-enum class AdMediation(val raw: Int) {
+enum class AdMediationDart(val raw: Int) {
   IDLE(0),
   MOPUB(1),
   MAX(2),
@@ -67,13 +67,13 @@ enum class AdMediation(val raw: Int) {
   COMBO(4);
 
   companion object {
-    fun ofRaw(raw: Int): AdMediation? {
+    fun ofRaw(raw: Int): AdMediationDart? {
       return values().firstOrNull { it.raw == raw }
     }
   }
 }
 
-enum class AdPlatform(val raw: Int) {
+enum class AdPlatformDart(val raw: Int) {
   UNDISCLOSED(0),
   IDLE(1),
   ADMOB(2),
@@ -98,27 +98,27 @@ enum class AdPlatform(val raw: Int) {
   LOVINJOYADS(21);
 
   companion object {
-    fun ofRaw(raw: Int): AdPlatform? {
+    fun ofRaw(raw: Int): AdPlatformDart? {
       return values().firstOrNull { it.raw == raw }
     }
   }
 }
 /** Generated interface from Pigeon that represents a handler of messages from Flutter. */
 interface DTAdPigeon {
-  fun reportLoadBegin(id: String, type: AdType, platform: AdPlatform, seq: String, properties: Map<String, Any>)
-  fun reportLoadEnd(id: String, type: AdType, platform: AdPlatform, duration: Long, result: Boolean, seq: String, errorCode: Long, errorMessage: String, properties: Map<String, Any>)
-  fun reportToShow(id: String, type: AdType, platform: AdPlatform, location: String, seq: String, properties: Map<String, Any>, entrance: String)
-  fun reportShow(id: String, type: AdType, platform: AdPlatform, location: String, seq: String, properties: Map<String, Any>, entrance: String)
-  fun reportShowFailed(id: String, type: AdType, platform: AdPlatform, location: String, seq: String, errorCode: Long, errorMessage: String, properties: Map<String, Any>, entrance: String)
-  fun reportClose(id: String, type: AdType, platform: AdPlatform, location: String, seq: String, properties: Map<String, Any>, entrance: String)
-  fun reportClick(id: String, type: AdType, platform: AdPlatform, location: String, seq: String, properties: Map<String, Any>, entrance: String)
-  fun reportRewarded(id: String, type: AdType, platform: AdPlatform, location: String, seq: String, properties: Map<String, Any>, entrance: String)
-  fun reportConversionByClick(id: String, type: AdType, platform: AdPlatform, location: String, seq: String, properties: Map<String, Any>, entrance: String)
-  fun reportConversionByLeftApp(id: String, type: AdType, platform: AdPlatform, location: String, seq: String, properties: Map<String, Any>, entrance: String)
-  fun reportConversionByRewarded(id: String, type: AdType, platform: AdPlatform, location: String, seq: String, properties: Map<String, Any>, entrance: String)
-  fun reportPaid(id: String, type: AdType, platform: AdPlatform, location: String, seq: String, value: String, currency: String, precision: String, properties: Map<String, Any>, entrance: String)
-  fun reportPaidWithMediation(id: String, type: AdType, platform: AdPlatform, location: String, seq: String, mediation: AdMediation, mediationId: String, value: String, precision: String, country: String, properties: Map<String, Any>)
-  fun reportLeftApp(id: String, type: AdType, platform: AdPlatform, location: String, seq: String, properties: Map<String, Any>, entrance: String)
+  fun reportLoadBegin(id: String, type: AdTypeDart, platform: AdPlatformDart, seq: String, properties: Map<String, Any>)
+  fun reportLoadEnd(id: String, type: AdTypeDart, platform: AdPlatformDart, duration: Long, result: Boolean, seq: String, errorCode: Long, errorMessage: String, properties: Map<String, Any>)
+  fun reportToShow(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, properties: Map<String, Any>, entrance: String)
+  fun reportShow(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, properties: Map<String, Any>, entrance: String)
+  fun reportShowFailed(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, errorCode: Long, errorMessage: String, properties: Map<String, Any>, entrance: String)
+  fun reportClose(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, properties: Map<String, Any>, entrance: String)
+  fun reportClick(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, properties: Map<String, Any>, entrance: String)
+  fun reportRewarded(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, properties: Map<String, Any>, entrance: String)
+  fun reportConversionByClick(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, properties: Map<String, Any>, entrance: String)
+  fun reportConversionByLeftApp(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, properties: Map<String, Any>, entrance: String)
+  fun reportConversionByRewarded(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, properties: Map<String, Any>, entrance: String)
+  fun reportPaid(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, value: String, currency: String, precision: String, properties: Map<String, Any>, entrance: String)
+  fun reportPaidWithMediation(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, mediation: AdMediationDart, mediationId: String, value: String, precision: String, country: String, properties: Map<String, Any>)
+  fun reportLeftApp(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, properties: Map<String, Any>, entrance: String)
 
   companion object {
     /** The codec used by DTAdPigeon. */
@@ -134,8 +134,8 @@ interface DTAdPigeon {
           channel.setMessageHandler { message, reply ->
             val args = message as List<Any?>
             val idArg = args[0] as String
-            val typeArg = AdType.ofRaw(args[1] as Int)!!
-            val platformArg = AdPlatform.ofRaw(args[2] as Int)!!
+            val typeArg = AdTypeDart.ofRaw(args[1] as Int)!!
+            val platformArg = AdPlatformDart.ofRaw(args[2] as Int)!!
             val seqArg = args[3] as String
             val propertiesArg = args[4] as Map<String, Any>
             var wrapped: List<Any?>
@@ -157,8 +157,8 @@ interface DTAdPigeon {
           channel.setMessageHandler { message, reply ->
             val args = message as List<Any?>
             val idArg = args[0] as String
-            val typeArg = AdType.ofRaw(args[1] as Int)!!
-            val platformArg = AdPlatform.ofRaw(args[2] as Int)!!
+            val typeArg = AdTypeDart.ofRaw(args[1] as Int)!!
+            val platformArg = AdPlatformDart.ofRaw(args[2] as Int)!!
             val durationArg = args[3].let { if (it is Int) it.toLong() else it as Long }
             val resultArg = args[4] as Boolean
             val seqArg = args[5] as String
@@ -184,8 +184,8 @@ interface DTAdPigeon {
           channel.setMessageHandler { message, reply ->
             val args = message as List<Any?>
             val idArg = args[0] as String
-            val typeArg = AdType.ofRaw(args[1] as Int)!!
-            val platformArg = AdPlatform.ofRaw(args[2] as Int)!!
+            val typeArg = AdTypeDart.ofRaw(args[1] as Int)!!
+            val platformArg = AdPlatformDart.ofRaw(args[2] as Int)!!
             val locationArg = args[3] as String
             val seqArg = args[4] as String
             val propertiesArg = args[5] as Map<String, Any>
@@ -209,8 +209,8 @@ interface DTAdPigeon {
           channel.setMessageHandler { message, reply ->
             val args = message as List<Any?>
             val idArg = args[0] as String
-            val typeArg = AdType.ofRaw(args[1] as Int)!!
-            val platformArg = AdPlatform.ofRaw(args[2] as Int)!!
+            val typeArg = AdTypeDart.ofRaw(args[1] as Int)!!
+            val platformArg = AdPlatformDart.ofRaw(args[2] as Int)!!
             val locationArg = args[3] as String
             val seqArg = args[4] as String
             val propertiesArg = args[5] as Map<String, Any>
@@ -234,8 +234,8 @@ interface DTAdPigeon {
           channel.setMessageHandler { message, reply ->
             val args = message as List<Any?>
             val idArg = args[0] as String
-            val typeArg = AdType.ofRaw(args[1] as Int)!!
-            val platformArg = AdPlatform.ofRaw(args[2] as Int)!!
+            val typeArg = AdTypeDart.ofRaw(args[1] as Int)!!
+            val platformArg = AdPlatformDart.ofRaw(args[2] as Int)!!
             val locationArg = args[3] as String
             val seqArg = args[4] as String
             val errorCodeArg = args[5].let { if (it is Int) it.toLong() else it as Long }
@@ -261,8 +261,8 @@ interface DTAdPigeon {
           channel.setMessageHandler { message, reply ->
             val args = message as List<Any?>
             val idArg = args[0] as String
-            val typeArg = AdType.ofRaw(args[1] as Int)!!
-            val platformArg = AdPlatform.ofRaw(args[2] as Int)!!
+            val typeArg = AdTypeDart.ofRaw(args[1] as Int)!!
+            val platformArg = AdPlatformDart.ofRaw(args[2] as Int)!!
             val locationArg = args[3] as String
             val seqArg = args[4] as String
             val propertiesArg = args[5] as Map<String, Any>
@@ -286,8 +286,8 @@ interface DTAdPigeon {
           channel.setMessageHandler { message, reply ->
             val args = message as List<Any?>
             val idArg = args[0] as String
-            val typeArg = AdType.ofRaw(args[1] as Int)!!
-            val platformArg = AdPlatform.ofRaw(args[2] as Int)!!
+            val typeArg = AdTypeDart.ofRaw(args[1] as Int)!!
+            val platformArg = AdPlatformDart.ofRaw(args[2] as Int)!!
             val locationArg = args[3] as String
             val seqArg = args[4] as String
             val propertiesArg = args[5] as Map<String, Any>
@@ -311,8 +311,8 @@ interface DTAdPigeon {
           channel.setMessageHandler { message, reply ->
             val args = message as List<Any?>
             val idArg = args[0] as String
-            val typeArg = AdType.ofRaw(args[1] as Int)!!
-            val platformArg = AdPlatform.ofRaw(args[2] as Int)!!
+            val typeArg = AdTypeDart.ofRaw(args[1] as Int)!!
+            val platformArg = AdPlatformDart.ofRaw(args[2] as Int)!!
             val locationArg = args[3] as String
             val seqArg = args[4] as String
             val propertiesArg = args[5] as Map<String, Any>
@@ -336,8 +336,8 @@ interface DTAdPigeon {
           channel.setMessageHandler { message, reply ->
             val args = message as List<Any?>
             val idArg = args[0] as String
-            val typeArg = AdType.ofRaw(args[1] as Int)!!
-            val platformArg = AdPlatform.ofRaw(args[2] as Int)!!
+            val typeArg = AdTypeDart.ofRaw(args[1] as Int)!!
+            val platformArg = AdPlatformDart.ofRaw(args[2] as Int)!!
             val locationArg = args[3] as String
             val seqArg = args[4] as String
             val propertiesArg = args[5] as Map<String, Any>
@@ -361,8 +361,8 @@ interface DTAdPigeon {
           channel.setMessageHandler { message, reply ->
             val args = message as List<Any?>
             val idArg = args[0] as String
-            val typeArg = AdType.ofRaw(args[1] as Int)!!
-            val platformArg = AdPlatform.ofRaw(args[2] as Int)!!
+            val typeArg = AdTypeDart.ofRaw(args[1] as Int)!!
+            val platformArg = AdPlatformDart.ofRaw(args[2] as Int)!!
             val locationArg = args[3] as String
             val seqArg = args[4] as String
             val propertiesArg = args[5] as Map<String, Any>
@@ -386,8 +386,8 @@ interface DTAdPigeon {
           channel.setMessageHandler { message, reply ->
             val args = message as List<Any?>
             val idArg = args[0] as String
-            val typeArg = AdType.ofRaw(args[1] as Int)!!
-            val platformArg = AdPlatform.ofRaw(args[2] as Int)!!
+            val typeArg = AdTypeDart.ofRaw(args[1] as Int)!!
+            val platformArg = AdPlatformDart.ofRaw(args[2] as Int)!!
             val locationArg = args[3] as String
             val seqArg = args[4] as String
             val propertiesArg = args[5] as Map<String, Any>
@@ -411,8 +411,8 @@ interface DTAdPigeon {
           channel.setMessageHandler { message, reply ->
             val args = message as List<Any?>
             val idArg = args[0] as String
-            val typeArg = AdType.ofRaw(args[1] as Int)!!
-            val platformArg = AdPlatform.ofRaw(args[2] as Int)!!
+            val typeArg = AdTypeDart.ofRaw(args[1] as Int)!!
+            val platformArg = AdPlatformDart.ofRaw(args[2] as Int)!!
             val locationArg = args[3] as String
             val seqArg = args[4] as String
             val valueArg = args[5] as String
@@ -439,11 +439,11 @@ interface DTAdPigeon {
           channel.setMessageHandler { message, reply ->
             val args = message as List<Any?>
             val idArg = args[0] as String
-            val typeArg = AdType.ofRaw(args[1] as Int)!!
-            val platformArg = AdPlatform.ofRaw(args[2] as Int)!!
+            val typeArg = AdTypeDart.ofRaw(args[1] as Int)!!
+            val platformArg = AdPlatformDart.ofRaw(args[2] as Int)!!
             val locationArg = args[3] as String
             val seqArg = args[4] as String
-            val mediationArg = AdMediation.ofRaw(args[5] as Int)!!
+            val mediationArg = AdMediationDart.ofRaw(args[5] as Int)!!
             val mediationIdArg = args[6] as String
             val valueArg = args[7] as String
             val precisionArg = args[8] as String
@@ -468,8 +468,8 @@ interface DTAdPigeon {
           channel.setMessageHandler { message, reply ->
             val args = message as List<Any?>
             val idArg = args[0] as String
-            val typeArg = AdType.ofRaw(args[1] as Int)!!
-            val platformArg = AdPlatform.ofRaw(args[2] as Int)!!
+            val typeArg = AdTypeDart.ofRaw(args[1] as Int)!!
+            val platformArg = AdPlatformDart.ofRaw(args[2] as Int)!!
             val locationArg = args[3] as String
             val seqArg = args[4] as String
             val propertiesArg = args[5] as Map<String, Any>

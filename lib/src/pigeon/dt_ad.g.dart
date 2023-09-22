@@ -8,7 +8,7 @@ import 'dart:typed_data' show Float64List, Int32List, Int64List, Uint8List;
 import 'package:flutter/foundation.dart' show ReadBuffer, WriteBuffer;
 import 'package:flutter/services.dart';
 
-enum AdType {
+enum AdTypeDart {
   IDLE,
   BANNER,
   INTERSTITIAL,
@@ -19,7 +19,7 @@ enum AdType {
   MREC,
 }
 
-enum AdMediation {
+enum AdMediationDart {
   IDLE,
   MOPUB,
   MAX,
@@ -27,7 +27,7 @@ enum AdMediation {
   COMBO,
 }
 
-enum AdPlatform {
+enum AdPlatformDart {
   UNDISCLOSED,
   IDLE,
   ADMOB,
@@ -62,7 +62,7 @@ class DTAdPigeon {
 
   static const MessageCodec<Object?> codec = StandardMessageCodec();
 
-  Future<void> reportLoadBegin(String arg_id, AdType arg_type, AdPlatform arg_platform, String arg_seq, Map<String?, Object?> arg_properties) async {
+  Future<void> reportLoadBegin(String arg_id, AdTypeDart arg_type, AdPlatformDart arg_platform, String arg_seq, Map<String?, Object?> arg_properties) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportLoadBegin', codec,
         binaryMessenger: _binaryMessenger);
@@ -84,7 +84,7 @@ class DTAdPigeon {
     }
   }
 
-  Future<void> reportLoadEnd(String arg_id, AdType arg_type, AdPlatform arg_platform, int arg_duration, bool arg_result, String arg_seq, int arg_errorCode, String arg_errorMessage, Map<String?, Object?> arg_properties) async {
+  Future<void> reportLoadEnd(String arg_id, AdTypeDart arg_type, AdPlatformDart arg_platform, int arg_duration, bool arg_result, String arg_seq, int arg_errorCode, String arg_errorMessage, Map<String?, Object?> arg_properties) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportLoadEnd', codec,
         binaryMessenger: _binaryMessenger);
@@ -106,7 +106,7 @@ class DTAdPigeon {
     }
   }
 
-  Future<void> reportToShow(String arg_id, AdType arg_type, AdPlatform arg_platform, String arg_location, String arg_seq, Map<String?, Object?> arg_properties, String arg_entrance) async {
+  Future<void> reportToShow(String arg_id, AdTypeDart arg_type, AdPlatformDart arg_platform, String arg_location, String arg_seq, Map<String?, Object?> arg_properties, String arg_entrance) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportToShow', codec,
         binaryMessenger: _binaryMessenger);
@@ -128,7 +128,7 @@ class DTAdPigeon {
     }
   }
 
-  Future<void> reportShow(String arg_id, AdType arg_type, AdPlatform arg_platform, String arg_location, String arg_seq, Map<String?, Object?> arg_properties, String arg_entrance) async {
+  Future<void> reportShow(String arg_id, AdTypeDart arg_type, AdPlatformDart arg_platform, String arg_location, String arg_seq, Map<String?, Object?> arg_properties, String arg_entrance) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportShow', codec,
         binaryMessenger: _binaryMessenger);
@@ -150,7 +150,7 @@ class DTAdPigeon {
     }
   }
 
-  Future<void> reportShowFailed(String arg_id, AdType arg_type, AdPlatform arg_platform, String arg_location, String arg_seq, int arg_errorCode, String arg_errorMessage, Map<String?, Object?> arg_properties, String arg_entrance) async {
+  Future<void> reportShowFailed(String arg_id, AdTypeDart arg_type, AdPlatformDart arg_platform, String arg_location, String arg_seq, int arg_errorCode, String arg_errorMessage, Map<String?, Object?> arg_properties, String arg_entrance) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportShowFailed', codec,
         binaryMessenger: _binaryMessenger);
@@ -172,7 +172,7 @@ class DTAdPigeon {
     }
   }
 
-  Future<void> reportClose(String arg_id, AdType arg_type, AdPlatform arg_platform, String arg_location, String arg_seq, Map<String?, Object?> arg_properties, String arg_entrance) async {
+  Future<void> reportClose(String arg_id, AdTypeDart arg_type, AdPlatformDart arg_platform, String arg_location, String arg_seq, Map<String?, Object?> arg_properties, String arg_entrance) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportClose', codec,
         binaryMessenger: _binaryMessenger);
@@ -194,7 +194,7 @@ class DTAdPigeon {
     }
   }
 
-  Future<void> reportClick(String arg_id, AdType arg_type, AdPlatform arg_platform, String arg_location, String arg_seq, Map<String?, Object?> arg_properties, String arg_entrance) async {
+  Future<void> reportClick(String arg_id, AdTypeDart arg_type, AdPlatformDart arg_platform, String arg_location, String arg_seq, Map<String?, Object?> arg_properties, String arg_entrance) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportClick', codec,
         binaryMessenger: _binaryMessenger);
@@ -216,7 +216,7 @@ class DTAdPigeon {
     }
   }
 
-  Future<void> reportRewarded(String arg_id, AdType arg_type, AdPlatform arg_platform, String arg_location, String arg_seq, Map<String?, Object?> arg_properties, String arg_entrance) async {
+  Future<void> reportRewarded(String arg_id, AdTypeDart arg_type, AdPlatformDart arg_platform, String arg_location, String arg_seq, Map<String?, Object?> arg_properties, String arg_entrance) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportRewarded', codec,
         binaryMessenger: _binaryMessenger);
@@ -238,7 +238,7 @@ class DTAdPigeon {
     }
   }
 
-  Future<void> reportConversionByClick(String arg_id, AdType arg_type, AdPlatform arg_platform, String arg_location, String arg_seq, Map<String?, Object?> arg_properties, String arg_entrance) async {
+  Future<void> reportConversionByClick(String arg_id, AdTypeDart arg_type, AdPlatformDart arg_platform, String arg_location, String arg_seq, Map<String?, Object?> arg_properties, String arg_entrance) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportConversionByClick', codec,
         binaryMessenger: _binaryMessenger);
@@ -260,7 +260,7 @@ class DTAdPigeon {
     }
   }
 
-  Future<void> reportConversionByLeftApp(String arg_id, AdType arg_type, AdPlatform arg_platform, String arg_location, String arg_seq, Map<String?, Object?> arg_properties, String arg_entrance) async {
+  Future<void> reportConversionByLeftApp(String arg_id, AdTypeDart arg_type, AdPlatformDart arg_platform, String arg_location, String arg_seq, Map<String?, Object?> arg_properties, String arg_entrance) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportConversionByLeftApp', codec,
         binaryMessenger: _binaryMessenger);
@@ -282,7 +282,7 @@ class DTAdPigeon {
     }
   }
 
-  Future<void> reportConversionByRewarded(String arg_id, AdType arg_type, AdPlatform arg_platform, String arg_location, String arg_seq, Map<String?, Object?> arg_properties, String arg_entrance) async {
+  Future<void> reportConversionByRewarded(String arg_id, AdTypeDart arg_type, AdPlatformDart arg_platform, String arg_location, String arg_seq, Map<String?, Object?> arg_properties, String arg_entrance) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportConversionByRewarded', codec,
         binaryMessenger: _binaryMessenger);
@@ -304,7 +304,7 @@ class DTAdPigeon {
     }
   }
 
-  Future<void> reportPaid(String arg_id, AdType arg_type, AdPlatform arg_platform, String arg_location, String arg_seq, String arg_value, String arg_currency, String arg_precision, Map<String?, Object?> arg_properties, String arg_entrance) async {
+  Future<void> reportPaid(String arg_id, AdTypeDart arg_type, AdPlatformDart arg_platform, String arg_location, String arg_seq, String arg_value, String arg_currency, String arg_precision, Map<String?, Object?> arg_properties, String arg_entrance) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportPaid', codec,
         binaryMessenger: _binaryMessenger);
@@ -326,7 +326,7 @@ class DTAdPigeon {
     }
   }
 
-  Future<void> reportPaidWithMediation(String arg_id, AdType arg_type, AdPlatform arg_platform, String arg_location, String arg_seq, AdMediation arg_mediation, String arg_mediationId, String arg_value, String arg_precision, String arg_country, Map<String?, Object?> arg_properties) async {
+  Future<void> reportPaidWithMediation(String arg_id, AdTypeDart arg_type, AdPlatformDart arg_platform, String arg_location, String arg_seq, AdMediationDart arg_mediation, String arg_mediationId, String arg_value, String arg_precision, String arg_country, Map<String?, Object?> arg_properties) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportPaidWithMediation', codec,
         binaryMessenger: _binaryMessenger);
@@ -348,7 +348,7 @@ class DTAdPigeon {
     }
   }
 
-  Future<void> reportLeftApp(String arg_id, AdType arg_type, AdPlatform arg_platform, String arg_location, String arg_seq, Map<String?, Object?> arg_properties, String arg_entrance) async {
+  Future<void> reportLeftApp(String arg_id, AdTypeDart arg_type, AdPlatformDart arg_platform, String arg_location, String arg_seq, Map<String?, Object?> arg_properties, String arg_entrance) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportLeftApp', codec,
         binaryMessenger: _binaryMessenger);
