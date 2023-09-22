@@ -1,4 +1,4 @@
-package com.example.datatower_ai_core_flutter.pigeon.impl
+package com.lovinjoy.datatower_ai_core_flutter.pigeon.impl
 
 import AdType
 import AdPlatform

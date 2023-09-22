@@ -1,4 +1,4 @@
-package com.example.datatower_ai_core_flutter
+package com.lovinjoy.datatower_ai_core_flutter
 
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
