@@ -3,12 +3,8 @@
 #import "dt_ad.g.h"
 #import "dt_analytics.g.h"
 #import "dt_analytics_util.g.h"
-#import "dt_iap.g.h"
-#import "dt_ias.g.h"
 
 #import "DTBridge.h"
-#import "DTIAPBridge.h"
-#import "DTIASBridge.h"
 #import "DTAdBridge.h"
 #import "DTUtilBridge.h"
 #import "DTAnalyticsBridge.h"
@@ -26,8 +22,6 @@
     DTDTAdPigeonSetup([registrar messenger], [[DTAdBridge alloc] init]);
     DTDTAnalyticsPigeonSetup([registrar messenger], [[DTAnalyticsBridge alloc] init]);
     DTDTAnalyticsUtilPigeonSetup([registrar messenger], [[DTUtilBridge alloc] init]);
-    DTDTIapPigeonSetup([registrar messenger], [[DTIAPBridge alloc] init]);
-    DTDTIasPigeonSetup([registrar messenger], [[DTIASBridge alloc] init]);
 }
 
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
