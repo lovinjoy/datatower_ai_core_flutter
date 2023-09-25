@@ -13,56 +13,47 @@ import 'package:pigeon/pigeon.dart';
   dartPackageName: 'datatower_ai_core_flutter',
 ))
 enum AdTypeDart {
-  IDLE(-1),
-  BANNER(0),
-  INTERSTITIAL(1),
-  NATIVE(2),
-  REWARDED(3),
-  REWARDED_INTERSTITIAL(4),
-  APP_OPEN(5),
-  MREC(6);
-
-  final int value;
-  const AdTypeDart(this.value);
+  IDLE,
+  BANNER,
+  INTERSTITIAL,
+  NATIVE,
+  REWARDED,
+  REWARDED_INTERSTITIAL,
+  APP_OPEN,
+  MREC;
 }
 
 enum AdMediationDart {
-  IDLE(-1),
-  MOPUB(0),
-  MAX(1),
-  HISAVANA(2),
-  COMBO(3);
-
-  final int value;
-  const AdMediationDart(this.value);
+  IDLE,
+  MOPUB,
+  MAX,
+  HISAVANA,
+  COMBO;
 }
 
 enum AdPlatformDart {
-  UNDISCLOSED(-2),
-  IDLE(-1),
-  ADMOB(0),
-  MOPUB(1),
-  ADCOLONY(2),
-  APPLOVIN(3),
-  CHARTBOOST(4),
-  FACEBOOK(5),
-  INMOBI(6),
-  IRONSOURCE(7),
-  PANGLE(8),
-  SNAP_AUDIENCE_NETWORK(9),
-  TAPJOY(10),
-  UNITY_ADS(11),
-  VERIZON_MEDIA(12),
-  VUNGLE(13),
-  ADX(14),
-  COMBO(15),
-  BIGO(16),
-  HISAVANA(17),
-  APPLOVIN_EXCHANGE(18),
-  LOVINJOYADS(33);
-
-  final int value;
-  const AdPlatformDart(this.value);
+  UNDISCLOSED,
+  IDLE,
+  ADMOB,
+  MOPUB,
+  ADCOLONY,
+  APPLOVIN,
+  CHARTBOOST,
+  FACEBOOK,
+  INMOBI,
+  IRONSOURCE,
+  PANGLE,
+  SNAP_AUDIENCE_NETWORK,
+  TAPJOY,
+  UNITY_ADS,
+  VERIZON_MEDIA,
+  VUNGLE,
+  ADX,
+  COMBO,
+  BIGO,
+  HISAVANA,
+  APPLOVIN_EXCHANGE,
+  LOVINJOYADS;
 }
 
 @HostApi()
