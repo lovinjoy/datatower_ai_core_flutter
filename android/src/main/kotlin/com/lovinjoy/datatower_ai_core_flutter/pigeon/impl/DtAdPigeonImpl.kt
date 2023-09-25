@@ -11,22 +11,13 @@ import com.roiquery.ad.AdMediation
 import com.roiquery.ad.DTAdReport
 
 internal object DtAdPigeonImpl: DTAdPigeon {
-    private val adTypeMap: Map<Int, AdType> by lazy {
-        AdType.values().associateBy { adType -> adType.value }
-    }
-    private fun AdTypeDart.toDtType(): AdType = adTypeMap[this.raw] ?:
+    private fun AdTypeDart.toDtType(): AdType = AdType.values()[this.raw] ?:
         throw DtAdFlutterError(code = "4001", message = "AdType not matches native AdType ($this, ${this.raw})")
 
-    private val adPlatformMap: Map<Int, AdPlatform> by lazy {
-        AdPlatform.values().associateBy { adp -> adp.value }
-    }
-    private fun AdPlatformDart.toDtType(): AdPlatform = adPlatformMap[this.raw] ?:
+    private fun AdPlatformDart.toDtType(): AdPlatform = AdPlatform.values()[this.raw] ?:
         throw DtAdFlutterError(code = "4002", message = "AdPlatform not matches native AdPlatform ($this, ${this.raw})")
 
-    private val adMediationMap: Map<Int, AdMediation> by lazy {
-        AdMediation.values().associateBy { adm -> adm.value }
-    }
-    private fun AdMediationDart.toDtType(): AdMediation = adMediationMap[this.raw] ?:
+    private fun AdMediationDart.toDtType(): AdMediation = AdMediation.values()[this.raw] ?:
         throw DtAdFlutterError(code = "4003", message = "AdMediation not matches native AdMediation ($this, ${this.raw})")
 
     override fun reportLoadBegin(
