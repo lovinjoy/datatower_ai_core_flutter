@@ -1,5 +1,6 @@
 import 'package:datatower_ai_core_flutter/src/pigeon/dt.g.dart';
 import 'package:datatower_ai_core_flutter/src/base/dt_api.dart';
+import 'package:datatower_ai_core_flutter/util/type_util.dart';
 
 @DTApi()
 class DT {
@@ -9,7 +10,7 @@ class DT {
       String channel,
       bool isDebug,
       int logLevel,
-      { Map<String, dynamic> commonProperties = const {} }
+      { JsonMap commonProperties = const {} }
   ) {
     DTPigeon().initSDK(appId, url, channel, isDebug, logLevel, commonProperties);
   }
