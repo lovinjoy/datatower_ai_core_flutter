@@ -110,44 +110,75 @@ class _RunApiDialogState extends State<RunApiDialog> {
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      title: Text("${widget.className}\n${widget.methodName}"),
-      content: SingleChildScrollView(child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          for (var (i, _) in widget.dtApiMethod.orderedParam.indexed)
-            ...[
-              Text(widget.dtApiMethod.orderedParamNames[i].toString(), style: Theme.of(context).textTheme.bodySmall
-                  ?.copyWith(color: Theme.of(context).colorScheme.primary),
-              ),
-              const SizedBox(height: 2),
-              Text(orderedParam[i].toString()),
-              const SizedBox(height: 10),
-            ],
-          for (var entry in widget.dtApiMethod.namedParam.entries)
-            ...[
-              Text(entry.key.toString(), style: Theme.of(context).textTheme.bodySmall
-                  ?.copyWith(color: Theme.of(context).colorScheme.primary),
-              ),
-              const SizedBox(height: 2),
-              Text(namedParam[entry.key].toString()),
-              const SizedBox(height: 10),
-            ],
-        ],
-      )),
-      actions: [
-        TextButton(
-          onPressed: () { Navigator.pop(context); },
-          child: const Text("Cancel"),
+    return Dialog.fullscreen(
+      child: Scaffold(
+        appBar: AppBar(title: Text("${widget.className}\n${widget.methodName}")),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: Scrollbar(child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 20),
+                      for (var (i, name) in widget.dtApiMethod.orderedParamNames.indexed)
+                        ...[
+                          getWidgetByType(
+                            type: widget.dtApiMethod.orderedParam[i],
+                            name: name,
+                            getValue: () => orderedParam[i],
+                            setValue: (v) => orderedParam[i] = v,
+                          ),
+                          const SizedBox(height: 20),
+                        ],
+                      for (var entry in widget.dtApiMethod.namedParam.entries)
+                        ...[
+                          getWidgetByType(
+                            type: entry.value,
+                            name: entry.key,
+                            getValue: () => namedParam[entry.key],
+                            setValue: (v) => namedParam[entry.key] = v,
+                          ),
+                          const SizedBox(height: 20),
+                        ],
+                    ],
+                  )
+                ),
+              ))
+            ),
+            const SizedBox(height: 10,),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  TextButton(
+                    onPressed: () { Navigator.pop(context); },
+                    child: const Text("Cancel"),
+                  ),
+                  const SizedBox(width: 20,),
+                  FilledButton(
+                    onPressed: () {
+                      debugPrint("="*80);
+                      debugPrint("Run for [${widget.className}] ${widget.methodName}");
+                      debugPrint("orderedParam: $orderedParam");
+                      debugPrint("namedParam: $namedParam");
+                      debugPrint("="*80);
+
+                      widget.dtApiMethod.run(orderedParam, namedParam);
+                      Navigator.pop(context);
+                    },
+                    child: const Text("Run"),
+                  )
+                ],
+              )
+            ),
+            const SizedBox(height: 10,),
+          ],
         ),
-        TextButton(
-          onPressed: () {
-            widget.dtApiMethod.run(orderedParam, namedParam);
-            Navigator.pop(context);
-          },
-          child: const Text("Run"),
-        )
-      ],
+      )
     );
   }
 
@@ -170,6 +201,148 @@ class _RunApiDialogState extends State<RunApiDialog> {
       return ["TestProp", "Sword", "helicopter", name ?? "name"];
     } else {
       return null;
+    }
+  }
+
+  Widget getWidgetByType({
+    required String type,
+    required String name,
+    required dynamic Function() getValue,
+    required void Function(dynamic) setValue,
+  }) {
+    final labelStyle = Theme.of(context).textTheme.labelLarge?.copyWith(color: Theme.of(context).colorScheme.primary);
+
+    if (type.startsWith("String")) {
+      final controller = TextEditingController(text: getValue().toString());
+      return TextField(
+        controller: controller,
+        decoration: InputDecoration(
+          labelText: name,
+          labelStyle: labelStyle,
+          border: const OutlineInputBorder()
+        ),
+        onChanged: (str) => setValue(str),
+      );
+    } else if (type.startsWith("AdTypeDart")) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(name, style: labelStyle),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                for (var adTypeDart in AdTypeDart.values)
+                  ...[
+                    ChoiceChip(
+                      label: Text(adTypeDart.name),
+                      selected: adTypeDart == getValue(),
+                      onSelected: (selected) => selected? setState(() => setValue(adTypeDart)) : null,
+                      selectedColor: Theme.of(context).colorScheme.primaryContainer,
+                    ),
+                    const SizedBox(width: 5,)
+                  ]
+              ],
+            )
+          )
+        ],
+      );
+    } else if (type.startsWith("AdPlatformDart")) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(name, style: labelStyle),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                for (var adPlatformDart in AdPlatformDart.values)
+                  ...[
+                    ChoiceChip(
+                      label: Text(adPlatformDart.name),
+                      selected: adPlatformDart == getValue(),
+                      onSelected: (selected) => selected? setState(() => setValue(adPlatformDart)) : null,
+                      selectedColor: Theme.of(context).colorScheme.primaryContainer,
+                    ),
+                    const SizedBox(width: 5,)
+                  ]
+              ],
+            )
+          )
+        ],
+      );
+    } else if (type.startsWith("int")) {
+      final controller = TextEditingController(text: getValue().toString());
+      return TextField(
+        controller: controller,
+        decoration: InputDecoration(
+            labelText: name,
+            labelStyle: labelStyle,
+            border: const OutlineInputBorder(),
+            helperText: "Integer Number"
+        ),
+        onChanged: (str) => setValue(int.tryParse(str) ?? 10),
+        keyboardType: TextInputType.number,
+        inputFormatters: [ FilteringTextInputFormatter.digitsOnly ],
+      );
+    } else if (type.startsWith("bool")) {
+      return Row(
+        children: [
+          Checkbox(value: getValue(), onChanged: (v) => setState(() => setValue(v))),
+          const SizedBox(width: 10,),
+          Text(name)
+        ],
+      );
+    } else if (type.startsWith("AdMediationDart")) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(name, style: labelStyle),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                for (var adMediationDart in AdMediationDart.values)
+                  ...[
+                    ChoiceChip(
+                      label: Text(adMediationDart.name),
+                      selected: adMediationDart == getValue(),
+                      onSelected: (selected) => selected? setState(() => setValue(adMediationDart)) : null,
+                      selectedColor: Theme.of(context).colorScheme.primaryContainer,
+                    ),
+                    const SizedBox(width: 5,)
+                  ]
+              ],
+            )
+          )
+        ],
+      );
+    } else if (type.startsWith("Map<String, Object?>")) {
+      final controller = TextEditingController(text: getValue().toString());
+      return TextField(
+        controller: controller,
+        decoration: InputDecoration(
+            labelText: name,
+            labelStyle: labelStyle,
+            border: const OutlineInputBorder(),
+            helperText: "Json: {\"name\": \"viper\", \"age\": 18}"
+        ),
+        onChanged: (str) => setValue(str),
+      );
+    } else if (type.startsWith("List<String>")) {
+      final controller = TextEditingController(text: getValue().toString());
+      return TextField(
+        controller: controller,
+        decoration: InputDecoration(
+            labelText: name,
+            labelStyle: labelStyle,
+            border: const OutlineInputBorder(),
+            helperText: "String List: [\"a\", \"b\"]"
+        ),
+        onChanged: (str) => setValue(str),
+      );
+    } else {
+      return Container();
     }
   }
 }

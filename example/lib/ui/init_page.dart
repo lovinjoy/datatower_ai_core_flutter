@@ -14,7 +14,7 @@ class InitPage extends StatefulWidget {
 class _State extends State<InitPage> {
   String appId = "dt_4b436e8b14d41d70";
   String url = "https://test.roiquery.com";
-  bool _isDebug = false;
+  bool _isDebug = true;
 
   @override
   Widget build(BuildContext context) {
