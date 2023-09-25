@@ -1,3 +1,4 @@
 lib/src/test/
 build.yaml
-build_api_methods.sh
+generate_dt_api_methods.sh
+pigeon_generate.sh
