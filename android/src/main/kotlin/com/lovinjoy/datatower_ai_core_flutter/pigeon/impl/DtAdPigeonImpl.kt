@@ -11,14 +11,17 @@ import com.roiquery.ad.AdMediation
 import com.roiquery.ad.DTAdReport
 
 internal object DtAdPigeonImpl: DTAdPigeon {
-    private fun AdTypeDart.toDtType(): AdType = AdType.values()[this.raw] ?:
-        throw DtAdFlutterError(code = "4001", message = "AdType not matches native AdType ($this, ${this.raw})")
+    private val adTypes by lazy { AdType.values() }
+    private fun AdTypeDart.toDtType(): AdType = adTypes.elementAtOrNull(this.raw) ?:
+        throw DtAdFlutterError(code = "4001", message = "AdTypeDart not matches native AdType ($this, ${this.raw})")
 
-    private fun AdPlatformDart.toDtType(): AdPlatform = AdPlatform.values()[this.raw] ?:
-        throw DtAdFlutterError(code = "4002", message = "AdPlatform not matches native AdPlatform ($this, ${this.raw})")
+    private val adPlatforms by lazy { AdPlatform.values() }
+    private fun AdPlatformDart.toDtType(): AdPlatform = adPlatforms.elementAtOrNull(this.raw) ?:
+        throw DtAdFlutterError(code = "4002", message = "AdPlatformDart not matches native AdPlatform ($this, ${this.raw})")
 
-    private fun AdMediationDart.toDtType(): AdMediation = AdMediation.values()[this.raw] ?:
-        throw DtAdFlutterError(code = "4003", message = "AdMediation not matches native AdMediation ($this, ${this.raw})")
+    private val adMediations by lazy { AdMediation.values() }
+    private fun AdMediationDart.toDtType(): AdMediation = adMediations.elementAtOrNull(this.raw) ?:
+        throw DtAdFlutterError(code = "4003", message = "AdMediationDart not matches native AdMediation ($this, ${this.raw})")
 
     override fun reportLoadBegin(
         id: String,
