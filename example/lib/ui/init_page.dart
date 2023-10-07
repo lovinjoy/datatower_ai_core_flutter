@@ -12,7 +12,7 @@ class InitPage extends StatefulWidget {
 }
 
 class _State extends State<InitPage> {
-  String appId = "dt_4b436e8b14d41d70";
+  String appId = "dt_c015a9ff8759e7d4";
   String url = "https://test.roiquery.com";
   bool _isDebug = true;
 
