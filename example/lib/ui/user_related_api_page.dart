@@ -32,17 +32,19 @@ class _State extends State<UserRelatedApiPage> {
              DropdownMenu<_UraItem>(
               width: width,
               initialSelection: selectedItem,
-              onSelected: (it) => it == null? null : selectedItem = it,
+              onSelected: (it) => it == null? null : setState(() => selectedItem = it),
               dropdownMenuEntries: [
                 ..._items.map((e) => DropdownMenuEntry(value: e, label: e.name))
               ],
             ),
             const SizedBox(height: 10,),
-            TextField(
+            if (selectedItem.name != "userDelete") TextField(
               controller: TextEditingController()..text = properties,
-              decoration: const InputDecoration(
-                  label: Text("Properties (Json)"),
-                  border: OutlineInputBorder()
+              decoration: InputDecoration(
+                label: const Text("Properties"),
+                border: const OutlineInputBorder(),
+                helperText: selectedItem.name == "userUnset"? "*String list: [\"example\"]" : "*Json: {\"key\": \"value\"}",
+                helperStyle: errorText.isNotEmpty? TextStyle(color: Theme.of(context).colorScheme.error) : null
               ),
               onChanged: (str) => properties = str,
               maxLines: null,
@@ -59,6 +61,10 @@ class _State extends State<UserRelatedApiPage> {
                     errorText = "${e.message} (at character ${e.offset})\n"
                       "${e.source}\n"
                       "${" " * (e.offset??0-1)}^"
+                  );
+                } on Error catch (e) {
+                  setState(() =>
+                    errorText = "$e"
                   );
                 }
               },
