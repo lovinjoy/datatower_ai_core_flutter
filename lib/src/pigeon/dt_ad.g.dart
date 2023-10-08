@@ -25,6 +25,9 @@ enum AdMediationDart {
   MAX,
   HISAVANA,
   COMBO,
+  TOPON,
+  TRADPLUS,
+  TOBID,
 }
 
 enum AdPlatformDart {
@@ -49,7 +52,23 @@ enum AdPlatformDart {
   BIGO,
   HISAVANA,
   APPLOVIN_EXCHANGE,
+  MINTEGRAL,
+  LIFTOFF,
+  A4G,
+  GOOGLE_AD_MANAGER,
+  FYBER,
+  MAIO,
+  CRITEO,
+  MYTARGET,
+  OGURY,
+  APPNEXT,
+  KIDOZ,
+  SMAATO,
+  START_IO,
+  VERVE,
   LOVINJOYADS,
+  YANDEX,
+  REKLAMUP,
 }
 
 class DTAdPigeon {

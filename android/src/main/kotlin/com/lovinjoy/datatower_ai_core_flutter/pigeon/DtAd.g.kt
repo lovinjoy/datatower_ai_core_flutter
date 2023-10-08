@@ -64,7 +64,10 @@ enum class AdMediationDart(val raw: Int) {
   MOPUB(1),
   MAX(2),
   HISAVANA(3),
-  COMBO(4);
+  COMBO(4),
+  TOPON(5),
+  TRADPLUS(6),
+  TOBID(7);
 
   companion object {
     fun ofRaw(raw: Int): AdMediationDart? {
@@ -95,7 +98,23 @@ enum class AdPlatformDart(val raw: Int) {
   BIGO(18),
   HISAVANA(19),
   APPLOVIN_EXCHANGE(20),
-  LOVINJOYADS(21);
+  MINTEGRAL(21),
+  LIFTOFF(22),
+  A4G(23),
+  GOOGLE_AD_MANAGER(24),
+  FYBER(25),
+  MAIO(26),
+  CRITEO(27),
+  MYTARGET(28),
+  OGURY(29),
+  APPNEXT(30),
+  KIDOZ(31),
+  SMAATO(32),
+  START_IO(33),
+  VERVE(34),
+  LOVINJOYADS(35),
+  YANDEX(36),
+  REKLAMUP(37);
 
   companion object {
     fun ofRaw(raw: Int): AdPlatformDart? {

@@ -12,6 +12,9 @@ import 'package:pigeon/pigeon.dart';
   objcOptions: ObjcOptions(prefix: 'DT'),
   dartPackageName: 'datatower_ai_core_flutter',
 ))
+
+// regex: \(-?[0-9].*\)
+// replacement:
 enum AdTypeDart {
   IDLE,
   BANNER,
@@ -28,7 +31,10 @@ enum AdMediationDart {
   MOPUB,
   MAX,
   HISAVANA,
-  COMBO;
+  COMBO,
+  TOPON,
+  TRADPLUS,
+  TOBID;
 }
 
 enum AdPlatformDart {
@@ -53,7 +59,23 @@ enum AdPlatformDart {
   BIGO,
   HISAVANA,
   APPLOVIN_EXCHANGE,
-  LOVINJOYADS;
+  MINTEGRAL,
+  LIFTOFF,
+  A4G,
+  GOOGLE_AD_MANAGER,
+  FYBER,
+  MAIO,
+  CRITEO,
+  MYTARGET,
+  OGURY,
+  APPNEXT,
+  KIDOZ,
+  SMAATO,
+  START_IO,
+  VERVE,
+  LOVINJOYADS,
+  YANDEX,
+  REKLAMUP;
 }
 
 @HostApi()
