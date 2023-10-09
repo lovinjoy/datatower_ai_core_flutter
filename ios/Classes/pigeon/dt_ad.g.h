@@ -33,6 +33,9 @@ typedef NS_ENUM(NSUInteger, DTAdMediationDart) {
   DTAdMediationDartMAX = 2,
   DTAdMediationDartHISAVANA = 3,
   DTAdMediationDartCOMBO = 4,
+  DTAdMediationDartTOPON = 5,
+  DTAdMediationDartTRADPLUS = 6,
+  DTAdMediationDartTOBID = 7,
 };
 
 /// Wrapper for DTAdMediationDart to allow for nullability.
@@ -63,7 +66,23 @@ typedef NS_ENUM(NSUInteger, DTAdPlatformDart) {
   DTAdPlatformDartBIGO = 18,
   DTAdPlatformDartHISAVANA = 19,
   DTAdPlatformDartAPPLOVIN_EXCHANGE = 20,
-  DTAdPlatformDartLOVINJOYADS = 21,
+  DTAdPlatformDartMINTEGRAL = 21,
+  DTAdPlatformDartLIFTOFF = 22,
+  DTAdPlatformDartA4G = 23,
+  DTAdPlatformDartGOOGLE_AD_MANAGER = 24,
+  DTAdPlatformDartFYBER = 25,
+  DTAdPlatformDartMAIO = 26,
+  DTAdPlatformDartCRITEO = 27,
+  DTAdPlatformDartMYTARGET = 28,
+  DTAdPlatformDartOGURY = 29,
+  DTAdPlatformDartAPPNEXT = 30,
+  DTAdPlatformDartKIDOZ = 31,
+  DTAdPlatformDartSMAATO = 32,
+  DTAdPlatformDartSTART_IO = 33,
+  DTAdPlatformDartVERVE = 34,
+  DTAdPlatformDartLOVINJOYADS = 35,
+  DTAdPlatformDartYANDEX = 36,
+  DTAdPlatformDartREKLAMUP = 37,
 };
 
 /// Wrapper for DTAdPlatformDart to allow for nullability.

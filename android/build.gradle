@@ -14,7 +14,7 @@ buildscript {
     }
 }
 
-allprojects {
+rootProject.allprojects {
     repositories {
         google()
         mavenCentral()
@@ -52,7 +52,8 @@ android {
     dependencies {
         testImplementation 'org.jetbrains.kotlin:kotlin-test'
         testImplementation 'org.mockito:mockito-core:5.0.0'
-        implementation("com.lovinjoy:datatowerai-core:2.0.3")
+
+        implementation("com.lovinjoy:datatowerai-core:2.0.4-beta1")
     }
 
     testOptions {
