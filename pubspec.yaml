@@ -1,5 +1,6 @@
 name: datatower_ai_core_flutter
 description: DataTower.ai SDK for Flutter
+homepage: https://datatower.ai
 version: 2.0.0-beta1
 
 environment:
