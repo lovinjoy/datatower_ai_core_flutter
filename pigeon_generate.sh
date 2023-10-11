@@ -8,4 +8,4 @@ for file in $filelist; do
     dart run pigeon --input $file_dir/$file
 done
 
-echo "sucess generate code"
+echo "success generate code"

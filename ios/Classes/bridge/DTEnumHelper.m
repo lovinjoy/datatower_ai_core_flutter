@@ -53,75 +53,159 @@
 
 + (DTAdPlatform)convertPlatformType:(DTAdPlatformDart)platformDart
 {
-//    DTAdPlatformDartLOVINJOYADS = 21,
     DTAdPlatform ret = DTAdPlatformUndisclosed;
     
     switch (platformDart) {
         case DTAdPlatformDartUNDISCLOSED:
             ret = DTAdPlatformUndisclosed;
             break;
+            
         case DTAdPlatformDartIDLE:
             ret = DTAdPlatformIdle;
             break;
+            
         case DTAdPlatformDartADMOB:
             ret = DTAdPlatformAdmob;
             break;
+            
         case DTAdPlatformDartMOPUB:
             ret = DTAdPlatformMopub;
             break;
+            
         case DTAdPlatformDartADCOLONY:
             ret = DTAdPlatformAdcolony;
             break;
+            
         case DTAdPlatformDartAPPLOVIN:
             ret = DTAdPlatformApplovin;
             break;
+            
         case DTAdPlatformDartCHARTBOOST:
             ret = DTAdPlatformChartboost;
             break;
+            
         case DTAdPlatformDartFACEBOOK:
             ret = DTAdPlatformFaceBook;
             break;
+            
         case DTAdPlatformDartINMOBI:
             ret = DTAdPlatformInmobi;
             break;
+            
         case DTAdPlatformDartIRONSOURCE:
             ret = DTAdPlatformIronsource;
             break;
+            
         case DTAdPlatformDartPANGLE:
             ret = DTAdPlatformPangle;
             break;
+            
         case DTAdPlatformDartSNAP_AUDIENCE_NETWORK:
             ret = DTAdPlatformSnapAudienceNetwork;
             break;
+            
         case DTAdPlatformDartTAPJOY:
             ret = DTAdPlatformTapjoy;
             break;
+            
         case DTAdPlatformDartUNITY_ADS:
             ret = DTAdPlatformUnityAds;
             break;
+            
         case DTAdPlatformDartVERIZON_MEDIA:
             ret = DTAdPlatformVerizonMedia;
             break;
+            
         case DTAdPlatformDartVUNGLE:
             ret = DTAdPlatformVungle;
             break;
+            
         case DTAdPlatformDartADX:
             ret = DTAdPlatformADX;
             break;
+            
         case DTAdPlatformDartCOMBO:
             ret = DTAdPlatformCombo;
             break;
+            
         case DTAdPlatformDartBIGO:
             ret = DTAdPlatformBigo;
             break;
+            
         case DTAdPlatformDartHISAVANA:
             ret = DTAdPlatformHisavana;
             break;
+            
         case DTAdPlatformDartAPPLOVIN_EXCHANGE:
             ret = DTAdPlatformApplovinExchange;
             break;
+            
+        case DTAdPlatformDartMINTEGRAL:
+            ret = DTAdPlatformMintegral;
+            break;
+            
+        case DTAdPlatformDartLIFTOFF:
+            ret = DTAdPlatformLiftoff;
+            break;
+
+        case DTAdPlatformDartA4G:
+            ret = DTAdPlatformA4G;
+            break;
+            
+        case DTAdPlatformDartGOOGLE_AD_MANAGER:
+            ret = DTAdPlatformGoogleAdManager;
+            break;
+            
+        case DTAdPlatformDartFYBER:
+            ret = DTAdPlatformFyber;
+            break;
+            
+        case DTAdPlatformDartMAIO:
+            ret = DTAdPlatformMaio;
+            break;
+            
+        case DTAdPlatformDartCRITEO:
+            ret = DTAdPlatformCriteo;
+            break;
+            
+        case DTAdPlatformDartMYTARGET:
+            ret = DTAdPlatformMyTarget;
+            break;
+            
+        case DTAdPlatformDartOGURY:
+            ret = DTAdPlatformOgury;
+            break;
+            
+        case DTAdPlatformDartAPPNEXT:
+            ret = DTAdPlatformAppnext;
+            break;
+            
+        case DTAdPlatformDartKIDOZ:
+            ret = DTAdPlatformKidoz;
+            break;
+            
+        case DTAdPlatformDartSMAATO:
+            ret = DTAdPlatformSmaato;
+            break;
+            
+        case DTAdPlatformDartSTART_IO:
+            ret = DTAdPlatformStart_io;
+            break;
+            
+        case DTAdPlatformDartVERVE:
+            ret = DTAdPlatformVerve;
+            break;
+            
         case DTAdPlatformDartLOVINJOYADS:
             ret = DTAdPlatformLovinJoyAds;
+            break;
+            
+        case DTAdPlatformDartYANDEX:
+            ret = DTAdPlatformYandex;
+            break;
+            
+        case DTAdPlatformDartREKLAMUP:
+            ret = DTAdPlatformReklamUp;
             break;
         default:
             break;
@@ -151,6 +235,18 @@
             
         case DTAdMediationDartCOMBO:
             ret = DTAdMediationCombo;
+            break;
+            
+        case DTAdMediationDartTOPON:
+            ret = DTAdMediationTopon;
+            break;
+            
+        case DTAdMediationDartTRADPLUS:
+            ret = DTAdMediationTradPlus;
+            break;
+            
+        case DTAdMediationDartTOBID:
+            ret = DTAdMediationToBid;
             break;
             
         default:
