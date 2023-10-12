@@ -26,10 +26,13 @@ internal object DtAdPigeonImpl: DTAdPigeon {
         type: AdTypeDart,
         platform: AdPlatformDart,
         seq: String,
-        properties: Map<String, Any>
+        properties: Map<String, Any>,
+        mediation: AdMediationDart,
+        mediationId: String
     ) {
         DTAdReport.reportLoadBegin(
-            id, type.toDtType(), platform.toDtType(), seq, properties.toMutableMap()
+            id, type.toDtType(), platform.toDtType(), seq, properties.toMutableMap(),
+            mediation = mediation.toDtType(), mediationId = mediationId
         )
     }
 
@@ -42,12 +45,15 @@ internal object DtAdPigeonImpl: DTAdPigeon {
         seq: String,
         errorCode: Long,
         errorMessage: String,
-        properties: Map<String, Any>
+        properties: Map<String, Any>,
+        mediation: AdMediationDart,
+        mediationId: String
     ) {
         DTAdReport.reportLoadEnd(
             id, type.toDtType(), platform.toDtType(), duration, result, seq,
             errorCode.toInt(), errorMessage,
-            properties.toMutableMap()
+            properties.toMutableMap(),
+            mediation = mediation.toDtType(), mediationId = mediationId
         )
     }
 
@@ -58,10 +64,13 @@ internal object DtAdPigeonImpl: DTAdPigeon {
         location: String,
         seq: String,
         properties: Map<String, Any>,
-        entrance: String
+        entrance: String,
+        mediation: AdMediationDart,
+        mediationId: String
     ) {
         DTAdReport.reportToShow(
-            id, type.toDtType(), platform.toDtType(), location, seq, properties.toMutableMap(), entrance
+            id, type.toDtType(), platform.toDtType(), location, seq, properties.toMutableMap(), entrance,
+            mediation = mediation.toDtType(), mediationId = mediationId
         )
     }
 
@@ -72,10 +81,13 @@ internal object DtAdPigeonImpl: DTAdPigeon {
         location: String,
         seq: String,
         properties: Map<String, Any>,
-        entrance: String
+        entrance: String,
+        mediation: AdMediationDart,
+        mediationId: String
     ) {
         DTAdReport.reportShow(
-            id, type.toDtType(), platform.toDtType(), location, seq, properties.toMutableMap(), entrance
+            id, type.toDtType(), platform.toDtType(), location, seq, properties.toMutableMap(), entrance,
+            mediation = mediation.toDtType(), mediationId = mediationId
         )
     }
 
@@ -88,12 +100,15 @@ internal object DtAdPigeonImpl: DTAdPigeon {
         errorCode: Long,
         errorMessage: String,
         properties: Map<String, Any>,
-        entrance: String
+        entrance: String,
+        mediation: AdMediationDart,
+        mediationId: String
     ) {
         DTAdReport.reportShowFailed(
             id, type.toDtType(), platform.toDtType(), location, seq,
             errorCode.toInt(), errorMessage,
-            properties.toMutableMap(), entrance
+            properties.toMutableMap(), entrance,
+            mediation = mediation.toDtType(), mediationId = mediationId
         )
     }
 
@@ -104,11 +119,14 @@ internal object DtAdPigeonImpl: DTAdPigeon {
         location: String,
         seq: String,
         properties: Map<String, Any>,
-        entrance: String
+        entrance: String,
+        mediation: AdMediationDart,
+        mediationId: String
     ) {
         DTAdReport.reportClose(
             id, type.toDtType(), platform.toDtType(), location, seq,
-            properties.toMutableMap(), entrance
+            properties.toMutableMap(), entrance,
+            mediation = mediation.toDtType(), mediationId = mediationId
         )
     }
 
@@ -119,11 +137,14 @@ internal object DtAdPigeonImpl: DTAdPigeon {
         location: String,
         seq: String,
         properties: Map<String, Any>,
-        entrance: String
+        entrance: String,
+        mediation: AdMediationDart,
+        mediationId: String
     ) {
         DTAdReport.reportClick(
             id, type.toDtType(), platform.toDtType(), location, seq,
-            properties.toMutableMap(), entrance
+            properties.toMutableMap(), entrance,
+            mediation = mediation.toDtType(), mediationId = mediationId
         )
     }
 
@@ -134,11 +155,14 @@ internal object DtAdPigeonImpl: DTAdPigeon {
         location: String,
         seq: String,
         properties: Map<String, Any>,
-        entrance: String
+        entrance: String,
+        mediation: AdMediationDart,
+        mediationId: String
     ) {
         DTAdReport.reportRewarded(
             id, type.toDtType(), platform.toDtType(), location, seq,
-            properties.toMutableMap(), entrance
+            properties.toMutableMap(), entrance,
+            mediation = mediation.toDtType(), mediationId = mediationId
         )
     }
 
@@ -149,11 +173,14 @@ internal object DtAdPigeonImpl: DTAdPigeon {
         location: String,
         seq: String,
         properties: Map<String, Any>,
-        entrance: String
+        entrance: String,
+        mediation: AdMediationDart,
+        mediationId: String
     ) {
         DTAdReport.reportConversionByClick(
             id, type.toDtType(), platform.toDtType(), location, seq,
-            properties.toMutableMap(), entrance
+            properties.toMutableMap(), entrance,
+            mediation = mediation.toDtType(), mediationId = mediationId
         )
     }
 
@@ -164,11 +191,14 @@ internal object DtAdPigeonImpl: DTAdPigeon {
         location: String,
         seq: String,
         properties: Map<String, Any>,
-        entrance: String
+        entrance: String,
+        mediation: AdMediationDart,
+        mediationId: String
     ) {
         DTAdReport.reportConversionByLeftApp(
             id, type.toDtType(), platform.toDtType(), location, seq,
-            properties.toMutableMap(), entrance
+            properties.toMutableMap(), entrance,
+            mediation = mediation.toDtType(), mediationId = mediationId
         )
     }
 
@@ -179,11 +209,14 @@ internal object DtAdPigeonImpl: DTAdPigeon {
         location: String,
         seq: String,
         properties: Map<String, Any>,
-        entrance: String
+        entrance: String,
+        mediation: AdMediationDart,
+        mediationId: String
     ) {
         DTAdReport.reportConversionByRewarded(
             id, type.toDtType(), platform.toDtType(), location, seq,
-            properties.toMutableMap(), entrance
+            properties.toMutableMap(), entrance,
+            mediation = mediation.toDtType(), mediationId = mediationId
         )
     }
 
@@ -197,15 +230,18 @@ internal object DtAdPigeonImpl: DTAdPigeon {
         currency: String,
         precision: String,
         properties: Map<String, Any>,
-        entrance: String
+        entrance: String,
+        mediation: AdMediationDart,
+        mediationId: String
     ) {
         DTAdReport.reportPaid(id, type.toDtType(), platform.toDtType(), location, seq,
             value, currency, precision,
-            properties.toMutableMap(), entrance
+            properties.toMutableMap(), entrance,
+            mediation = mediation.toDtType(), mediationId = mediationId
         )
     }
 
-    override fun reportPaidWithMediation(
+    override fun reportPaidWithCountry(
         id: String,
         type: AdTypeDart,
         platform: AdPlatformDart,
@@ -231,10 +267,13 @@ internal object DtAdPigeonImpl: DTAdPigeon {
         location: String,
         seq: String,
         properties: Map<String, Any>,
-        entrance: String
+        entrance: String,
+        mediation: AdMediationDart,
+        mediationId: String
     ) {
         DTAdReport.reportLeftApp(id, type.toDtType(), platform.toDtType(), location, seq,
-            properties.toMutableMap(), entrance
+            properties.toMutableMap(), entrance,
+            mediation = mediation.toDtType(), mediationId = mediationId
         )
     }
 

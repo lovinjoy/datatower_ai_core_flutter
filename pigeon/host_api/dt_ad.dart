@@ -81,7 +81,9 @@ enum AdPlatformDart {
 @HostApi()
 abstract class DTAdPigeon {
   void reportLoadBegin(String id, AdTypeDart type, AdPlatformDart platform,
-      String seq, Map<String, Object> properties);
+      String seq, Map<String, Object> properties,
+      AdMediationDart mediation,
+      String mediationId);
 
   void reportLoadEnd(
       String id,
@@ -92,7 +94,9 @@ abstract class DTAdPigeon {
       String seq,
       int errorCode,
       String errorMessage,
-      Map<String, Object> properties);
+      Map<String, Object> properties,
+      AdMediationDart mediation,
+      String mediationId);
 
   void reportToShow(
       String id,
@@ -101,7 +105,9 @@ abstract class DTAdPigeon {
       String location,
       String seq,
       Map<String, Object> properties,
-      String entrance);
+      String entrance,
+      AdMediationDart mediation,
+      String mediationId);
 
   void reportShow(
       String id,
@@ -110,7 +116,9 @@ abstract class DTAdPigeon {
       String location,
       String seq,
       Map<String, Object> properties,
-      String entrance);
+      String entrance,
+      AdMediationDart mediation,
+      String mediationId);
 
   void reportShowFailed(
       String id,
@@ -121,7 +129,9 @@ abstract class DTAdPigeon {
       int errorCode,
       String errorMessage,
       Map<String, Object> properties,
-      String entrance);
+      String entrance,
+      AdMediationDart mediation,
+      String mediationId);
 
   void reportClose(
       String id,
@@ -130,7 +140,9 @@ abstract class DTAdPigeon {
       String location,
       String seq,
       Map<String, Object> properties,
-      String entrance);
+      String entrance,
+      AdMediationDart mediation,
+      String mediationId);
 
   void reportClick(
       String id,
@@ -139,7 +151,9 @@ abstract class DTAdPigeon {
       String location,
       String seq,
       Map<String, Object> properties,
-      String entrance);
+      String entrance,
+      AdMediationDart mediation,
+      String mediationId);
 
   void reportRewarded(
       String id,
@@ -148,7 +162,9 @@ abstract class DTAdPigeon {
       String location,
       String seq,
       Map<String, Object> properties,
-      String entrance);
+      String entrance,
+      AdMediationDart mediation,
+      String mediationId);
 
   void reportConversionByClick(
       String id,
@@ -157,7 +173,9 @@ abstract class DTAdPigeon {
       String location,
       String seq,
       Map<String, Object> properties,
-      String entrance);
+      String entrance,
+      AdMediationDart mediation,
+      String mediationId);
 
   void reportConversionByLeftApp(
       String id,
@@ -166,7 +184,9 @@ abstract class DTAdPigeon {
       String location,
       String seq,
       Map<String, Object> properties,
-      String entrance);
+      String entrance,
+      AdMediationDart mediation,
+      String mediationId);
 
   void reportConversionByRewarded(
       String id,
@@ -175,7 +195,9 @@ abstract class DTAdPigeon {
       String location,
       String seq,
       Map<String, Object> properties,
-      String entrance);
+      String entrance,
+      AdMediationDart mediation,
+      String mediationId);
 
   void reportPaid(
       String id,
@@ -187,9 +209,11 @@ abstract class DTAdPigeon {
       String currency,
       String precision,
       Map<String, Object> properties,
-      String entrance);
+      String entrance,
+      AdMediationDart mediation,
+      String mediationId);
 
-  void reportPaidWithMediation(
+  void reportPaidWithCountry(
     String id,
     AdTypeDart type,
     AdPlatformDart platform,
@@ -210,5 +234,7 @@ abstract class DTAdPigeon {
       String location,
       String seq,
       Map<String, Object> properties,
-      String entrance);
+      String entrance,
+      AdMediationDart mediation,
+      String mediationId);
 }

@@ -6,6 +6,7 @@ import 'package:source_gen/source_gen.dart';
 class DtTestScanner extends GeneratorForAnnotation<DTApi> {
   @override
   generateForAnnotatedElement(Element element, ConstantReader annotation, BuildStep buildStep) {
+    if (!buildStep.inputId.path.startsWith("lib/")) return null;
     if (element is ClassElement) {
       ++DtApiMethodsGenerator.total;
     }
@@ -21,6 +22,7 @@ class DtApiMethodsGenerator extends GeneratorForAnnotation<DTApi> {
 
   @override
   generateForAnnotatedElement(Element element, ConstantReader annotation, BuildStep buildStep) {
+    if (!buildStep.inputId.path.startsWith("lib/")) return null;
     if (element is ClassElement) {
       validElements.add(element);
     }
