@@ -1,4 +1,3 @@
-import 'package:datatower_ai_core_flutter/datatower_ai_core_flutter.dart';
 import 'package:datatower_ai_core_flutter/src/pigeon/dt_analytics.g.dart';
 import 'package:datatower_ai_core_flutter/src/base/dt_api.dart';
 import 'package:datatower_ai_core_flutter/util/type_util.dart';

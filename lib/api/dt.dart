@@ -6,7 +6,7 @@ import 'package:datatower_ai_core_flutter/util/type_util.dart';
 
 @DTApi()
 class DT {
-  static const _versionName = "2.0.4";
+  static const _versionName = "2.0.0-beta1";
 
   static void initSDK(
       String appId,

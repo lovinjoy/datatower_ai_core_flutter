@@ -6,6 +6,7 @@ import 'package:source_gen/source_gen.dart';
 class DtTestScanner extends GeneratorForAnnotation<DTApi> {
   @override
   generateForAnnotatedElement(Element element, ConstantReader annotation, BuildStep buildStep) {
+    if (!buildStep.inputId.path.startsWith("lib/")) return null;
     if (element is ClassElement) {
       ++DtApiMethodsGenerator.total;
     }
@@ -21,6 +22,7 @@ class DtApiMethodsGenerator extends GeneratorForAnnotation<DTApi> {
 
   @override
   generateForAnnotatedElement(Element element, ConstantReader annotation, BuildStep buildStep) {
+    if (!buildStep.inputId.path.startsWith("lib/")) return null;
     if (element is ClassElement) {
       validElements.add(element);
     }
@@ -28,7 +30,11 @@ class DtApiMethodsGenerator extends GeneratorForAnnotation<DTApi> {
     imports.add("import 'package:${buildStep.inputId.package}/${buildStep.inputId.path.replaceFirst("lib/", "")}';");
 
     if (++crt == total) {
-      validElements.forEach((ce) { ce.methods.forEach((me) { genDtApiMethod(ce, me); });});
+      for (var ce in validElements) {
+        for (var me in ce.methods) {
+          genDtApiMethod(ce, me);
+        }
+      }
 
       final result = """
 ${imports.join("\n")}
@@ -88,24 +94,17 @@ final Map<String, DtApiMethod> dtApiMethods = {
   }
 
   String? genDtApiMethod(ClassElement ce, MethodElement me) {
-    print("-"*50);
-    print("ce: ${ce.name}, me: ${me.name}");
-    print("me.parameters: ${me.parameters}");
-
     final List<String> orderedRequiredName = [];
     final List<String> orderedRequired = [];
     final Map<String, String> namedParam = {};
-    me.parameters.forEach((pe) {
+    for (var pe in me.parameters) {
       if (pe.isNamed) {
         namedParam[pe.name] = pe.type.toString();
       } else {
         orderedRequired.add(pe.type.toString());
         orderedRequiredName.add(pe.name.trim());
       }
-    });
-    print("orderedRequired: $orderedRequired");
-    print("namedParam: $namedParam");
-    print("-"*50);
+    }
 
     return """
     DtApiMethod(

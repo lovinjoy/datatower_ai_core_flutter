@@ -124,20 +124,20 @@ enum class AdPlatformDart(val raw: Int) {
 }
 /** Generated interface from Pigeon that represents a handler of messages from Flutter. */
 interface DTAdPigeon {
-  fun reportLoadBegin(id: String, type: AdTypeDart, platform: AdPlatformDart, seq: String, properties: Map<String, Any>)
-  fun reportLoadEnd(id: String, type: AdTypeDart, platform: AdPlatformDart, duration: Long, result: Boolean, seq: String, errorCode: Long, errorMessage: String, properties: Map<String, Any>)
-  fun reportToShow(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, properties: Map<String, Any>, entrance: String)
-  fun reportShow(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, properties: Map<String, Any>, entrance: String)
-  fun reportShowFailed(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, errorCode: Long, errorMessage: String, properties: Map<String, Any>, entrance: String)
-  fun reportClose(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, properties: Map<String, Any>, entrance: String)
-  fun reportClick(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, properties: Map<String, Any>, entrance: String)
-  fun reportRewarded(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, properties: Map<String, Any>, entrance: String)
-  fun reportConversionByClick(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, properties: Map<String, Any>, entrance: String)
-  fun reportConversionByLeftApp(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, properties: Map<String, Any>, entrance: String)
-  fun reportConversionByRewarded(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, properties: Map<String, Any>, entrance: String)
-  fun reportPaid(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, value: String, currency: String, precision: String, properties: Map<String, Any>, entrance: String)
-  fun reportPaidWithMediation(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, mediation: AdMediationDart, mediationId: String, value: String, precision: String, country: String, properties: Map<String, Any>)
-  fun reportLeftApp(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, properties: Map<String, Any>, entrance: String)
+  fun reportLoadBegin(id: String, type: AdTypeDart, platform: AdPlatformDart, seq: String, properties: Map<String, Any>, mediation: AdMediationDart, mediationId: String)
+  fun reportLoadEnd(id: String, type: AdTypeDart, platform: AdPlatformDart, duration: Long, result: Boolean, seq: String, errorCode: Long, errorMessage: String, properties: Map<String, Any>, mediation: AdMediationDart, mediationId: String)
+  fun reportToShow(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, properties: Map<String, Any>, entrance: String, mediation: AdMediationDart, mediationId: String)
+  fun reportShow(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, properties: Map<String, Any>, entrance: String, mediation: AdMediationDart, mediationId: String)
+  fun reportShowFailed(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, errorCode: Long, errorMessage: String, properties: Map<String, Any>, entrance: String, mediation: AdMediationDart, mediationId: String)
+  fun reportClose(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, properties: Map<String, Any>, entrance: String, mediation: AdMediationDart, mediationId: String)
+  fun reportClick(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, properties: Map<String, Any>, entrance: String, mediation: AdMediationDart, mediationId: String)
+  fun reportRewarded(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, properties: Map<String, Any>, entrance: String, mediation: AdMediationDart, mediationId: String)
+  fun reportConversionByClick(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, properties: Map<String, Any>, entrance: String, mediation: AdMediationDart, mediationId: String)
+  fun reportConversionByLeftApp(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, properties: Map<String, Any>, entrance: String, mediation: AdMediationDart, mediationId: String)
+  fun reportConversionByRewarded(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, properties: Map<String, Any>, entrance: String, mediation: AdMediationDart, mediationId: String)
+  fun reportPaid(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, value: String, currency: String, precision: String, properties: Map<String, Any>, entrance: String, mediation: AdMediationDart, mediationId: String)
+  fun reportPaidWithCountry(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, mediation: AdMediationDart, mediationId: String, value: String, precision: String, country: String, properties: Map<String, Any>)
+  fun reportLeftApp(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, properties: Map<String, Any>, entrance: String, mediation: AdMediationDart, mediationId: String)
 
   companion object {
     /** The codec used by DTAdPigeon. */
@@ -157,9 +157,11 @@ interface DTAdPigeon {
             val platformArg = AdPlatformDart.ofRaw(args[2] as Int)!!
             val seqArg = args[3] as String
             val propertiesArg = args[4] as Map<String, Any>
+            val mediationArg = AdMediationDart.ofRaw(args[5] as Int)!!
+            val mediationIdArg = args[6] as String
             var wrapped: List<Any?>
             try {
-              api.reportLoadBegin(idArg, typeArg, platformArg, seqArg, propertiesArg)
+              api.reportLoadBegin(idArg, typeArg, platformArg, seqArg, propertiesArg, mediationArg, mediationIdArg)
               wrapped = listOf<Any?>(null)
             } catch (exception: Throwable) {
               wrapped = wrapError(exception)
@@ -184,9 +186,11 @@ interface DTAdPigeon {
             val errorCodeArg = args[6].let { if (it is Int) it.toLong() else it as Long }
             val errorMessageArg = args[7] as String
             val propertiesArg = args[8] as Map<String, Any>
+            val mediationArg = AdMediationDart.ofRaw(args[9] as Int)!!
+            val mediationIdArg = args[10] as String
             var wrapped: List<Any?>
             try {
-              api.reportLoadEnd(idArg, typeArg, platformArg, durationArg, resultArg, seqArg, errorCodeArg, errorMessageArg, propertiesArg)
+              api.reportLoadEnd(idArg, typeArg, platformArg, durationArg, resultArg, seqArg, errorCodeArg, errorMessageArg, propertiesArg, mediationArg, mediationIdArg)
               wrapped = listOf<Any?>(null)
             } catch (exception: Throwable) {
               wrapped = wrapError(exception)
@@ -209,9 +213,11 @@ interface DTAdPigeon {
             val seqArg = args[4] as String
             val propertiesArg = args[5] as Map<String, Any>
             val entranceArg = args[6] as String
+            val mediationArg = AdMediationDart.ofRaw(args[7] as Int)!!
+            val mediationIdArg = args[8] as String
             var wrapped: List<Any?>
             try {
-              api.reportToShow(idArg, typeArg, platformArg, locationArg, seqArg, propertiesArg, entranceArg)
+              api.reportToShow(idArg, typeArg, platformArg, locationArg, seqArg, propertiesArg, entranceArg, mediationArg, mediationIdArg)
               wrapped = listOf<Any?>(null)
             } catch (exception: Throwable) {
               wrapped = wrapError(exception)
@@ -234,9 +240,11 @@ interface DTAdPigeon {
             val seqArg = args[4] as String
             val propertiesArg = args[5] as Map<String, Any>
             val entranceArg = args[6] as String
+            val mediationArg = AdMediationDart.ofRaw(args[7] as Int)!!
+            val mediationIdArg = args[8] as String
             var wrapped: List<Any?>
             try {
-              api.reportShow(idArg, typeArg, platformArg, locationArg, seqArg, propertiesArg, entranceArg)
+              api.reportShow(idArg, typeArg, platformArg, locationArg, seqArg, propertiesArg, entranceArg, mediationArg, mediationIdArg)
               wrapped = listOf<Any?>(null)
             } catch (exception: Throwable) {
               wrapped = wrapError(exception)
@@ -261,9 +269,11 @@ interface DTAdPigeon {
             val errorMessageArg = args[6] as String
             val propertiesArg = args[7] as Map<String, Any>
             val entranceArg = args[8] as String
+            val mediationArg = AdMediationDart.ofRaw(args[9] as Int)!!
+            val mediationIdArg = args[10] as String
             var wrapped: List<Any?>
             try {
-              api.reportShowFailed(idArg, typeArg, platformArg, locationArg, seqArg, errorCodeArg, errorMessageArg, propertiesArg, entranceArg)
+              api.reportShowFailed(idArg, typeArg, platformArg, locationArg, seqArg, errorCodeArg, errorMessageArg, propertiesArg, entranceArg, mediationArg, mediationIdArg)
               wrapped = listOf<Any?>(null)
             } catch (exception: Throwable) {
               wrapped = wrapError(exception)
@@ -286,9 +296,11 @@ interface DTAdPigeon {
             val seqArg = args[4] as String
             val propertiesArg = args[5] as Map<String, Any>
             val entranceArg = args[6] as String
+            val mediationArg = AdMediationDart.ofRaw(args[7] as Int)!!
+            val mediationIdArg = args[8] as String
             var wrapped: List<Any?>
             try {
-              api.reportClose(idArg, typeArg, platformArg, locationArg, seqArg, propertiesArg, entranceArg)
+              api.reportClose(idArg, typeArg, platformArg, locationArg, seqArg, propertiesArg, entranceArg, mediationArg, mediationIdArg)
               wrapped = listOf<Any?>(null)
             } catch (exception: Throwable) {
               wrapped = wrapError(exception)
@@ -311,9 +323,11 @@ interface DTAdPigeon {
             val seqArg = args[4] as String
             val propertiesArg = args[5] as Map<String, Any>
             val entranceArg = args[6] as String
+            val mediationArg = AdMediationDart.ofRaw(args[7] as Int)!!
+            val mediationIdArg = args[8] as String
             var wrapped: List<Any?>
             try {
-              api.reportClick(idArg, typeArg, platformArg, locationArg, seqArg, propertiesArg, entranceArg)
+              api.reportClick(idArg, typeArg, platformArg, locationArg, seqArg, propertiesArg, entranceArg, mediationArg, mediationIdArg)
               wrapped = listOf<Any?>(null)
             } catch (exception: Throwable) {
               wrapped = wrapError(exception)
@@ -336,9 +350,11 @@ interface DTAdPigeon {
             val seqArg = args[4] as String
             val propertiesArg = args[5] as Map<String, Any>
             val entranceArg = args[6] as String
+            val mediationArg = AdMediationDart.ofRaw(args[7] as Int)!!
+            val mediationIdArg = args[8] as String
             var wrapped: List<Any?>
             try {
-              api.reportRewarded(idArg, typeArg, platformArg, locationArg, seqArg, propertiesArg, entranceArg)
+              api.reportRewarded(idArg, typeArg, platformArg, locationArg, seqArg, propertiesArg, entranceArg, mediationArg, mediationIdArg)
               wrapped = listOf<Any?>(null)
             } catch (exception: Throwable) {
               wrapped = wrapError(exception)
@@ -361,9 +377,11 @@ interface DTAdPigeon {
             val seqArg = args[4] as String
             val propertiesArg = args[5] as Map<String, Any>
             val entranceArg = args[6] as String
+            val mediationArg = AdMediationDart.ofRaw(args[7] as Int)!!
+            val mediationIdArg = args[8] as String
             var wrapped: List<Any?>
             try {
-              api.reportConversionByClick(idArg, typeArg, platformArg, locationArg, seqArg, propertiesArg, entranceArg)
+              api.reportConversionByClick(idArg, typeArg, platformArg, locationArg, seqArg, propertiesArg, entranceArg, mediationArg, mediationIdArg)
               wrapped = listOf<Any?>(null)
             } catch (exception: Throwable) {
               wrapped = wrapError(exception)
@@ -386,9 +404,11 @@ interface DTAdPigeon {
             val seqArg = args[4] as String
             val propertiesArg = args[5] as Map<String, Any>
             val entranceArg = args[6] as String
+            val mediationArg = AdMediationDart.ofRaw(args[7] as Int)!!
+            val mediationIdArg = args[8] as String
             var wrapped: List<Any?>
             try {
-              api.reportConversionByLeftApp(idArg, typeArg, platformArg, locationArg, seqArg, propertiesArg, entranceArg)
+              api.reportConversionByLeftApp(idArg, typeArg, platformArg, locationArg, seqArg, propertiesArg, entranceArg, mediationArg, mediationIdArg)
               wrapped = listOf<Any?>(null)
             } catch (exception: Throwable) {
               wrapped = wrapError(exception)
@@ -411,9 +431,11 @@ interface DTAdPigeon {
             val seqArg = args[4] as String
             val propertiesArg = args[5] as Map<String, Any>
             val entranceArg = args[6] as String
+            val mediationArg = AdMediationDart.ofRaw(args[7] as Int)!!
+            val mediationIdArg = args[8] as String
             var wrapped: List<Any?>
             try {
-              api.reportConversionByRewarded(idArg, typeArg, platformArg, locationArg, seqArg, propertiesArg, entranceArg)
+              api.reportConversionByRewarded(idArg, typeArg, platformArg, locationArg, seqArg, propertiesArg, entranceArg, mediationArg, mediationIdArg)
               wrapped = listOf<Any?>(null)
             } catch (exception: Throwable) {
               wrapped = wrapError(exception)
@@ -439,9 +461,11 @@ interface DTAdPigeon {
             val precisionArg = args[7] as String
             val propertiesArg = args[8] as Map<String, Any>
             val entranceArg = args[9] as String
+            val mediationArg = AdMediationDart.ofRaw(args[10] as Int)!!
+            val mediationIdArg = args[11] as String
             var wrapped: List<Any?>
             try {
-              api.reportPaid(idArg, typeArg, platformArg, locationArg, seqArg, valueArg, currencyArg, precisionArg, propertiesArg, entranceArg)
+              api.reportPaid(idArg, typeArg, platformArg, locationArg, seqArg, valueArg, currencyArg, precisionArg, propertiesArg, entranceArg, mediationArg, mediationIdArg)
               wrapped = listOf<Any?>(null)
             } catch (exception: Throwable) {
               wrapped = wrapError(exception)
@@ -453,7 +477,7 @@ interface DTAdPigeon {
         }
       }
       run {
-        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportPaidWithMediation", codec)
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportPaidWithCountry", codec)
         if (api != null) {
           channel.setMessageHandler { message, reply ->
             val args = message as List<Any?>
@@ -470,7 +494,7 @@ interface DTAdPigeon {
             val propertiesArg = args[10] as Map<String, Any>
             var wrapped: List<Any?>
             try {
-              api.reportPaidWithMediation(idArg, typeArg, platformArg, locationArg, seqArg, mediationArg, mediationIdArg, valueArg, precisionArg, countryArg, propertiesArg)
+              api.reportPaidWithCountry(idArg, typeArg, platformArg, locationArg, seqArg, mediationArg, mediationIdArg, valueArg, precisionArg, countryArg, propertiesArg)
               wrapped = listOf<Any?>(null)
             } catch (exception: Throwable) {
               wrapped = wrapError(exception)
@@ -493,9 +517,11 @@ interface DTAdPigeon {
             val seqArg = args[4] as String
             val propertiesArg = args[5] as Map<String, Any>
             val entranceArg = args[6] as String
+            val mediationArg = AdMediationDart.ofRaw(args[7] as Int)!!
+            val mediationIdArg = args[8] as String
             var wrapped: List<Any?>
             try {
-              api.reportLeftApp(idArg, typeArg, platformArg, locationArg, seqArg, propertiesArg, entranceArg)
+              api.reportLeftApp(idArg, typeArg, platformArg, locationArg, seqArg, propertiesArg, entranceArg, mediationArg, mediationIdArg)
               wrapped = listOf<Any?>(null)
             } catch (exception: Throwable) {
               wrapped = wrapError(exception)

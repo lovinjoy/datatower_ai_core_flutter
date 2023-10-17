@@ -7,11 +7,13 @@
 import 'package:datatower_ai_core_flutter/api/dt.dart';
 import 'package:datatower_ai_core_flutter/api/dt_ad.dart';
 import 'package:datatower_ai_core_flutter/api/dt_analytics.dart';
+import 'package:datatower_ai_core_flutter/api/dt_analytics_util.dart';
 
 const List<DtApiMethodHolder> dtApiMethodHolders = [
   dtApiMethods4DT,
   dtApiMethods4DTAdReport,
-  dtApiMethods4DTAnalytics
+  dtApiMethods4DTAnalytics,
+  dtApiMethods4DTAnalyticsUtil
 ];
 
 const DtApiMethodHolder dtApiMethods4DT = DtApiMethodHolder("DT", ["initSDK"]);
@@ -30,7 +32,7 @@ const DtApiMethodHolder dtApiMethods4DTAdReport =
   "reportConversionByLeftApp",
   "reportConversionByRewarded",
   "reportPaid",
-  "reportPaidWithMediation",
+  "reportPaidWithCountry",
   "reportLeftApp"
 ]);
 
@@ -51,6 +53,14 @@ const DtApiMethodHolder dtApiMethods4DTAnalytics =
   "setKochavaId",
   "setAdjustId",
   "enableThirdPartySharing"
+]);
+
+const DtApiMethodHolder dtApiMethods4DTAnalyticsUtil = DtApiMethodHolder(
+    "DTAnalyticsUtil", [
+  "trackTimerStart",
+  "trackTimerPause",
+  "trackTimerResume",
+  "trackTimerEnd"
 ]);
 
 class DtApiMethodHolder {
@@ -88,12 +98,26 @@ final Map<String, DtApiMethod> dtApiMethods = {
       }),
   "DTAdReport_reportLoadBegin": DtApiMethod(
       name: "DTAdReport",
-      orderedParamNames: ["id", "type", "platform", "seq"],
-      orderedParam: ["String", "AdTypeDart", "AdPlatformDart", "String"],
+      orderedParamNames: [
+        "id",
+        "type",
+        "platform",
+        "mediation",
+        "mediationId",
+        "seq"
+      ],
+      orderedParam: [
+        "String",
+        "AdTypeDart",
+        "AdPlatformDart",
+        "AdMediationDart",
+        "String",
+        "String"
+      ],
       namedParam: {"properties": "Map<String, Object?>?"},
       run: (ordered, named) {
-        DTAdReport.reportLoadBegin(
-            ordered[0], ordered[1], ordered[2], ordered[3],
+        DTAdReport.reportLoadBegin(ordered[0], ordered[1], ordered[2],
+            ordered[3], ordered[4], ordered[5],
             properties: named["properties"]);
       }),
   "DTAdReport_reportLoadEnd": DtApiMethod(
@@ -102,6 +126,8 @@ final Map<String, DtApiMethod> dtApiMethods = {
         "id",
         "type",
         "platform",
+        "mediation",
+        "mediationId",
         "duration",
         "result",
         "seq"
@@ -110,6 +136,8 @@ final Map<String, DtApiMethod> dtApiMethods = {
         "String",
         "AdTypeDart",
         "AdPlatformDart",
+        "AdMediationDart",
+        "String",
         "int",
         "bool",
         "String"
@@ -121,18 +149,28 @@ final Map<String, DtApiMethod> dtApiMethods = {
       },
       run: (ordered, named) {
         DTAdReport.reportLoadEnd(ordered[0], ordered[1], ordered[2], ordered[3],
-            ordered[4], ordered[5],
+            ordered[4], ordered[5], ordered[6], ordered[7],
             errorCode: named["errorCode"],
             errorMessage: named["errorMessage"],
             properties: named["properties"]);
       }),
   "DTAdReport_reportToShow": DtApiMethod(
       name: "DTAdReport",
-      orderedParamNames: ["id", "type", "platform", "location", "seq"],
+      orderedParamNames: [
+        "id",
+        "type",
+        "platform",
+        "mediation",
+        "mediationId",
+        "location",
+        "seq"
+      ],
       orderedParam: [
         "String",
         "AdTypeDart",
         "AdPlatformDart",
+        "AdMediationDart",
+        "String",
         "String",
         "String"
       ],
@@ -141,17 +179,27 @@ final Map<String, DtApiMethod> dtApiMethods = {
         "entrance": "String?"
       },
       run: (ordered, named) {
-        DTAdReport.reportToShow(
-            ordered[0], ordered[1], ordered[2], ordered[3], ordered[4],
+        DTAdReport.reportToShow(ordered[0], ordered[1], ordered[2], ordered[3],
+            ordered[4], ordered[5], ordered[6],
             properties: named["properties"], entrance: named["entrance"]);
       }),
   "DTAdReport_reportShow": DtApiMethod(
       name: "DTAdReport",
-      orderedParamNames: ["id", "type", "platform", "location", "seq"],
+      orderedParamNames: [
+        "id",
+        "type",
+        "platform",
+        "mediation",
+        "mediationId",
+        "location",
+        "seq"
+      ],
       orderedParam: [
         "String",
         "AdTypeDart",
         "AdPlatformDart",
+        "AdMediationDart",
+        "String",
         "String",
         "String"
       ],
@@ -160,8 +208,8 @@ final Map<String, DtApiMethod> dtApiMethods = {
         "entrance": "String?"
       },
       run: (ordered, named) {
-        DTAdReport.reportShow(
-            ordered[0], ordered[1], ordered[2], ordered[3], ordered[4],
+        DTAdReport.reportShow(ordered[0], ordered[1], ordered[2], ordered[3],
+            ordered[4], ordered[5], ordered[6],
             properties: named["properties"], entrance: named["entrance"]);
       }),
   "DTAdReport_reportShowFailed": DtApiMethod(
@@ -170,6 +218,8 @@ final Map<String, DtApiMethod> dtApiMethods = {
         "id",
         "type",
         "platform",
+        "mediation",
+        "mediationId",
         "location",
         "seq",
         "errorCode",
@@ -179,6 +229,8 @@ final Map<String, DtApiMethod> dtApiMethods = {
         "String",
         "AdTypeDart",
         "AdPlatformDart",
+        "AdMediationDart",
+        "String",
         "String",
         "String",
         "int",
@@ -189,17 +241,36 @@ final Map<String, DtApiMethod> dtApiMethods = {
         "entrance": "String?"
       },
       run: (ordered, named) {
-        DTAdReport.reportShowFailed(ordered[0], ordered[1], ordered[2],
-            ordered[3], ordered[4], ordered[5], ordered[6],
-            properties: named["properties"], entrance: named["entrance"]);
+        DTAdReport.reportShowFailed(
+            ordered[0],
+            ordered[1],
+            ordered[2],
+            ordered[3],
+            ordered[4],
+            ordered[5],
+            ordered[6],
+            ordered[7],
+            ordered[8],
+            properties: named["properties"],
+            entrance: named["entrance"]);
       }),
   "DTAdReport_reportClose": DtApiMethod(
       name: "DTAdReport",
-      orderedParamNames: ["id", "type", "platform", "location", "seq"],
+      orderedParamNames: [
+        "id",
+        "type",
+        "platform",
+        "mediation",
+        "mediationId",
+        "location",
+        "seq"
+      ],
       orderedParam: [
         "String",
         "AdTypeDart",
         "AdPlatformDart",
+        "AdMediationDart",
+        "String",
         "String",
         "String"
       ],
@@ -208,17 +279,27 @@ final Map<String, DtApiMethod> dtApiMethods = {
         "entrance": "String?"
       },
       run: (ordered, named) {
-        DTAdReport.reportClose(
-            ordered[0], ordered[1], ordered[2], ordered[3], ordered[4],
+        DTAdReport.reportClose(ordered[0], ordered[1], ordered[2], ordered[3],
+            ordered[4], ordered[5], ordered[6],
             properties: named["properties"], entrance: named["entrance"]);
       }),
   "DTAdReport_reportClick": DtApiMethod(
       name: "DTAdReport",
-      orderedParamNames: ["id", "type", "platform", "location", "seq"],
+      orderedParamNames: [
+        "id",
+        "type",
+        "platform",
+        "mediation",
+        "mediationId",
+        "location",
+        "seq"
+      ],
       orderedParam: [
         "String",
         "AdTypeDart",
         "AdPlatformDart",
+        "AdMediationDart",
+        "String",
         "String",
         "String"
       ],
@@ -227,17 +308,27 @@ final Map<String, DtApiMethod> dtApiMethods = {
         "entrance": "String?"
       },
       run: (ordered, named) {
-        DTAdReport.reportClick(
-            ordered[0], ordered[1], ordered[2], ordered[3], ordered[4],
+        DTAdReport.reportClick(ordered[0], ordered[1], ordered[2], ordered[3],
+            ordered[4], ordered[5], ordered[6],
             properties: named["properties"], entrance: named["entrance"]);
       }),
   "DTAdReport_reportRewarded": DtApiMethod(
       name: "DTAdReport",
-      orderedParamNames: ["id", "type", "platform", "location", "seq"],
+      orderedParamNames: [
+        "id",
+        "type",
+        "platform",
+        "mediation",
+        "mediationId",
+        "location",
+        "seq"
+      ],
       orderedParam: [
         "String",
         "AdTypeDart",
         "AdPlatformDart",
+        "AdMediationDart",
+        "String",
         "String",
         "String"
       ],
@@ -246,17 +337,27 @@ final Map<String, DtApiMethod> dtApiMethods = {
         "entrance": "String?"
       },
       run: (ordered, named) {
-        DTAdReport.reportRewarded(
-            ordered[0], ordered[1], ordered[2], ordered[3], ordered[4],
+        DTAdReport.reportRewarded(ordered[0], ordered[1], ordered[2],
+            ordered[3], ordered[4], ordered[5], ordered[6],
             properties: named["properties"], entrance: named["entrance"]);
       }),
   "DTAdReport_reportConversionByClick": DtApiMethod(
       name: "DTAdReport",
-      orderedParamNames: ["id", "type", "platform", "location", "seq"],
+      orderedParamNames: [
+        "id",
+        "type",
+        "platform",
+        "mediation",
+        "mediationId",
+        "location",
+        "seq"
+      ],
       orderedParam: [
         "String",
         "AdTypeDart",
         "AdPlatformDart",
+        "AdMediationDart",
+        "String",
         "String",
         "String"
       ],
@@ -265,17 +366,27 @@ final Map<String, DtApiMethod> dtApiMethods = {
         "entrance": "String?"
       },
       run: (ordered, named) {
-        DTAdReport.reportConversionByClick(
-            ordered[0], ordered[1], ordered[2], ordered[3], ordered[4],
+        DTAdReport.reportConversionByClick(ordered[0], ordered[1], ordered[2],
+            ordered[3], ordered[4], ordered[5], ordered[6],
             properties: named["properties"], entrance: named["entrance"]);
       }),
   "DTAdReport_reportConversionByLeftApp": DtApiMethod(
       name: "DTAdReport",
-      orderedParamNames: ["id", "type", "platform", "location", "seq"],
+      orderedParamNames: [
+        "id",
+        "type",
+        "platform",
+        "mediation",
+        "mediationId",
+        "location",
+        "seq"
+      ],
       orderedParam: [
         "String",
         "AdTypeDart",
         "AdPlatformDart",
+        "AdMediationDart",
+        "String",
         "String",
         "String"
       ],
@@ -284,17 +395,27 @@ final Map<String, DtApiMethod> dtApiMethods = {
         "entrance": "String?"
       },
       run: (ordered, named) {
-        DTAdReport.reportConversionByLeftApp(
-            ordered[0], ordered[1], ordered[2], ordered[3], ordered[4],
+        DTAdReport.reportConversionByLeftApp(ordered[0], ordered[1], ordered[2],
+            ordered[3], ordered[4], ordered[5], ordered[6],
             properties: named["properties"], entrance: named["entrance"]);
       }),
   "DTAdReport_reportConversionByRewarded": DtApiMethod(
       name: "DTAdReport",
-      orderedParamNames: ["id", "type", "platform", "location", "seq"],
+      orderedParamNames: [
+        "id",
+        "type",
+        "platform",
+        "mediation",
+        "mediationId",
+        "location",
+        "seq"
+      ],
       orderedParam: [
         "String",
         "AdTypeDart",
         "AdPlatformDart",
+        "AdMediationDart",
+        "String",
         "String",
         "String"
       ],
@@ -303,8 +424,8 @@ final Map<String, DtApiMethod> dtApiMethods = {
         "entrance": "String?"
       },
       run: (ordered, named) {
-        DTAdReport.reportConversionByRewarded(
-            ordered[0], ordered[1], ordered[2], ordered[3], ordered[4],
+        DTAdReport.reportConversionByRewarded(ordered[0], ordered[1],
+            ordered[2], ordered[3], ordered[4], ordered[5], ordered[6],
             properties: named["properties"], entrance: named["entrance"]);
       }),
   "DTAdReport_reportPaid": DtApiMethod(
@@ -313,6 +434,8 @@ final Map<String, DtApiMethod> dtApiMethods = {
         "id",
         "type",
         "platform",
+        "mediation",
+        "mediationId",
         "location",
         "seq",
         "value",
@@ -323,6 +446,8 @@ final Map<String, DtApiMethod> dtApiMethods = {
         "String",
         "AdTypeDart",
         "AdPlatformDart",
+        "AdMediationDart",
+        "String",
         "String",
         "String",
         "String",
@@ -334,11 +459,21 @@ final Map<String, DtApiMethod> dtApiMethods = {
         "entrance": "String?"
       },
       run: (ordered, named) {
-        DTAdReport.reportPaid(ordered[0], ordered[1], ordered[2], ordered[3],
-            ordered[4], ordered[5], ordered[6], ordered[7],
-            properties: named["properties"], entrance: named["entrance"]);
+        DTAdReport.reportPaid(
+            ordered[0],
+            ordered[1],
+            ordered[2],
+            ordered[3],
+            ordered[4],
+            ordered[5],
+            ordered[6],
+            ordered[7],
+            ordered[8],
+            ordered[9],
+            properties: named["properties"],
+            entrance: named["entrance"]);
       }),
-  "DTAdReport_reportPaidWithMediation": DtApiMethod(
+  "DTAdReport_reportPaidWithCountry": DtApiMethod(
       name: "DTAdReport",
       orderedParamNames: [
         "id",
@@ -349,8 +484,8 @@ final Map<String, DtApiMethod> dtApiMethods = {
         "mediation",
         "mediationId",
         "value",
-        "currency",
-        "precision"
+        "precision",
+        "country"
       ],
       orderedParam: [
         "String",
@@ -366,7 +501,7 @@ final Map<String, DtApiMethod> dtApiMethods = {
       ],
       namedParam: {"properties": "Map<String, Object?>?"},
       run: (ordered, named) {
-        DTAdReport.reportPaidWithMediation(
+        DTAdReport.reportPaidWithCountry(
             ordered[0],
             ordered[1],
             ordered[2],
@@ -381,11 +516,21 @@ final Map<String, DtApiMethod> dtApiMethods = {
       }),
   "DTAdReport_reportLeftApp": DtApiMethod(
       name: "DTAdReport",
-      orderedParamNames: ["id", "type", "platform", "location", "seq"],
+      orderedParamNames: [
+        "id",
+        "type",
+        "platform",
+        "mediation",
+        "mediationId",
+        "location",
+        "seq"
+      ],
       orderedParam: [
         "String",
         "AdTypeDart",
         "AdPlatformDart",
+        "AdMediationDart",
+        "String",
         "String",
         "String"
       ],
@@ -394,8 +539,8 @@ final Map<String, DtApiMethod> dtApiMethods = {
         "entrance": "String?"
       },
       run: (ordered, named) {
-        DTAdReport.reportLeftApp(
-            ordered[0], ordered[1], ordered[2], ordered[3], ordered[4],
+        DTAdReport.reportLeftApp(ordered[0], ordered[1], ordered[2], ordered[3],
+            ordered[4], ordered[5], ordered[6],
             properties: named["properties"], entrance: named["entrance"]);
       }),
   "DTAnalytics_trackEvent": DtApiMethod(
@@ -544,5 +689,44 @@ final Map<String, DtApiMethod> dtApiMethods = {
         DTAnalytics.enableThirdPartySharing(
           ordered[0],
         );
+      }),
+  "DTAnalyticsUtil_trackTimerStart": DtApiMethod(
+      name: "DTAnalyticsUtil",
+      orderedParamNames: ["eventName"],
+      orderedParam: ["String"],
+      namedParam: {},
+      run: (ordered, named) {
+        DTAnalyticsUtil.trackTimerStart(
+          ordered[0],
+        );
+      }),
+  "DTAnalyticsUtil_trackTimerPause": DtApiMethod(
+      name: "DTAnalyticsUtil",
+      orderedParamNames: ["eventName"],
+      orderedParam: ["String"],
+      namedParam: {},
+      run: (ordered, named) {
+        DTAnalyticsUtil.trackTimerPause(
+          ordered[0],
+        );
+      }),
+  "DTAnalyticsUtil_trackTimerResume": DtApiMethod(
+      name: "DTAnalyticsUtil",
+      orderedParamNames: ["eventName"],
+      orderedParam: ["String"],
+      namedParam: {},
+      run: (ordered, named) {
+        DTAnalyticsUtil.trackTimerResume(
+          ordered[0],
+        );
+      }),
+  "DTAnalyticsUtil_trackTimerEnd": DtApiMethod(
+      name: "DTAnalyticsUtil",
+      orderedParamNames: ["eventName"],
+      orderedParam: ["String"],
+      namedParam: {"properties": "Map<String, Object?>?"},
+      run: (ordered, named) {
+        DTAnalyticsUtil.trackTimerEnd(ordered[0],
+            properties: named["properties"]);
       })
 };
