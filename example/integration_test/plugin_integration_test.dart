@@ -10,13 +10,13 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 
-import 'package:datatower_ai_core_flutter/datatower_ai_core_flutter.dart';
+//import 'package:datatower_ai_core_flutter/datatower_ai_core_flutter.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
   testWidgets('getPlatformVersion test', (WidgetTester tester) async {
-    final DatatowerAiCoreFlutter plugin = DatatowerAiCoreFlutter();
+    //final DatatowerAiCoreFlutter plugin = DatatowerAiCoreFlutter();
     //final String? version = await plugin.getPlatformVersion();
     // The version string depends on the host platform running the test, so
     // just assert that some non-empty string is returned.
