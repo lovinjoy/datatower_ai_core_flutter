@@ -93,8 +93,7 @@ final Map<String, DtApiMethod> dtApiMethods = {
       orderedParam: ["String", "String", "String", "bool", "int"],
       namedParam: {"commonProperties": "Map<String, Object?>"},
       run: (ordered, named) {
-        DT.initSDK(ordered[0], ordered[1], ordered[2], ordered[3], ordered[4],
-            commonProperties: named["commonProperties"]);
+        DT.initSDK(ordered[0], ordered[1], ordered[2], ordered[3], ordered[4]);
       }),
   "DTAdReport_reportLoadBegin": DtApiMethod(
       name: "DTAdReport",

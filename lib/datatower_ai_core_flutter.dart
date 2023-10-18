@@ -12,7 +12,6 @@ class DatatowerAiCoreFlutter {
   void initSDK(
       String appId, String url, String channel, bool isDebug, int logLevel,
       {Map<String, dynamic> commonProperties = const {}}) {
-    DT.initSDK(appId, url, channel, isDebug, logLevel,
-        commonProperties: commonProperties);
+    DT.initSDK(appId, url, channel, isDebug, logLevel);
   }
 }
