@@ -1,7 +1,6 @@
 echo "Starts checking and publishing process..."
 
 project_path="$(dirname "$0")"
-echo "Project path: $project_path"
 
 thin_divider="--------------------------------------------------------"
 divider="========================================================"
@@ -52,8 +51,8 @@ echo "$thin_divider"
 
 echo "Getting the latest DT iOS/Android version from \033[1mremote...\033[0m"
 android_sdk_remote_ver=$(curl -s https://s01.oss.sonatype.org/content/repositories/releases/com/lovinjoy/datatowerai-core/maven-metadata.xml | grep "<latest>.*</latest>" | cut -d ">" -f2 | cut -d "<" -f1)
-ios_sdk_remote_ver=$(curl -s https://cocoapods.org/pods/DataTowerAICore | sed -n 's/.*<h1>DataTowerAICore <span>\([0-9a-zA-Z.-]*\)<\/span><\/h1>.*/\1/gp')
 echo " - [\033[1mDT Android\033[0m | Maven Central] \033[4m$android_sdk_remote_ver\033[0m"
+ios_sdk_remote_ver=$(curl -s https://cocoapods.org/pods/DataTowerAICore | sed -n 's/.*<h1>DataTowerAICore <span>\([0-9a-zA-Z.-]*\)<\/span><\/h1>.*/\1/gp')
 echo " - [\033[1mDT iOS\033[0m | CocoaPods] \033[4m$ios_sdk_remote_ver\033[0m"
 
 if [[ $version_check_failed == true ]]; then
@@ -73,7 +72,7 @@ if [[ $num_find_in_changelog == 0 ]]; then
   echo "  - This version ($stripped_sdk_version) is not listed in \033[1;31mCHANGELOG.md\033[0;31m.\033[0m"
   exit
 else
-  changelog_lower_bound=$(cat "$project_path/CHANGELOG.md" | grep -FnE -m2 "# .*" | tail -n1 | cut -d ":" -f 1)
+  changelog_lower_bound=$(grep -FnE -m2 "# .*" < "$project_path/CHANGELOG.md" | tail -n1 | cut -d ":" -f 1)
   echo "CHANGELOG"
   sed -n -e "1,$((changelog_lower_bound-1))p" < ./CHANGELOG.md | sed -e :a -e '/^\n*$/{$d;N;};/\n$/ba'
 fi

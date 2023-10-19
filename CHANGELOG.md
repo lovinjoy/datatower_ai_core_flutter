@@ -1,6 +1,7 @@
 # 2.0.1
 
 * Added in-code doc for all APIs
+* Upgraded DT Android to 2.0.5
 
 # 2.0.0
 
