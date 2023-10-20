@@ -9,4 +9,4 @@ build.yaml
 generate_dt_api_methods.sh
 pigeon_generate.sh
 /pigeon/
-publish_verification.sh
+publish.sh
