@@ -15,13 +15,13 @@ class DTAdReport {
   /// - [properties] 自定义事件属性
   /// - [mediation] 聚合平台
   /// - [mediationId] 聚合平台广告id
-  static void reportLoadBegin(
+  static Future<void> reportLoadBegin(
       String id, AdTypeDart type, AdPlatformDart platform,
       AdMediationDart mediation,
       String mediationId,
       String seq,
       {JsonMap? properties}) {
-    _pigeon.reportLoadBegin(id, type, platform, seq, properties ?? {}, mediation, mediationId);
+    return _pigeon.reportLoadBegin(id, type, platform, seq, properties ?? {}, mediation, mediationId);
   }
 
   /// 上报 广告结束加载
@@ -37,12 +37,12 @@ class DTAdReport {
   /// - [properties] 自定义事件属性
   /// - [mediation] 聚合平台
   /// - [mediationId] 聚合平台广告id
-  static void reportLoadEnd(String id, AdTypeDart type, AdPlatformDart platform,
+  static Future<void> reportLoadEnd(String id, AdTypeDart type, AdPlatformDart platform,
       AdMediationDart mediation,
       String mediationId,
       int duration, bool result, String seq,
       {int errorCode = 0, String errorMessage = "", JsonMap? properties}) {
-    _pigeon.reportLoadEnd(id, type, platform, duration, result, seq, errorCode,
+    return _pigeon.reportLoadEnd(id, type, platform, duration, result, seq, errorCode,
         errorMessage, properties ?? {}, mediation, mediationId);
   }
 
@@ -57,12 +57,12 @@ class DTAdReport {
   /// - [entrance] 广告入口
   /// - [mediation] 聚合平台
   /// - [mediationId] 聚合平台广告id
-  static void reportToShow(String id, AdTypeDart type, AdPlatformDart platform,
+  static Future<void> reportToShow(String id, AdTypeDart type, AdPlatformDart platform,
       AdMediationDart mediation,
       String mediationId,
       String location, String seq,
       {JsonMap? properties, String? entrance}) {
-    _pigeon.reportToShow(
+    return _pigeon.reportToShow(
         id, type, platform, location, seq, properties ?? {}, entrance ?? "", mediation, mediationId);
   }
 
@@ -77,12 +77,12 @@ class DTAdReport {
   /// - [entrance] 广告入口
   /// - [mediation] 聚合平台
   /// - [mediationId] 聚合平台广告id
-  static void reportShow(String id, AdTypeDart type, AdPlatformDart platform,
+  static Future<void> reportShow(String id, AdTypeDart type, AdPlatformDart platform,
       AdMediationDart mediation,
       String mediationId,
       String location, String seq,
       {JsonMap? properties, String? entrance}) {
-    _pigeon.reportShow(
+    return _pigeon.reportShow(
         id, type, platform, location, seq, properties ?? {}, entrance ?? "", mediation, mediationId);
   }
 
@@ -97,7 +97,7 @@ class DTAdReport {
   /// - [entrance] 广告入口
   /// - [mediation] 聚合平台
   /// - [mediationId] 聚合平台广告id
-  static void reportShowFailed(
+  static Future<void> reportShowFailed(
       String id,
       AdTypeDart type,
       AdPlatformDart platform,
@@ -109,7 +109,7 @@ class DTAdReport {
       String errorMessage,
       {JsonMap? properties,
       String? entrance}) {
-    _pigeon.reportShowFailed(id, type, platform, location, seq, errorCode,
+    return _pigeon.reportShowFailed(id, type, platform, location, seq, errorCode,
         errorMessage, properties ?? {}, entrance ?? "", mediation, mediationId);
   }
 
@@ -124,12 +124,12 @@ class DTAdReport {
   /// - [entrance] 广告入口
   /// - [mediation] 聚合平台
   /// - [mediationId] 聚合平台广告id
-  static void reportClose(String id, AdTypeDart type, AdPlatformDart platform,
+  static Future<void> reportClose(String id, AdTypeDart type, AdPlatformDart platform,
       AdMediationDart mediation,
       String mediationId,
       String location, String seq,
       {JsonMap? properties, String? entrance}) {
-    _pigeon.reportClose(
+    return _pigeon.reportClose(
         id, type, platform, location, seq, properties ?? {}, entrance ?? "", mediation, mediationId);
   }
 
@@ -144,12 +144,12 @@ class DTAdReport {
   /// - [entrance] 广告入口
   /// - [mediation] 聚合平台
   /// - [mediationId] 聚合平台广告id
-  static void reportClick(String id, AdTypeDart type, AdPlatformDart platform,
+  static Future<void> reportClick(String id, AdTypeDart type, AdPlatformDart platform,
       AdMediationDart mediation,
       String mediationId,
       String location, String seq,
       {JsonMap? properties, String? entrance}) {
-    _pigeon.reportClick(
+    return _pigeon.reportClick(
         id, type, platform, location, seq, properties ?? {}, entrance ?? "", mediation, mediationId);
   }
 
@@ -164,13 +164,13 @@ class DTAdReport {
   /// - [entrance] 广告入口
   /// - [mediation] 聚合平台
   /// - [mediationId] 聚合平台广告id
-  static void reportRewarded(String id, AdTypeDart type,
+  static Future<void> reportRewarded(String id, AdTypeDart type,
       AdPlatformDart platform,
       AdMediationDart mediation,
       String mediationId,
       String location, String seq,
       {JsonMap? properties, String? entrance}) {
-    _pigeon.reportRewarded(
+    return _pigeon.reportRewarded(
         id, type, platform, location, seq, properties ?? {}, entrance ?? "", mediation, mediationId);
   }
 
@@ -185,13 +185,13 @@ class DTAdReport {
   /// - [entrance] 广告入口
   /// - [mediation] 聚合平台
   /// - [mediationId] 聚合平台广告id
-  static void reportConversionByClick(String id, AdTypeDart type,
+  static Future<void> reportConversionByClick(String id, AdTypeDart type,
       AdPlatformDart platform,
       AdMediationDart mediation,
       String mediationId,
       String location, String seq,
       {JsonMap? properties, String? entrance}) {
-    _pigeon.reportConversionByClick(
+    return _pigeon.reportConversionByClick(
         id, type, platform, location, seq, properties ?? {}, entrance ?? "", mediation, mediationId);
   }
 
@@ -206,13 +206,13 @@ class DTAdReport {
   /// - [entrance] 广告入口
   /// - [mediation] 聚合平台
   /// - [mediationId] 聚合平台广告id
-  static void reportConversionByLeftApp(String id, AdTypeDart type,
+  static Future<void> reportConversionByLeftApp(String id, AdTypeDart type,
       AdPlatformDart platform,
       AdMediationDart mediation,
       String mediationId,
       String location, String seq,
       {JsonMap? properties, String? entrance}) {
-    _pigeon.reportConversionByLeftApp(
+    return _pigeon.reportConversionByLeftApp(
         id, type, platform, location, seq, properties ?? {}, entrance ?? "", mediation, mediationId);
   }
 
@@ -227,13 +227,13 @@ class DTAdReport {
   /// - [entrance] 广告入口
   /// - [mediation] 聚合平台
   /// - [mediationId] 聚合平台广告id
-  static void reportConversionByRewarded(String id, AdTypeDart type,
+  static Future<void> reportConversionByRewarded(String id, AdTypeDart type,
       AdPlatformDart platform,
       AdMediationDart mediation,
       String mediationId,
       String location, String seq,
       {JsonMap? properties, String? entrance}) {
-    _pigeon.reportConversionByRewarded(
+    return _pigeon.reportConversionByRewarded(
         id, type, platform, location, seq, properties ?? {}, entrance ?? "", mediation, mediationId);
   }
 
@@ -251,7 +251,7 @@ class DTAdReport {
   /// - [entrance] 广告入口
   /// - [mediation] 聚合平台
   /// - [mediationId] 聚合平台广告id
-  static void reportPaid(
+  static Future<void> reportPaid(
       String id,
       AdTypeDart type,
       AdPlatformDart platform,
@@ -264,7 +264,7 @@ class DTAdReport {
       String precision,
       {JsonMap? properties,
       String? entrance}) {
-    _pigeon.reportPaid(id, type, platform, location, seq, value, currency,
+    return _pigeon.reportPaid(id, type, platform, location, seq, value, currency,
         precision, properties ?? {}, entrance ?? "", mediation, mediationId);
   }
 
@@ -281,7 +281,7 @@ class DTAdReport {
   /// - [precision] 精确度
   /// - [country] 国家
   /// - [properties] 额外事件属性
-  static void reportPaidWithCountry(
+  static Future<void> reportPaidWithCountry(
     String id,
     AdTypeDart type,
     AdPlatformDart platform,
@@ -294,7 +294,7 @@ class DTAdReport {
     String country, {
     JsonMap? properties,
   }) {
-    _pigeon.reportPaidWithCountry(id, type, platform, location, seq,
+    return _pigeon.reportPaidWithCountry(id, type, platform, location, seq,
         mediation, mediationId, value, precision, country, properties ?? {});
   }
 
@@ -309,12 +309,12 @@ class DTAdReport {
   /// - [entrance] 广告入口
   /// - [mediation] 聚合平台
   /// - [mediationId] 聚合平台广告id
-  static void reportLeftApp(String id, AdTypeDart type, AdPlatformDart platform,
+  static Future<void> reportLeftApp(String id, AdTypeDart type, AdPlatformDart platform,
       AdMediationDart mediation,
       String mediationId,
       String location, String seq,
       {JsonMap? properties, String? entrance}) {
-    _pigeon.reportLeftApp(
+    return _pigeon.reportLeftApp(
         id, type, platform, location, seq, properties ?? {}, entrance ?? "", mediation, mediationId);
   }
 }

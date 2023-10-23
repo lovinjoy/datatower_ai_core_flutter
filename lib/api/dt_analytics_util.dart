@@ -9,22 +9,22 @@ class DTAnalyticsUtil {
   /// 初始化事件的计时器，计时单位为毫秒。
   ///
   /// - [eventName] 事件的名称
-  static void trackTimerStart(String eventName) {
-    _pigeon.trackTimerStart(eventName);
+  static Future<void> trackTimerStart(String eventName) {
+    return _pigeon.trackTimerStart(eventName);
   }
 
   /// 暂停事件计时器，计时单位为毫秒。
   ///
   /// - [eventName] 事件的名称
-  static void trackTimerPause(String eventName) {
-    _pigeon.trackTimerPause(eventName);
+  static Future<void> trackTimerPause(String eventName) {
+    return _pigeon.trackTimerPause(eventName);
   }
 
   /// 恢复事件计时器，计时单位为毫秒。
   ///
   /// - [eventName] 事件的名称
-  static void trackTimerResume(String eventName) {
-    _pigeon.trackTimerResume(eventName);
+  static Future<void> trackTimerResume(String eventName) {
+    return _pigeon.trackTimerResume(eventName);
   }
 
 
@@ -32,7 +32,7 @@ class DTAnalyticsUtil {
   ///
   /// - [eventName] 事件的名称
   /// - [properties] 事件的属性
-  static void trackTimerEnd(String eventName, { JsonMap? properties }) {
-    _pigeon.trackTimerEnd(eventName, properties);
+  static Future<void> trackTimerEnd(String eventName, { JsonMap? properties }) {
+    return _pigeon.trackTimerEnd(eventName, properties);
   }
 }
