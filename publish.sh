@@ -6,7 +6,7 @@ thin_divider="--------------------------------------------------------"
 divider="========================================================"
 echo "$divider"
 
-printf "Run \033[0;34mgenerate_dt_api_methods.sh\033[0m? [Enter \033[1;34mY\033[0m or \033[1;34my\033[0m to run, otherwise to quit]: "
+printf "Run \033[0;34mgenerate_dt_api_methods.sh\033[0m? [Enter \033[1;34mY\033[0m or \033[1;34my\033[0m to run, otherwise to ignore]: "
 read -r run_publish
 if [[ $run_publish == "Y"  ]] || [[ $run_publish == "y" ]]; then
   echo "Running \033[0;34mgenerate_dt_api_methods.sh\033[0m..."
@@ -20,18 +20,14 @@ echo "Total Number of APIs in dt_methods.dart: \033[4m$total_num_api\033[0m"
 
 echo "$divider"
 
-# shellcheck disable=SC2002
-sdk_version=$(cat "$project_path/lib/api/dt.dart" | grep "versionName *=" | sed "s/^ *static const _versionName = \"\(.*\)\"; *$/\1/g")
-# shellcheck disable=SC2002
-sdk_version_2=$(cat "$project_path/pubspec.yaml" | grep "version:" | sed "s/^ *version: \(.*\) *$/\1/g")
+sdk_version=$(grep "versionName *=" < "$project_path/lib/api/dt.dart" | sed "s/^ *static const _versionName = \"\(.*\)\"; *$/\1/g")
+sdk_version_2=$(grep "version:" < "$project_path/pubspec.yaml" | sed "s/^ *version: \(.*\) *$/\1/g")
 echo "Version of \033[1mDT Flutter\033[0m："
 echo "  - \033[1m[dt.dart]\033[0m \033[4m$sdk_version\033[0m"
 echo "  - \033[1m[pubspec.yaml]\033[0m \033[4m$sdk_version_2\033[0m"
 
-# shellcheck disable=SC2001
-stripped_sdk_version=$(echo "$sdk_version" | sed "s/^\([0-9]*\.[0-9]*\.[0-9]*\).*$/\1/g")
-# shellcheck disable=SC2001
-stripped_sdk_version_2=$(echo "$sdk_version_2" | sed "s/^\([0-9]*\.[0-9]*\.[0-9]*\).*$/\1/g")
+stripped_sdk_version=${sdk_version//^\([0-9]*\.[0-9]*\.[0-9]*\).*$/\1}
+stripped_sdk_version_2=${sdk_version_2//^\([0-9]*\.[0-9]*\.[0-9]*\).*$/\1}
 
 warning_sign="\033[0;33m⚠\033[0m"
 version_check_failed=false
@@ -40,10 +36,8 @@ if [[ $stripped_sdk_version != "$stripped_sdk_version_2" ]]; then
   version_check_failed=true
 fi
 
-# shellcheck disable=SC2002
-android_sdk_ver=$(cat "$project_path/android/build.gradle" | grep "com.lovinjoy:datatowerai-core" | sed "s/^.*\"com.lovinjoy:datatowerai-core:\(.*\)\".*$/\1/g")
-# shellcheck disable=SC2002
-ios_sdk_ver=$(cat "$project_path/ios/datatower_ai_core_flutter.podspec" | grep "DataTowerAICore" | sed "s/^.*'DataTowerAICore'.*'\(.*\)'/\1/g")
+android_sdk_ver=$(grep "com.lovinjoy:datatowerai-core" < "$project_path/android/build.gradle" | sed "s/^.*\"com.lovinjoy:datatowerai-core:\(.*\)\".*$/\1/g")
+ios_sdk_ver=$(grep "DataTowerAICore" < "$project_path/ios/datatower_ai_core_flutter.podspec" | sed "s/^.*'DataTowerAICore'.*'\(.*\)'/\1/g")
 echo "Used version of \033[1mDT Android\033[0m：\033[4m$android_sdk_ver\033[0m"
 echo "Used version of \033[1mDT iOS\033[0m：\033[4m$ios_sdk_ver\033[0m"
 
@@ -74,7 +68,7 @@ if [[ $num_find_in_changelog == 0 ]]; then
 else
   changelog_lower_bound=$(grep -FnE -m2 "# .*" < "$project_path/CHANGELOG.md" | tail -n1 | cut -d ":" -f 1)
   echo "CHANGELOG"
-  sed -n -e "1,$((changelog_lower_bound-1))p" < ./CHANGELOG.md | sed -e :a -e '/^\n*$/{$d;N;};/\n$/ba'
+  sed -n -e "1,$((changelog_lower_bound-1))p" < ./CHANGELOG.md #| sed -e :a -e '/^\n*$/{$d;N;};/\n$/ba'
 fi
 
 echo "$divider"
