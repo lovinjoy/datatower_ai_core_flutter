@@ -13,8 +13,8 @@ class DTAdReport {
   /// - [platform] 广告平台
   /// - [seq] 系列行为标识
   /// - [properties] 自定义事件属性
-  /// - [mediation] 聚合平台
-  /// - [mediationId] 聚合平台广告id
+  /// - [mediation] 聚合平台，无则传：AdMediationDart.IDLE
+  /// - [mediationId] 聚合平台广告 id，无则传：""
   static Future<void> reportLoadBegin(
       String id, AdTypeDart type, AdPlatformDart platform,
       AdMediationDart mediation,
@@ -35,8 +35,8 @@ class DTAdReport {
   /// - [errorCode] 失败错误码
   /// - [errorMessage] 失败错误信息
   /// - [properties] 自定义事件属性
-  /// - [mediation] 聚合平台
-  /// - [mediationId] 聚合平台广告id
+  /// - [mediation] 聚合平台，无则传：AdMediationDart.IDLE
+  /// - [mediationId] 聚合平台广告 id，无则传：""
   static Future<void> reportLoadEnd(String id, AdTypeDart type, AdPlatformDart platform,
       AdMediationDart mediation,
       String mediationId,
@@ -55,8 +55,8 @@ class DTAdReport {
   /// - [seq] 系列行为标识
   /// - [properties] 额外事件属性
   /// - [entrance] 广告入口
-  /// - [mediation] 聚合平台
-  /// - [mediationId] 聚合平台广告id
+  /// - [mediation] 聚合平台，无则传：AdMediationDart.IDLE
+  /// - [mediationId] 聚合平台广告 id，无则传：""
   static Future<void> reportToShow(String id, AdTypeDart type, AdPlatformDart platform,
       AdMediationDart mediation,
       String mediationId,
@@ -75,8 +75,8 @@ class DTAdReport {
   /// - [seq] 系列行为标识
   /// - [properties] 额外事件属性
   /// - [entrance] 广告入口
-  /// - [mediation] 聚合平台
-  /// - [mediationId] 聚合平台广告id
+  /// - [mediation] 聚合平台，无则传：AdMediationDart.IDLE
+  /// - [mediationId] 聚合平台广告 id，无则传：""
   static Future<void> reportShow(String id, AdTypeDart type, AdPlatformDart platform,
       AdMediationDart mediation,
       String mediationId,
@@ -95,8 +95,8 @@ class DTAdReport {
   /// - [seq] 系列行为标识
   /// - [properties] 额外事件属性
   /// - [entrance] 广告入口
-  /// - [mediation] 聚合平台
-  /// - [mediationId] 聚合平台广告id
+  /// - [mediation] 聚合平台，无则传：AdMediationDart.IDLE
+  /// - [mediationId] 聚合平台广告 id，无则传：""
   static Future<void> reportShowFailed(
       String id,
       AdTypeDart type,
@@ -122,8 +122,8 @@ class DTAdReport {
   /// - [seq] 系列行为标识
   /// - [properties] 额外事件属性
   /// - [entrance] 广告入口
-  /// - [mediation] 聚合平台
-  /// - [mediationId] 聚合平台广告id
+  /// - [mediation] 聚合平台，无则传：AdMediationDart.IDLE
+  /// - [mediationId] 聚合平台广告 id，无则传：""
   static Future<void> reportClose(String id, AdTypeDart type, AdPlatformDart platform,
       AdMediationDart mediation,
       String mediationId,
@@ -142,8 +142,8 @@ class DTAdReport {
   /// - [seq] 系列行为标识
   /// - [properties] 额外事件属性
   /// - [entrance] 广告入口
-  /// - [mediation] 聚合平台
-  /// - [mediationId] 聚合平台广告id
+  /// - [mediation] 聚合平台，无则传：AdMediationDart.IDLE
+  /// - [mediationId] 聚合平台广告 id，无则传：""
   static Future<void> reportClick(String id, AdTypeDart type, AdPlatformDart platform,
       AdMediationDart mediation,
       String mediationId,
@@ -162,8 +162,8 @@ class DTAdReport {
   /// - [seq] 系列行为标识
   /// - [properties] 额外事件属性
   /// - [entrance] 广告入口
-  /// - [mediation] 聚合平台
-  /// - [mediationId] 聚合平台广告id
+  /// - [mediation] 聚合平台，无则传：AdMediationDart.IDLE
+  /// - [mediationId] 聚合平台广告 id，无则传：""
   static Future<void> reportRewarded(String id, AdTypeDart type,
       AdPlatformDart platform,
       AdMediationDart mediation,
@@ -183,8 +183,8 @@ class DTAdReport {
   /// - [seq] 系列行为标识
   /// - [properties] 额外事件属性
   /// - [entrance] 广告入口
-  /// - [mediation] 聚合平台
-  /// - [mediationId] 聚合平台广告id
+  /// - [mediation] 聚合平台，无则传：AdMediationDart.IDLE
+  /// - [mediationId] 聚合平台广告 id，无则传：""
   static Future<void> reportConversionByClick(String id, AdTypeDart type,
       AdPlatformDart platform,
       AdMediationDart mediation,
@@ -204,8 +204,8 @@ class DTAdReport {
   /// - [seq] 系列行为标识
   /// - [properties] 额外事件属性
   /// - [entrance] 广告入口
-  /// - [mediation] 聚合平台
-  /// - [mediationId] 聚合平台广告id
+  /// - [mediation] 聚合平台，无则传：AdMediationDart.IDLE
+  /// - [mediationId] 聚合平台广告 id，无则传：""
   static Future<void> reportConversionByLeftApp(String id, AdTypeDart type,
       AdPlatformDart platform,
       AdMediationDart mediation,
@@ -225,8 +225,8 @@ class DTAdReport {
   /// - [seq] 系列行为标识
   /// - [properties] 额外事件属性
   /// - [entrance] 广告入口
-  /// - [mediation] 聚合平台
-  /// - [mediationId] 聚合平台广告id
+  /// - [mediation] 聚合平台，无则传：AdMediationDart.IDLE
+  /// - [mediationId] 聚合平台广告 id，无则传：""
   static Future<void> reportConversionByRewarded(String id, AdTypeDart type,
       AdPlatformDart platform,
       AdMediationDart mediation,
@@ -249,8 +249,8 @@ class DTAdReport {
   /// - [precision] 精确度
   /// - [properties] 额外事件属性
   /// - [entrance] 广告入口
-  /// - [mediation] 聚合平台
-  /// - [mediationId] 聚合平台广告id
+  /// - [mediation] 聚合平台，无则传：AdMediationDart.IDLE
+  /// - [mediationId] 聚合平台广告 id，无则传：""
   static Future<void> reportPaid(
       String id,
       AdTypeDart type,
@@ -275,8 +275,8 @@ class DTAdReport {
   /// - [platform] 广告平台
   /// - [location] 广告位
   /// - [seq] 系列行为标识
-  /// - [mediation] 聚合平台
-  /// - [mediationId] 聚合平台广告id
+  /// - [mediation] 聚合平台，无则传：AdMediationDart.IDLE
+  /// - [mediationId] 聚合平台广告 id，无则传：""
   /// - [value] 价值
   /// - [precision] 精确度
   /// - [country] 国家
@@ -307,8 +307,8 @@ class DTAdReport {
   /// - [seq] 系列行为标识
   /// - [properties] 额外事件属性
   /// - [entrance] 广告入口
-  /// - [mediation] 聚合平台
-  /// - [mediationId] 聚合平台广告id
+  /// - [mediation] 聚合平台，无则传：AdMediationDart.IDLE
+  /// - [mediationId] 聚合平台广告 id，无则传：""
   static Future<void> reportLeftApp(String id, AdTypeDart type, AdPlatformDart platform,
       AdMediationDart mediation,
       String mediationId,

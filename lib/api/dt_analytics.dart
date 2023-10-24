@@ -10,7 +10,7 @@ class DTAnalytics {
   ///
   /// - [eventName] 事件的名称
   /// - [properties] 事件属性
-  static Future<void> trackEvent(String eventName, JsonMap properties) {
+  static Future<void> trackEvent(String eventName, [JsonMap properties = const {}]) {
     return _pigeon.trackEvent(eventName, properties);
   }
 

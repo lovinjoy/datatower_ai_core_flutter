@@ -12,6 +12,8 @@ import 'package:datatower_ai_core_flutter/api/dt.dart';
 class DatatowerAiCoreFlutter {
   /// <s>初始化入口</s>
   ///
+  /// **已废弃，请使用 DT.initSDK() 替代**
+  ///
   /// - [appId] 应用id，后台分配
   /// - [url] 服务器地址,后台分配
   /// - [channel] 渠道，默认为空字符串，可用 ROIQueryChannel.GP，具体联系商务
