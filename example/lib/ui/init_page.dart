@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:datatower_ai_core_flutter/api/dt.dart';
+import 'package:datatower_ai_core_flutter/datatower_ai_core_flutter.dart';
 import 'package:datatower_ai_core_flutter_example/bean/sdk_info.dart';
 import 'package:flutter/material.dart';
 
@@ -70,7 +71,7 @@ class _State extends State<InitPage> {
                           if (Platform.isIOS) {
                             channel = "2";
                           }
-                          DT.initSDK(appId, url, channel, _isDebug, 1);
+                          DT.initSDK(appId, url, channel: channel, isDebug: _isDebug, logLevel: 2);
                           Navigator.of(context).pushNamed("/home");
                         }
                       },

@@ -1,5 +1,6 @@
 echo "=============================================="
 echo "Starts to build..."
+touch "./lib/src/test/test_gen.dart"    # rebuild
 dart run build_runner build --delete-conflicting-outputs
 echo "Starts to move and rename file..."
 mkdir -p "./example/lib/test/"
