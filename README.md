@@ -1,4 +1,18 @@
-DataTower.ai SDK for Flutter
+<p align="center">
+  <a href="https://datatower.ai/" target="_blank">
+    <img alt="DataTower.ai" src="https://dash.datatower.ai/logoWhite_v2.png">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://pub.dev/packages/datatower_ai_core_flutter" target="_blank">
+    <img alt="Flutter" src="https://img.shields.io/pub/v/datatower_ai_core_flutter" style="vertical-align:middle; margin:20px 0px">
+  </a>
+</p>
+
+---
+
+# DataTower.ai SDK for Flutter
 
 |             | Android |  iOS  |
 |:-----------:|:-------:|:-----:|

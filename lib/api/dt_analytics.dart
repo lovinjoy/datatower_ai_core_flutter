@@ -10,55 +10,55 @@ class DTAnalytics {
   ///
   /// - [eventName] 事件的名称
   /// - [properties] 事件属性
-  static void trackEvent(String eventName, JsonMap properties) {
-    _pigeon.trackEvent(eventName, properties);
+  static Future<void> trackEvent(String eventName, [JsonMap properties = const {}]) {
+    return _pigeon.trackEvent(eventName, properties);
   }
 
   /// 设置一般的用户属性
   ///
   /// - [properties] 属性
-  static void userSet(JsonMap properties) {
-    _pigeon.userSet(properties);
+  static Future<void> userSet(JsonMap properties) {
+    return _pigeon.userSet(properties);
   }
 
   /// 设置只要设置一次的用户属性
   ///
   /// - [properties] 属性
-  static void userSetOnce(JsonMap properties) {
-    _pigeon.userSetOnce(properties);
+  static Future<void> userSetOnce(JsonMap properties) {
+    return _pigeon.userSetOnce(properties);
   }
 
   /// 设置可累加的用户属性
   ///
   /// - [properties] 属性
-  static void userAdd(JsonMap properties) {
-    _pigeon.userAdd(properties);
+  static Future<void> userAdd(JsonMap properties) {
+    return _pigeon.userAdd(properties);
   }
 
   /// 清空用户属性
   ///
   /// - [properties] 属性
-  static void userUnset(List<String> properties) {
-    _pigeon.userUnset(properties);
+  static Future<void> userUnset(List<String> properties) {
+    return _pigeon.userUnset(properties);
   }
 
   /// 删除用户
-  static void userDelete() {
-    _pigeon.userDelete();
+  static Future<void> userDelete() {
+    return _pigeon.userDelete();
   }
 
   /// 对 JSONArray 类型的用户属性进追加
   ///
   /// - [properties] 属性
-  static void userAppend(JsonMap properties) {
-    _pigeon.userAppend(properties);
+  static Future<void> userAppend(JsonMap properties) {
+    return _pigeon.userAppend(properties);
   }
 
   /// 对 JSONArray 类型的用户属性进追加, 并去重
   ///
   /// - [properties] 属性
-  static void userUniqAppend(JsonMap properties) {
-    _pigeon.userUniqAppend(properties);
+  static Future<void> userUniqAppend(JsonMap properties) {
+    return _pigeon.userUniqAppend(properties);
   }
 
   /// 获取 DataTower instance id
@@ -69,42 +69,42 @@ class DTAnalytics {
   /// 设置自有用户系统的id
   ///
   /// - [id] 用户系统id
-  static void setAccountId(String? id) {
-    _pigeon.setAccountId(id);
+  static Future<void> setAccountId(String? id) {
+    return _pigeon.setAccountId(id);
   }
 
   /// 设置 Firebase 的 app_instance_id
   ///
   /// - [id] Firebase 的 app_instance_id
-  static void setFirebaseAppInstanceId(String? id) {
-    _pigeon.setFirebaseAppInstanceId(id);
+  static Future<void> setFirebaseAppInstanceId(String? id) {
+    return _pigeon.setFirebaseAppInstanceId(id);
   }
 
   /// 设置 AppsFlyer id
   ///
   /// - [id] appsflyer id
-  static void setAppsFlyerId(String? id) {
-    _pigeon.setAppsFlyerId(id);
+  static Future<void> setAppsFlyerId(String? id) {
+    return _pigeon.setAppsFlyerId(id);
   }
 
   /// 设置 kochava id
   ///
   /// - [id] kochava id
-  static void setKochavaId(String? id) {
-    _pigeon.setKochavaId(id);
+  static Future<void> setKochavaId(String? id) {
+    return _pigeon.setKochavaId(id);
   }
 
   /// 设置 adjust id
   ///
   /// - [id] adjust id
-  static void setAdjustId(String? id) {
-    _pigeon.setAdjustId(id);
+  static Future<void> setAdjustId(String? id) {
+    return _pigeon.setAdjustId(id);
   }
 
   /// 透传 dt_id 至三方归因平台
   ///
   /// - [type] 归因平台 DTThirdPartyShareType.ADJUST
-  static void enableThirdPartySharing(int type) {
-    _pigeon.enableThirdPartySharing(type);
+  static Future<void> enableThirdPartySharing(int type) {
+    return _pigeon.enableThirdPartySharing(type);
   }
 }

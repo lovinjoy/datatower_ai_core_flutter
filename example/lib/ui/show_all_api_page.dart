@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:datatower_ai_core_flutter/datatower_ai_core_flutter.dart';
 import 'package:datatower_ai_core_flutter_example/test/dt_methods.dart';
 import 'package:flutter/material.dart';
@@ -318,7 +320,7 @@ class _RunApiDialogState extends State<RunApiDialog> {
         ],
       );
     } else if (type.startsWith("Map<String, Object?>")) {
-      final controller = TextEditingController(text: getValue().toString());
+      final controller = TextEditingController(text: jsonEncode(getValue()));
       return TextField(
         controller: controller,
         decoration: InputDecoration(
@@ -327,10 +329,10 @@ class _RunApiDialogState extends State<RunApiDialog> {
             border: const OutlineInputBorder(),
             helperText: "Json: {\"name\": \"viper\", \"age\": 18}"
         ),
-        onChanged: (str) => setValue(str),
+        onChanged: (str) => setValue(jsonDecode(str)),
       );
     } else if (type.startsWith("List<String>")) {
-      final controller = TextEditingController(text: getValue().toString());
+      final controller = TextEditingController(text: jsonEncode(getValue()));
       return TextField(
         controller: controller,
         decoration: InputDecoration(
@@ -339,7 +341,7 @@ class _RunApiDialogState extends State<RunApiDialog> {
             border: const OutlineInputBorder(),
             helperText: "String List: [\"a\", \"b\"]"
         ),
-        onChanged: (str) => setValue(str),
+        onChanged: (str) => setValue(jsonDecode(str)),
       );
     } else {
       return Container();
