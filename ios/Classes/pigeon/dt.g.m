@@ -13,6 +13,16 @@
 #error File requires ARC to be enabled.
 #endif
 
+@implementation DTDTLogLevelBox
+- (instancetype)initWithValue:(DTDTLogLevel)value {
+  self = [super init];
+  if (self) {
+    _value = value;
+  }
+  return self;
+}
+@end
+
 static NSArray *wrapResult(id result, FlutterError *error) {
   if (error) {
     return @[
@@ -47,7 +57,7 @@ void DTDTPigeonSetup(id<FlutterBinaryMessenger> binaryMessenger, NSObject<DTDTPi
         NSString *arg_url = GetNullableObjectAtIndex(args, 1);
         NSString *arg_channel = GetNullableObjectAtIndex(args, 2);
         NSNumber *arg_isDebug = GetNullableObjectAtIndex(args, 3);
-        NSNumber *arg_logLevel = GetNullableObjectAtIndex(args, 4);
+        DTDTLogLevel arg_logLevel = [GetNullableObjectAtIndex(args, 4) integerValue];
         NSDictionary<NSString *, id> *arg_commonProperties = GetNullableObjectAtIndex(args, 5);
         FlutterError *error;
         [api initSDKAppId:arg_appId url:arg_url channel:arg_channel isDebug:arg_isDebug logLevel:arg_logLevel commonProperties:arg_commonProperties error:&error];

@@ -41,9 +41,22 @@ class DtFlutterError (
   override val message: String? = null,
   val details: Any? = null
 ) : Throwable()
+
+enum class DTLogLevel(val raw: Int) {
+  DEBUG(0),
+  INFO(1),
+  WARN(2),
+  ERROR(3);
+
+  companion object {
+    fun ofRaw(raw: Int): DTLogLevel? {
+      return values().firstOrNull { it.raw == raw }
+    }
+  }
+}
 /** Generated interface from Pigeon that represents a handler of messages from Flutter. */
 interface DTPigeon {
-  fun initSDK(appId: String, url: String, channel: String, isDebug: Boolean, logLevel: Long, commonProperties: Map<String, Any>)
+  fun initSDK(appId: String, url: String, channel: String, isDebug: Boolean, logLevel: DTLogLevel, commonProperties: Map<String, Any>)
 
   companion object {
     /** The codec used by DTPigeon. */
@@ -62,7 +75,7 @@ interface DTPigeon {
             val urlArg = args[1] as String
             val channelArg = args[2] as String
             val isDebugArg = args[3] as Boolean
-            val logLevelArg = args[4].let { if (it is Int) it.toLong() else it as Long }
+            val logLevelArg = DTLogLevel.ofRaw(args[4] as Int)!!
             val commonPropertiesArg = args[5] as Map<String, Any>
             var wrapped: List<Any?>
             try {

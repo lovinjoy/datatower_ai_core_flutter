@@ -19,7 +19,7 @@ class DT {
       String url, {
         String channel = "",
         bool isDebug = false,
-        int logLevel = 2
+        DTLogLevel logLevel = DTLogLevel.DEBUG
       }
   ) {
     var typeSuffix = "";

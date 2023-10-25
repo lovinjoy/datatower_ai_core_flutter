@@ -8,6 +8,13 @@ import 'dart:typed_data' show Float64List, Int32List, Int64List, Uint8List;
 import 'package:flutter/foundation.dart' show ReadBuffer, WriteBuffer;
 import 'package:flutter/services.dart';
 
+enum DTLogLevel {
+  DEBUG,
+  INFO,
+  WARN,
+  ERROR,
+}
+
 class DTPigeon {
   /// Constructor for [DTPigeon].  The [binaryMessenger] named argument is
   /// available for dependency injection.  If it is left null, the default
@@ -18,12 +25,12 @@ class DTPigeon {
 
   static const MessageCodec<Object?> codec = StandardMessageCodec();
 
-  Future<void> initSDK(String arg_appId, String arg_url, String arg_channel, bool arg_isDebug, int arg_logLevel, Map<String?, Object?> arg_commonProperties) async {
+  Future<void> initSDK(String arg_appId, String arg_url, String arg_channel, bool arg_isDebug, DTLogLevel arg_logLevel, Map<String?, Object?> arg_commonProperties) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.datatower_ai_core_flutter.DTPigeon.initSDK', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_appId, arg_url, arg_channel, arg_isDebug, arg_logLevel, arg_commonProperties]) as List<Object?>?;
+        await channel.send(<Object?>[arg_appId, arg_url, arg_channel, arg_isDebug, arg_logLevel.index, arg_commonProperties]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
