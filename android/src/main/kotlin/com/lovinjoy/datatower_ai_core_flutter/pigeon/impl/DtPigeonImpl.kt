@@ -1,7 +1,9 @@
 package com.lovinjoy.datatower_ai_core_flutter.pigeon.impl
 import DTPigeon
+import DTLogLevel
 
 import android.content.Context
+import android.util.Log
 import com.roiquery.analytics.DT
 import org.json.JSONObject
 
@@ -11,7 +13,7 @@ internal class DtPigeonImpl(private val context: Context): DTPigeon {
         url: String,
         channel: String,
         isDebug: Boolean,
-        logLevel: Long,
+        logLevel: DTLogLevel,
         commonProperties: Map<String, Any>
     ) {
         DT.initSDK(
@@ -20,9 +22,14 @@ internal class DtPigeonImpl(private val context: Context): DTPigeon {
             url,
             channel,
             isDebug,
-            logLevel.toInt(),
+            when (logLevel) {
+                DTLogLevel.DEBUG -> Log.DEBUG
+                DTLogLevel.INFO -> Log.INFO
+                DTLogLevel.WARN -> Log.WARN
+                DTLogLevel.ERROR -> Log.ERROR
+                else -> Log.DEBUG
+            },
             JSONObject(commonProperties)
         )
     }
-
 }

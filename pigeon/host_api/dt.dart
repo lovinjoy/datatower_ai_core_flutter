@@ -1,3 +1,4 @@
+// ignore_for_file: constant_identifier_names
 import 'package:pigeon/pigeon.dart';
 
 @ConfigurePigeon(PigeonOptions(
@@ -11,6 +12,14 @@ import 'package:pigeon/pigeon.dart';
   objcOptions: ObjcOptions(prefix: 'DT'),
   dartPackageName: 'datatower_ai_core_flutter',
 ))
+
+enum DTLogLevel {
+  DEBUG,
+  INFO,
+  WARN,
+  ERROR,
+}
+
 @HostApi()
 abstract class DTPigeon {
   void initSDK(
@@ -18,7 +27,7 @@ abstract class DTPigeon {
     String url,
     String channel,
     bool isDebug,
-    int logLevel,
+    DTLogLevel logLevel,
     Map<String, Object> commonProperties,
   );
 }

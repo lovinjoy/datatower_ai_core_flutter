@@ -71,7 +71,7 @@ class _State extends State<InitPage> {
                           if (Platform.isIOS) {
                             channel = "2";
                           }
-                          DT.initSDK(appId, url, channel: channel, isDebug: _isDebug, logLevel: 2);
+                          DT.initSDK(appId, url, channel: channel, isDebug: _isDebug, logLevel: DTLogLevel.DEBUG);
                           Navigator.of(context).pushNamed("/home");
                         }
                       },

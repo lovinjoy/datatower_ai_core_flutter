@@ -1,15 +1,26 @@
 echo "=============================================="
 echo "Starts to build..."
-touch "./lib/src/test/test_gen.dart"    # rebuild
+
+while getopts "f" flag; do
+  case $flag in
+    f)
+      echo "(With force)"
+      rm "$(find "$(dirname "$0")/.dart_tool/build" -type f -maxdepth 2 -name "asset_graph.json")"  # -f: force
+      ;;
+    *)
+      ;;
+  esac
+done
+
 dart run build_runner build --delete-conflicting-outputs
 echo "Starts to move and rename file..."
-mkdir -p "./example/lib/test/"
-generated=$(find "./.dart_tool/build/generated/datatower_ai_core_flutter/" -name "*.g.dt.dart")
+mkdir -p "$(dirname "$0")/example/lib/test/"
+generated=$(find "$(dirname "$0")/.dart_tool/build/generated/datatower_ai_core_flutter/" -name "*.g.dt.dart")
 if [ -n "$generated" ]
 then
-  mv "$generated" "./example/lib/test/dt_methods.dart"
+  mv "$generated" "$(dirname "$0")/example/lib/test/dt_methods.dart"
   echo "Finished, starts to clean up..."
-  rm -rf "./.dart_tool/build/generated/datatower_ai_core_flutter"
+  rm -rf "$(dirname "$0")/.dart_tool/build/generated/datatower_ai_core_flutter"
   echo "Done!"
 else
   echo "Nothing generated"

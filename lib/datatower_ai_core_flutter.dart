@@ -3,10 +3,12 @@ export 'package:datatower_ai_core_flutter/api/dt.dart';
 export 'package:datatower_ai_core_flutter/api/dt_ad.dart';
 export 'package:datatower_ai_core_flutter/api/dt_analytics.dart';
 export 'package:datatower_ai_core_flutter/api/dt_analytics_util.dart';
+export 'package:datatower_ai_core_flutter/src/pigeon/dt.g.dart' show DTLogLevel;
 export 'package:datatower_ai_core_flutter/src/pigeon/dt_ad.g.dart'
     show AdTypeDart, AdMediationDart, AdPlatformDart;
 
 import 'package:datatower_ai_core_flutter/api/dt.dart';
+import 'package:datatower_ai_core_flutter/src/pigeon/dt.g.dart';
 
 @Deprecated("This class will be removed at later version, see member functions below for migration details.")
 class DatatowerAiCoreFlutter {
@@ -23,6 +25,10 @@ class DatatowerAiCoreFlutter {
   void initSDK(
       String appId, String url, String channel, bool isDebug, int logLevel
   ) {
-    DT.initSDK(appId, url, channel: channel, isDebug: isDebug, logLevel: logLevel);
+    DT.initSDK(appId, url,
+      channel: channel,
+      isDebug: isDebug,
+      logLevel: DTLogLevel.values[(logLevel-2).clamp(0, 5)]
+    );
   }
 }
