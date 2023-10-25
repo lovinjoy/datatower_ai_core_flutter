@@ -16,6 +16,7 @@ class _State extends State<InitPage> {
   String appId = "dt_c015a9ff8759e7d4";
   String url = "https://test.roiquery.com";
   bool _isDebug = true;
+  DTLogLevel _logLevel = DTLogLevel.DEBUG;
 
   @override
   Widget build(BuildContext context) {
@@ -55,11 +56,39 @@ class _State extends State<InitPage> {
                     maxLines: null,
                   ),
                   Row(children: [
-                    const Text("Debug"),
+                    const Text("Is debug"),
                     Checkbox(
                         value: _isDebug,
                         onChanged: (_) => setState(() => _isDebug = !_isDebug)),
                   ]),
+                  if (_isDebug) ...[
+                    const SizedBox(height: 5,),
+                    DropdownMenu<DTLogLevel>(
+                      dropdownMenuEntries: const [
+                        DropdownMenuEntry(
+                            value: DTLogLevel.DEBUG,
+                            label: "Debug"
+                        ),
+                        DropdownMenuEntry(
+                            value: DTLogLevel.INFO,
+                            label: "Info"
+                        ),
+                        DropdownMenuEntry(
+                            value: DTLogLevel.WARN,
+                            label: "Warn"
+                        ),
+                        DropdownMenuEntry(
+                            value: DTLogLevel.ERROR,
+                            label: "Error"
+                        ),
+                      ],
+                      initialSelection: _logLevel,
+                      onSelected: (ll) => _logLevel = ll ?? DTLogLevel.DEBUG,
+                      width: MediaQuery.of(context).size.width * 0.6,
+                      label: const Text("Log Level"),
+                      helperText: "Only takes effect once per cold-start.",
+                    ),
+                  ],
                   const SizedBox(
                     height: 20,
                   ),
@@ -71,7 +100,7 @@ class _State extends State<InitPage> {
                           if (Platform.isIOS) {
                             channel = "2";
                           }
-                          DT.initSDK(appId, url, channel: channel, isDebug: _isDebug, logLevel: DTLogLevel.DEBUG);
+                          DT.initSDK(appId, url, channel: channel, isDebug: _isDebug, logLevel: _logLevel);
                           Navigator.of(context).pushNamed("/home");
                         }
                       },
