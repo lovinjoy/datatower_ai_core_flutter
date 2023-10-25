@@ -10,7 +10,7 @@ printf "Run \033[0;34mgenerate_dt_api_methods.sh\033[0m? [Enter \033[1;34mY\033[
 read -r run_publish
 if [[ $run_publish == "Y"  ]] || [[ $run_publish == "y" ]]; then
   echo "Running \033[0;34mgenerate_dt_api_methods.sh\033[0m..."
-  sh "$project_path/generate_dt_api_methods.sh"
+  sh "$project_path/generate_dt_api_methods.sh" -f
 else
   echo "Ignored generate_dt_api_methods"
 fi
