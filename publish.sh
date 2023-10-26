@@ -15,6 +15,8 @@ while [ $# -gt 0 ] ; do
       echo "  ┌───────────────────┬────────────────────────────────────────────┐"
       echo "  │  \033[1mFlag             │  Information\033[0m                               │"
       echo "  ├───────────────────┼────────────────────────────────────────────┤"
+      echo "  │  -h --help        │  Help                                      │"
+      echo "  │                   │                                            │"
       echo "  │  -g --generate    │  Generate API methods                      │"
       echo "  │  -i --ignore      │  Not generate API methods                  │"
       echo "  │                   │                                            │"
