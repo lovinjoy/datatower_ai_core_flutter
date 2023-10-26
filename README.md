@@ -1,6 +1,9 @@
 <p align="center">
   <a href="https://datatower.ai/" target="_blank">
-    <img alt="DataTower.ai" src="https://dash.datatower.ai/logoWhite_v2.png">
+    <picture>
+      <source srcset="https://dash.datatower.ai/logo_v2.png" media="(prefers-color-scheme: dark)">
+      <img src="https://dash.datatower.ai/logoWhite_v2.png" alt="DataTower.ai">
+    </picture>
   </a>
 </p>
 
@@ -37,18 +40,16 @@
 
 BTW, Remember to call _**DT.initSDK()**_ before any usage of other APIs:
     
-    ```dart
-    import 'package:datatower_ai_core_flutter/api/dt.dart';
-    
-    // ...
-    
-    DT.initSDK(
-        appId: "{AppId of your project}",
-        url: "{Reporting URL}",
-        channel: "",
-        isDebug: false,
-        logLevel: 2
-    );
-    
-    // ...
-    ```
+```dart
+import 'package:datatower_ai_core_flutter/api/dt.dart';
+
+// ...
+
+DT.initSDK("{AppId of your project}", "{Reporting URL}",
+    channel: "",
+    isDebug: false,
+    logLevel: 2
+);
+
+// ...
+```
