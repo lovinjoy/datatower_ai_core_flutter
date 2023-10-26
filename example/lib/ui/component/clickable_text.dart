@@ -22,26 +22,34 @@ class _State extends State<ClickableText> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => widget.onClick().then((value) => value == null ?
-          null : setState(() {
-            displayedText = value.toString();
-          })
-      ),
-      child: Container(
-        width: double.infinity,
-        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20), child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(widget.title, style: Theme.of(context).textTheme.titleMedium,),
-            const SizedBox(height: 5,),
-            Text(displayedText,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Theme.of(context).colorScheme.outline),
-            ),
-          ],
-        ),
-      )
-    );
+        onTap: () => widget.onClick().then((value) => value == null
+            ? null
+            : setState(() {
+                displayedText = value.toString();
+              })),
+        child: Container(
+          width: double.infinity,
+          padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                widget.title,
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              Text(
+                displayedText,
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyMedium
+                    ?.copyWith(color: Theme.of(context).colorScheme.outline),
+              ),
+            ],
+          ),
+        ));
   }
-
 }

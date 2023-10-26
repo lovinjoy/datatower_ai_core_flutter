@@ -27,12 +27,11 @@ class DTAnalyticsUtil {
     return _pigeon.trackTimerResume(eventName);
   }
 
-
   /// 停止事件计时器
   ///
   /// - [eventName] 事件的名称
   /// - [properties] 事件的属性
-  static Future<void> trackTimerEnd(String eventName, { JsonMap? properties }) {
+  static Future<void> trackTimerEnd(String eventName, {JsonMap? properties}) {
     return _pigeon.trackTimerEnd(eventName, properties);
   }
 }

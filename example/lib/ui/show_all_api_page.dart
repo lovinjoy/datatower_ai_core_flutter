@@ -19,61 +19,71 @@ class ShowAllApiPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Total number of APIs: ${dtApiMethodHolders.fold(0, (pre, element) => pre + element.methods.length)}"),
-            const SizedBox(height: 10,),
-            for (var holder in dtApiMethodHolders)
-              ...[
-                const Divider(),
-                Row(
-                  children: [
-                    Expanded(child: Text(holder.name, style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold))),
-                    Text(holder.methods.length.toString()),
-                  ],
-                ),
-                const SizedBox(height: 10,),
-                for (var method in holder.methods)
-                  InkWell(
-                    onTap: () => showRunApiDialog(context, holder.name, method),
-                    borderRadius: BorderRadius.circular(10),
-                    child: Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                      child: Text(method),
-                    ),
+            Text(
+                "Total number of APIs: ${dtApiMethodHolders.fold(0, (pre, element) => pre + element.methods.length)}"),
+            const SizedBox(
+              height: 10,
+            ),
+            for (var holder in dtApiMethodHolders) ...[
+              const Divider(),
+              Row(
+                children: [
+                  Expanded(
+                      child: Text(holder.name,
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleMedium
+                              ?.copyWith(fontWeight: FontWeight.bold))),
+                  Text(holder.methods.length.toString()),
+                ],
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              for (var method in holder.methods)
+                InkWell(
+                  onTap: () => showRunApiDialog(context, holder.name, method),
+                  borderRadius: BorderRadius.circular(10),
+                  child: Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
+                    child: Text(method),
                   ),
-              ],
-            const SizedBox(height: 50,),
+                ),
+            ],
+            const SizedBox(
+              height: 50,
+            ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Clipboard.setData(ClipboardData(
-            text: dtApiMethodHolders.map((h) {
+          onPressed: () {
+            Clipboard.setData(ClipboardData(
+                text: dtApiMethodHolders.map((h) {
               return "=====================\n"
                   "${h.name} (num of API: ${h.methods.length})\n"
                   "=====================\n"
                   "${h.methods.join("\n")}";
-            }).join("\n\n")
-          ));
-        },
-        child: const Icon(Icons.copy_rounded)
-      ),
+            }).join("\n\n")));
+          },
+          child: const Icon(Icons.copy_rounded)),
     );
   }
 
-  void showRunApiDialog(BuildContext context, String className, String methodName) {
+  void showRunApiDialog(
+      BuildContext context, String className, String methodName) {
     final dtApiMethod = dtApiMethods["${className}_$methodName"];
     if (dtApiMethod == null) return;
 
     showDialog(
-      context: context,
-      builder: (context) => RunApiDialog(
-        className: className,
-        methodName: methodName,
-        dtApiMethod: dtApiMethod,
-      )
-    );
+        context: context,
+        builder: (context) => RunApiDialog(
+              className: className,
+              methodName: methodName,
+              dtApiMethod: dtApiMethod,
+            ));
   }
 }
 
@@ -82,19 +92,19 @@ class RunApiDialog extends StatefulWidget {
   final String methodName;
   final DtApiMethod dtApiMethod;
 
-  const RunApiDialog({
-    super.key,
-    required this.className,
-    required this.methodName,
-    required this.dtApiMethod
-  });
+  const RunApiDialog(
+      {super.key,
+      required this.className,
+      required this.methodName,
+      required this.dtApiMethod});
 
   @override
   State<StatefulWidget> createState() => _RunApiDialogState();
 }
 
 class _RunApiDialogState extends State<RunApiDialog> {
-  late final List<dynamic> orderedParam = List.filled(widget.dtApiMethod.orderedParam.length, null);
+  late final List<dynamic> orderedParam =
+      List.filled(widget.dtApiMethod.orderedParam.length, null);
   final Map<String, dynamic> namedParam = {};
 
   @override
@@ -102,7 +112,8 @@ class _RunApiDialogState extends State<RunApiDialog> {
     super.initState();
 
     for (var (i, type) in widget.dtApiMethod.orderedParam.indexed) {
-      orderedParam[i] = getDefaultValue(type, widget.dtApiMethod.orderedParamNames[i]);
+      orderedParam[i] =
+          getDefaultValue(type, widget.dtApiMethod.orderedParamNames[i]);
     }
 
     for (var entry in widget.dtApiMethod.namedParam.entries) {
@@ -113,61 +124,67 @@ class _RunApiDialogState extends State<RunApiDialog> {
   @override
   Widget build(BuildContext context) {
     return Dialog.fullscreen(
-      child: Scaffold(
-        appBar: AppBar(title: Text("${widget.className}\n${widget.methodName}")),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              child: Scrollbar(child: SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Column(
-                    children: [
+        child: Scaffold(
+      appBar: AppBar(title: Text("${widget.className}\n${widget.methodName}")),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+              child: Scrollbar(
+                  child: SingleChildScrollView(
+            child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  children: [
+                    const SizedBox(height: 20),
+                    for (var (i, name)
+                        in widget.dtApiMethod.orderedParamNames.indexed) ...[
+                      getWidgetByType(
+                        type: widget.dtApiMethod.orderedParam[i],
+                        name: name,
+                        getValue: () => orderedParam[i],
+                        setValue: (v) => orderedParam[i] = v,
+                      ),
                       const SizedBox(height: 20),
-                      for (var (i, name) in widget.dtApiMethod.orderedParamNames.indexed)
-                        ...[
-                          getWidgetByType(
-                            type: widget.dtApiMethod.orderedParam[i],
-                            name: name,
-                            getValue: () => orderedParam[i],
-                            setValue: (v) => orderedParam[i] = v,
-                          ),
-                          const SizedBox(height: 20),
-                        ],
-                      for (var entry in widget.dtApiMethod.namedParam.entries)
-                        ...[
-                          getWidgetByType(
-                            type: entry.value,
-                            name: entry.key,
-                            getValue: () => namedParam[entry.key],
-                            setValue: (v) => namedParam[entry.key] = v,
-                          ),
-                          const SizedBox(height: 20),
-                        ],
                     ],
-                  )
-                ),
-              ))
-            ),
-            const SizedBox(height: 10,),
-            Padding(
+                    for (var entry
+                        in widget.dtApiMethod.namedParam.entries) ...[
+                      getWidgetByType(
+                        type: entry.value,
+                        name: entry.key,
+                        getValue: () => namedParam[entry.key],
+                        setValue: (v) => namedParam[entry.key] = v,
+                      ),
+                      const SizedBox(height: 20),
+                    ],
+                  ],
+                )),
+          ))),
+          const SizedBox(
+            height: 10,
+          ),
+          Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   TextButton(
-                    onPressed: () { Navigator.pop(context); },
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                     child: const Text("Cancel"),
                   ),
-                  const SizedBox(width: 20,),
+                  const SizedBox(
+                    width: 20,
+                  ),
                   FilledButton(
                     onPressed: () {
-                      debugPrint("="*80);
-                      debugPrint("Run for [${widget.className}] ${widget.methodName}");
+                      debugPrint("=" * 80);
+                      debugPrint(
+                          "Run for [${widget.className}] ${widget.methodName}");
                       debugPrint("orderedParam: $orderedParam");
                       debugPrint("namedParam: $namedParam");
-                      debugPrint("="*80);
+                      debugPrint("=" * 80);
 
                       widget.dtApiMethod.run(orderedParam, namedParam);
                       Navigator.pop(context);
@@ -175,13 +192,13 @@ class _RunApiDialogState extends State<RunApiDialog> {
                     child: const Text("Run"),
                   )
                 ],
-              )
-            ),
-            const SizedBox(height: 10,),
-          ],
-        ),
-      )
-    );
+              )),
+          const SizedBox(
+            height: 10,
+          ),
+        ],
+      ),
+    ));
   }
 
   dynamic getDefaultValue(String type, [String? name]) {
@@ -212,17 +229,19 @@ class _RunApiDialogState extends State<RunApiDialog> {
     required dynamic Function() getValue,
     required void Function(dynamic) setValue,
   }) {
-    final labelStyle = Theme.of(context).textTheme.labelLarge?.copyWith(color: Theme.of(context).colorScheme.primary);
+    final labelStyle = Theme.of(context)
+        .textTheme
+        .labelLarge
+        ?.copyWith(color: Theme.of(context).colorScheme.primary);
 
     if (type.startsWith("String")) {
       final controller = TextEditingController(text: getValue().toString());
       return TextField(
         controller: controller,
         decoration: InputDecoration(
-          labelText: name,
-          labelStyle: labelStyle,
-          border: const OutlineInputBorder()
-        ),
+            labelText: name,
+            labelStyle: labelStyle,
+            border: const OutlineInputBorder()),
         onChanged: (str) => setValue(str),
       );
     } else if (type.startsWith("AdTypeDart")) {
@@ -231,22 +250,25 @@ class _RunApiDialogState extends State<RunApiDialog> {
         children: [
           Text(name, style: labelStyle),
           SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: [
-                for (var adTypeDart in AdTypeDart.values)
-                  ...[
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  for (var adTypeDart in AdTypeDart.values) ...[
                     ChoiceChip(
                       label: Text(adTypeDart.name),
                       selected: adTypeDart == getValue(),
-                      onSelected: (selected) => selected? setState(() => setValue(adTypeDart)) : null,
-                      selectedColor: Theme.of(context).colorScheme.primaryContainer,
+                      onSelected: (selected) => selected
+                          ? setState(() => setValue(adTypeDart))
+                          : null,
+                      selectedColor:
+                          Theme.of(context).colorScheme.primaryContainer,
                     ),
-                    const SizedBox(width: 5,)
+                    const SizedBox(
+                      width: 5,
+                    )
                   ]
-              ],
-            )
-          )
+                ],
+              ))
         ],
       );
     } else if (type.startsWith("AdPlatformDart")) {
@@ -255,22 +277,25 @@ class _RunApiDialogState extends State<RunApiDialog> {
         children: [
           Text(name, style: labelStyle),
           SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: [
-                for (var adPlatformDart in AdPlatformDart.values)
-                  ...[
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  for (var adPlatformDart in AdPlatformDart.values) ...[
                     ChoiceChip(
                       label: Text(adPlatformDart.name),
                       selected: adPlatformDart == getValue(),
-                      onSelected: (selected) => selected? setState(() => setValue(adPlatformDart)) : null,
-                      selectedColor: Theme.of(context).colorScheme.primaryContainer,
+                      onSelected: (selected) => selected
+                          ? setState(() => setValue(adPlatformDart))
+                          : null,
+                      selectedColor:
+                          Theme.of(context).colorScheme.primaryContainer,
                     ),
-                    const SizedBox(width: 5,)
+                    const SizedBox(
+                      width: 5,
+                    )
                   ]
-              ],
-            )
-          )
+                ],
+              ))
         ],
       );
     } else if (type.startsWith("int")) {
@@ -281,17 +306,19 @@ class _RunApiDialogState extends State<RunApiDialog> {
             labelText: name,
             labelStyle: labelStyle,
             border: const OutlineInputBorder(),
-            helperText: "Integer Number"
-        ),
+            helperText: "Integer Number"),
         onChanged: (str) => setValue(int.tryParse(str) ?? 10),
         keyboardType: TextInputType.number,
-        inputFormatters: [ FilteringTextInputFormatter.digitsOnly ],
+        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
       );
     } else if (type.startsWith("bool")) {
       return Row(
         children: [
-          Checkbox(value: getValue(), onChanged: (v) => setState(() => setValue(v))),
-          const SizedBox(width: 10,),
+          Checkbox(
+              value: getValue(), onChanged: (v) => setState(() => setValue(v))),
+          const SizedBox(
+            width: 10,
+          ),
           Text(name)
         ],
       );
@@ -301,22 +328,25 @@ class _RunApiDialogState extends State<RunApiDialog> {
         children: [
           Text(name, style: labelStyle),
           SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: [
-                for (var adMediationDart in AdMediationDart.values)
-                  ...[
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  for (var adMediationDart in AdMediationDart.values) ...[
                     ChoiceChip(
                       label: Text(adMediationDart.name),
                       selected: adMediationDart == getValue(),
-                      onSelected: (selected) => selected? setState(() => setValue(adMediationDart)) : null,
-                      selectedColor: Theme.of(context).colorScheme.primaryContainer,
+                      onSelected: (selected) => selected
+                          ? setState(() => setValue(adMediationDart))
+                          : null,
+                      selectedColor:
+                          Theme.of(context).colorScheme.primaryContainer,
                     ),
-                    const SizedBox(width: 5,)
+                    const SizedBox(
+                      width: 5,
+                    )
                   ]
-              ],
-            )
-          )
+                ],
+              ))
         ],
       );
     } else if (type.startsWith("Map<String, Object?>")) {
@@ -327,8 +357,7 @@ class _RunApiDialogState extends State<RunApiDialog> {
             labelText: name,
             labelStyle: labelStyle,
             border: const OutlineInputBorder(),
-            helperText: "Json: {\"name\": \"viper\", \"age\": 18}"
-        ),
+            helperText: "Json: {\"name\": \"viper\", \"age\": 18}"),
         onChanged: (str) => setValue(jsonDecode(str)),
       );
     } else if (type.startsWith("List<String>")) {
@@ -339,8 +368,7 @@ class _RunApiDialogState extends State<RunApiDialog> {
             labelText: name,
             labelStyle: labelStyle,
             border: const OutlineInputBorder(),
-            helperText: "String List: [\"a\", \"b\"]"
-        ),
+            helperText: "String List: [\"a\", \"b\"]"),
         onChanged: (str) => setValue(jsonDecode(str)),
       );
     } else {

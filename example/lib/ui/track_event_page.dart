@@ -13,7 +13,8 @@ class TrackEventPage extends StatefulWidget {
 
 class _State extends State<TrackEventPage> {
   String eventName = "default_event_name";
-  String properties = "{\"textProp\":\"Hello world!\",\"integerProp\":123456,\"fpProp\":123.456,\"boolProp\":true}";
+  String properties =
+      "{\"textProp\":\"Hello world!\",\"integerProp\":123456,\"fpProp\":123.456,\"boolProp\":true}";
   int repeat = 1;
   int interval = 0;
 
@@ -27,72 +28,70 @@ class _State extends State<TrackEventPage> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              TextField(
-                controller: TextEditingController()..text = eventName,
-                decoration: const InputDecoration(
-                    label: Text("Event name"),
-                    border: OutlineInputBorder()
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TextField(
+                  controller: TextEditingController()..text = eventName,
+                  decoration: const InputDecoration(
+                      label: Text("Event name"), border: OutlineInputBorder()),
+                  onChanged: (str) => eventName = str,
                 ),
-                onChanged: (str) => eventName = str,
-              ),
-              const SizedBox(height: 20,),
-              TextField(
-                controller: TextEditingController()..text = properties,
-                decoration: const InputDecoration(
-                    label: Text("Properties"),
-                    border: OutlineInputBorder()
+                const SizedBox(
+                  height: 20,
                 ),
-                onChanged: (str) => properties = str,
-                maxLines: null,
-              ),
-              const SizedBox(height: 20,),
-              Row(
-                children: [
-                  Flexible(
-                    child: TextField(
-                      decoration: const InputDecoration(
-                          label: Text("Repeats"),
-                          border: OutlineInputBorder()
-                      ),
-                      onChanged: (str) => setState(() => repeat = int.tryParse(str) ?? repeat),
-                      maxLines: null,
-                      keyboardType: TextInputType.number,
-                      inputFormatters: <TextInputFormatter>[
-                        FilteringTextInputFormatter.digitsOnly
-                      ]
-                    )
-                  ),
-                  const SizedBox(width: 10,),
-                  Flexible(
-                      child: TextField(
-                        decoration: const InputDecoration(
-                            label: Text("Interval (ms)"),
-                            border: OutlineInputBorder()
-                        ),
-                        onChanged: (str) => setState(() => interval = int.tryParse(str) ?? interval),
-                        maxLines: null,
-                        keyboardType: TextInputType.number,
-                        inputFormatters: <TextInputFormatter>[
+                TextField(
+                  controller: TextEditingController()..text = properties,
+                  decoration: const InputDecoration(
+                      label: Text("Properties"), border: OutlineInputBorder()),
+                  onChanged: (str) => properties = str,
+                  maxLines: null,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  children: [
+                    Flexible(
+                        child: TextField(
+                            decoration: const InputDecoration(
+                                label: Text("Repeats"),
+                                border: OutlineInputBorder()),
+                            onChanged: (str) => setState(
+                                () => repeat = int.tryParse(str) ?? repeat),
+                            maxLines: null,
+                            keyboardType: TextInputType.number,
+                            inputFormatters: <TextInputFormatter>[
                           FilteringTextInputFormatter.digitsOnly
-                        ]
-                      )
-                  ),
-                ],
-              ),
-              const SizedBox(height: 20,),
-              _RunButton(
-                  interval: interval,
-                  repeats: repeat,
-                  eventName: eventName,
-                  properties: properties
-              )
-            ],
-          )
-        ),
+                        ])),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Flexible(
+                        child: TextField(
+                            decoration: const InputDecoration(
+                                label: Text("Interval (ms)"),
+                                border: OutlineInputBorder()),
+                            onChanged: (str) => setState(
+                                () => interval = int.tryParse(str) ?? interval),
+                            maxLines: null,
+                            keyboardType: TextInputType.number,
+                            inputFormatters: <TextInputFormatter>[
+                          FilteringTextInputFormatter.digitsOnly
+                        ])),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                _RunButton(
+                    interval: interval,
+                    repeats: repeat,
+                    eventName: eventName,
+                    properties: properties)
+              ],
+            )),
       ),
     );
   }
@@ -104,12 +103,11 @@ class _RunButton extends StatefulWidget {
   final String eventName;
   final String properties;
 
-  const _RunButton({
-    required this.interval,
-    required this.repeats,
-    required this.eventName,
-    required this.properties
-  });
+  const _RunButton(
+      {required this.interval,
+      required this.repeats,
+      required this.eventName,
+      required this.properties});
 
   @override
   State<StatefulWidget> createState() => _RunButtonState();
@@ -123,30 +121,37 @@ class _RunButtonState extends State<_RunButton> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text("Times of repeat: $repeated / ${widget.repeats > 1? widget.repeats : 1}"),
-        const SizedBox(height: 5,),
+        Text(
+            "Times of repeat: $repeated / ${widget.repeats > 1 ? widget.repeats : 1}"),
+        const SizedBox(
+          height: 5,
+        ),
         ElevatedButton(
-          onPressed: () {
-            setState(() { repeated = 0; });
-            if (widget.eventName.isNotEmpty) {
-              final repeats = widget.repeats > 1 ? widget.repeats : 1;
+            onPressed: () {
+              setState(() {
+                repeated = 0;
+              });
+              if (widget.eventName.isNotEmpty) {
+                final repeats = widget.repeats > 1 ? widget.repeats : 1;
                 for (var i = 1; i <= repeats; ++i) {
-                Future.delayed(Duration(milliseconds: widget.interval * (i-1)), () {
+                  Future.delayed(
+                      Duration(milliseconds: widget.interval * (i - 1)), () {
                     DTAnalytics.trackEvent(
                         widget.eventName,
-                        widget.properties.isEmpty ? null : jsonDecode(widget.properties)
-                    );
-                    setState(() { repeated = i; });
-                });
+                        widget.properties.isEmpty
+                            ? null
+                            : jsonDecode(widget.properties));
+                    setState(() {
+                      repeated = i;
+                    });
+                  });
+                }
               }
-            }
-          },
-          child: Container(
-            width: double.infinity,
-            padding: const EdgeInsets.symmetric(vertical: 10),
-            child: const Center(child: Text("RUN"))
-          )
-        )
+            },
+            child: Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: const Center(child: Text("RUN"))))
       ],
     );
   }

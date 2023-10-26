@@ -5,7 +5,8 @@ import 'package:source_gen/source_gen.dart';
 
 class DtTestScanner extends GeneratorForAnnotation<DTApi> {
   @override
-  generateForAnnotatedElement(Element element, ConstantReader annotation, BuildStep buildStep) {
+  generateForAnnotatedElement(
+      Element element, ConstantReader annotation, BuildStep buildStep) {
     if (!buildStep.inputId.path.startsWith("lib/")) return null;
     if (element is ClassElement) {
       ++DtApiMethodsGenerator.total;
@@ -21,13 +22,15 @@ class DtApiMethodsGenerator extends GeneratorForAnnotation<DTApi> {
   static List<String> imports = [];
 
   @override
-  generateForAnnotatedElement(Element element, ConstantReader annotation, BuildStep buildStep) {
+  generateForAnnotatedElement(
+      Element element, ConstantReader annotation, BuildStep buildStep) {
     if (!buildStep.inputId.path.startsWith("lib/")) return null;
     if (element is ClassElement) {
       validElements.add(element);
     }
 
-    imports.add("import 'package:${buildStep.inputId.package}/${buildStep.inputId.path.replaceFirst("lib/", "")}';");
+    imports.add(
+        "import 'package:${buildStep.inputId.package}/${buildStep.inputId.path.replaceFirst("lib/", "")}';");
 
     if (++crt == total) {
       for (var ce in validElements) {
@@ -74,13 +77,11 @@ class DtApiMethod {
 }
 
 final Map<String, DtApiMethod> dtApiMethods = {
-  ${
-    validElements.map((ce) {
-      return ce.methods.map((me) {
-        return "\"${ce.name}_${me.name}\": ${genDtApiMethod(ce, me)}";
-      }).join(",\n");
-    }).join(",\n")
-  }
+  ${validElements.map((ce) {
+        return ce.methods.map((me) {
+          return "\"${ce.name}_${me.name}\": ${genDtApiMethod(ce, me)}";
+        }).join(",\n");
+      }).join(",\n")}
 };
       """;
 
@@ -120,8 +121,8 @@ final Map<String, DtApiMethod> dtApiMethods = {
       },
       run: (ordered, named) {
         ${ce.name}.${me.name}(
-          ${orderedRequired.indexed.map((e) => "ordered[${e.$1}]").join(", ")} ${orderedRequired.isNotEmpty? "," : ""}
-          ${namedParam.isEmpty? "" : namedParam.keys.map((key) => "$key: named[\"$key\"]").join(", ")}
+          ${orderedRequired.indexed.map((e) => "ordered[${e.$1}]").join(", ")} ${orderedRequired.isNotEmpty ? "," : ""}
+          ${namedParam.isEmpty ? "" : namedParam.keys.map((key) => "$key: named[\"$key\"]").join(", ")}
         );
       }
     )

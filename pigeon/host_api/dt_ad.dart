@@ -80,8 +80,12 @@ enum AdPlatformDart {
 
 @HostApi()
 abstract class DTAdPigeon {
-  void reportLoadBegin(String id, AdTypeDart type, AdPlatformDart platform,
-      String seq, Map<String, Object> properties,
+  void reportLoadBegin(
+      String id,
+      AdTypeDart type,
+      AdPlatformDart platform,
+      String seq,
+      Map<String, Object> properties,
       AdMediationDart mediation,
       String mediationId);
 

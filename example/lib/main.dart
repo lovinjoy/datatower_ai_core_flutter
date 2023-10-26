@@ -21,17 +21,16 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlueAccent)
-      ),
-      routes: {
-        "/init": (_) => const InitPage(),
-        "/home": (_) => const HomePage(),
-        "/track_event": (_) => const TrackEventPage(),
-        "/user_related_api": (_) => const UserRelatedApiPage(),
-        "/show_all_api": (_) => const ShowAllApiPage(),
-      },
-      initialRoute: sdkInfo == null? "/init" : "/home"
-    );
+        theme: ThemeData(
+            colorScheme:
+                ColorScheme.fromSeed(seedColor: Colors.lightBlueAccent)),
+        routes: {
+          "/init": (_) => const InitPage(),
+          "/home": (_) => const HomePage(),
+          "/track_event": (_) => const TrackEventPage(),
+          "/user_related_api": (_) => const UserRelatedApiPage(),
+          "/show_all_api": (_) => const ShowAllApiPage(),
+        },
+        initialRoute: sdkInfo == null ? "/init" : "/home");
   }
 }

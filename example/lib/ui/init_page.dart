@@ -62,25 +62,19 @@ class _State extends State<InitPage> {
                         onChanged: (_) => setState(() => _isDebug = !_isDebug)),
                   ]),
                   if (_isDebug) ...[
-                    const SizedBox(height: 5,),
+                    const SizedBox(
+                      height: 5,
+                    ),
                     DropdownMenu<DTLogLevel>(
                       dropdownMenuEntries: const [
                         DropdownMenuEntry(
-                            value: DTLogLevel.DEBUG,
-                            label: "Debug"
-                        ),
+                            value: DTLogLevel.DEBUG, label: "Debug"),
                         DropdownMenuEntry(
-                            value: DTLogLevel.INFO,
-                            label: "Info"
-                        ),
+                            value: DTLogLevel.INFO, label: "Info"),
                         DropdownMenuEntry(
-                            value: DTLogLevel.WARN,
-                            label: "Warn"
-                        ),
+                            value: DTLogLevel.WARN, label: "Warn"),
                         DropdownMenuEntry(
-                            value: DTLogLevel.ERROR,
-                            label: "Error"
-                        ),
+                            value: DTLogLevel.ERROR, label: "Error"),
                       ],
                       initialSelection: _logLevel,
                       onSelected: (ll) => _logLevel = ll ?? DTLogLevel.DEBUG,
@@ -100,7 +94,10 @@ class _State extends State<InitPage> {
                           if (Platform.isIOS) {
                             channel = "2";
                           }
-                          DT.initSDK(appId, url, channel: channel, isDebug: _isDebug, logLevel: _logLevel);
+                          DT.initSDK(appId, url,
+                              channel: channel,
+                              isDebug: _isDebug,
+                              logLevel: _logLevel);
                           Navigator.of(context).pushNamed("/home");
                         }
                       },
