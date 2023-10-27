@@ -81,12 +81,27 @@ class DTAdPigeon {
 
   static const MessageCodec<Object?> codec = StandardMessageCodec();
 
-  Future<void> reportLoadBegin(String arg_id, AdTypeDart arg_type, AdPlatformDart arg_platform, String arg_seq, Map<String?, Object?> arg_properties, AdMediationDart arg_mediation, String arg_mediationId) async {
+  Future<void> reportLoadBegin(
+      String arg_id,
+      AdTypeDart arg_type,
+      AdPlatformDart arg_platform,
+      String arg_seq,
+      Map<String?, Object?> arg_properties,
+      AdMediationDart arg_mediation,
+      String arg_mediationId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportLoadBegin', codec,
+        'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportLoadBegin',
+        codec,
         binaryMessenger: _binaryMessenger);
-    final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_id, arg_type.index, arg_platform.index, arg_seq, arg_properties, arg_mediation.index, arg_mediationId]) as List<Object?>?;
+    final List<Object?>? replyList = await channel.send(<Object?>[
+      arg_id,
+      arg_type.index,
+      arg_platform.index,
+      arg_seq,
+      arg_properties,
+      arg_mediation.index,
+      arg_mediationId
+    ]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -103,12 +118,35 @@ class DTAdPigeon {
     }
   }
 
-  Future<void> reportLoadEnd(String arg_id, AdTypeDart arg_type, AdPlatformDart arg_platform, int arg_duration, bool arg_result, String arg_seq, int arg_errorCode, String arg_errorMessage, Map<String?, Object?> arg_properties, AdMediationDart arg_mediation, String arg_mediationId) async {
+  Future<void> reportLoadEnd(
+      String arg_id,
+      AdTypeDart arg_type,
+      AdPlatformDart arg_platform,
+      int arg_duration,
+      bool arg_result,
+      String arg_seq,
+      int arg_errorCode,
+      String arg_errorMessage,
+      Map<String?, Object?> arg_properties,
+      AdMediationDart arg_mediation,
+      String arg_mediationId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportLoadEnd', codec,
+        'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportLoadEnd',
+        codec,
         binaryMessenger: _binaryMessenger);
-    final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_id, arg_type.index, arg_platform.index, arg_duration, arg_result, arg_seq, arg_errorCode, arg_errorMessage, arg_properties, arg_mediation.index, arg_mediationId]) as List<Object?>?;
+    final List<Object?>? replyList = await channel.send(<Object?>[
+      arg_id,
+      arg_type.index,
+      arg_platform.index,
+      arg_duration,
+      arg_result,
+      arg_seq,
+      arg_errorCode,
+      arg_errorMessage,
+      arg_properties,
+      arg_mediation.index,
+      arg_mediationId
+    ]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -125,12 +163,31 @@ class DTAdPigeon {
     }
   }
 
-  Future<void> reportToShow(String arg_id, AdTypeDart arg_type, AdPlatformDart arg_platform, String arg_location, String arg_seq, Map<String?, Object?> arg_properties, String arg_entrance, AdMediationDart arg_mediation, String arg_mediationId) async {
+  Future<void> reportToShow(
+      String arg_id,
+      AdTypeDart arg_type,
+      AdPlatformDart arg_platform,
+      String arg_location,
+      String arg_seq,
+      Map<String?, Object?> arg_properties,
+      String arg_entrance,
+      AdMediationDart arg_mediation,
+      String arg_mediationId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportToShow', codec,
+        'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportToShow',
+        codec,
         binaryMessenger: _binaryMessenger);
-    final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_id, arg_type.index, arg_platform.index, arg_location, arg_seq, arg_properties, arg_entrance, arg_mediation.index, arg_mediationId]) as List<Object?>?;
+    final List<Object?>? replyList = await channel.send(<Object?>[
+      arg_id,
+      arg_type.index,
+      arg_platform.index,
+      arg_location,
+      arg_seq,
+      arg_properties,
+      arg_entrance,
+      arg_mediation.index,
+      arg_mediationId
+    ]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -147,12 +204,31 @@ class DTAdPigeon {
     }
   }
 
-  Future<void> reportShow(String arg_id, AdTypeDart arg_type, AdPlatformDart arg_platform, String arg_location, String arg_seq, Map<String?, Object?> arg_properties, String arg_entrance, AdMediationDart arg_mediation, String arg_mediationId) async {
+  Future<void> reportShow(
+      String arg_id,
+      AdTypeDart arg_type,
+      AdPlatformDart arg_platform,
+      String arg_location,
+      String arg_seq,
+      Map<String?, Object?> arg_properties,
+      String arg_entrance,
+      AdMediationDart arg_mediation,
+      String arg_mediationId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportShow', codec,
+        'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportShow',
+        codec,
         binaryMessenger: _binaryMessenger);
-    final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_id, arg_type.index, arg_platform.index, arg_location, arg_seq, arg_properties, arg_entrance, arg_mediation.index, arg_mediationId]) as List<Object?>?;
+    final List<Object?>? replyList = await channel.send(<Object?>[
+      arg_id,
+      arg_type.index,
+      arg_platform.index,
+      arg_location,
+      arg_seq,
+      arg_properties,
+      arg_entrance,
+      arg_mediation.index,
+      arg_mediationId
+    ]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -169,12 +245,35 @@ class DTAdPigeon {
     }
   }
 
-  Future<void> reportShowFailed(String arg_id, AdTypeDart arg_type, AdPlatformDart arg_platform, String arg_location, String arg_seq, int arg_errorCode, String arg_errorMessage, Map<String?, Object?> arg_properties, String arg_entrance, AdMediationDart arg_mediation, String arg_mediationId) async {
+  Future<void> reportShowFailed(
+      String arg_id,
+      AdTypeDart arg_type,
+      AdPlatformDart arg_platform,
+      String arg_location,
+      String arg_seq,
+      int arg_errorCode,
+      String arg_errorMessage,
+      Map<String?, Object?> arg_properties,
+      String arg_entrance,
+      AdMediationDart arg_mediation,
+      String arg_mediationId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportShowFailed', codec,
+        'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportShowFailed',
+        codec,
         binaryMessenger: _binaryMessenger);
-    final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_id, arg_type.index, arg_platform.index, arg_location, arg_seq, arg_errorCode, arg_errorMessage, arg_properties, arg_entrance, arg_mediation.index, arg_mediationId]) as List<Object?>?;
+    final List<Object?>? replyList = await channel.send(<Object?>[
+      arg_id,
+      arg_type.index,
+      arg_platform.index,
+      arg_location,
+      arg_seq,
+      arg_errorCode,
+      arg_errorMessage,
+      arg_properties,
+      arg_entrance,
+      arg_mediation.index,
+      arg_mediationId
+    ]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -191,12 +290,31 @@ class DTAdPigeon {
     }
   }
 
-  Future<void> reportClose(String arg_id, AdTypeDart arg_type, AdPlatformDart arg_platform, String arg_location, String arg_seq, Map<String?, Object?> arg_properties, String arg_entrance, AdMediationDart arg_mediation, String arg_mediationId) async {
+  Future<void> reportClose(
+      String arg_id,
+      AdTypeDart arg_type,
+      AdPlatformDart arg_platform,
+      String arg_location,
+      String arg_seq,
+      Map<String?, Object?> arg_properties,
+      String arg_entrance,
+      AdMediationDart arg_mediation,
+      String arg_mediationId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportClose', codec,
+        'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportClose',
+        codec,
         binaryMessenger: _binaryMessenger);
-    final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_id, arg_type.index, arg_platform.index, arg_location, arg_seq, arg_properties, arg_entrance, arg_mediation.index, arg_mediationId]) as List<Object?>?;
+    final List<Object?>? replyList = await channel.send(<Object?>[
+      arg_id,
+      arg_type.index,
+      arg_platform.index,
+      arg_location,
+      arg_seq,
+      arg_properties,
+      arg_entrance,
+      arg_mediation.index,
+      arg_mediationId
+    ]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -213,12 +331,31 @@ class DTAdPigeon {
     }
   }
 
-  Future<void> reportClick(String arg_id, AdTypeDart arg_type, AdPlatformDart arg_platform, String arg_location, String arg_seq, Map<String?, Object?> arg_properties, String arg_entrance, AdMediationDart arg_mediation, String arg_mediationId) async {
+  Future<void> reportClick(
+      String arg_id,
+      AdTypeDart arg_type,
+      AdPlatformDart arg_platform,
+      String arg_location,
+      String arg_seq,
+      Map<String?, Object?> arg_properties,
+      String arg_entrance,
+      AdMediationDart arg_mediation,
+      String arg_mediationId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportClick', codec,
+        'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportClick',
+        codec,
         binaryMessenger: _binaryMessenger);
-    final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_id, arg_type.index, arg_platform.index, arg_location, arg_seq, arg_properties, arg_entrance, arg_mediation.index, arg_mediationId]) as List<Object?>?;
+    final List<Object?>? replyList = await channel.send(<Object?>[
+      arg_id,
+      arg_type.index,
+      arg_platform.index,
+      arg_location,
+      arg_seq,
+      arg_properties,
+      arg_entrance,
+      arg_mediation.index,
+      arg_mediationId
+    ]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -235,12 +372,31 @@ class DTAdPigeon {
     }
   }
 
-  Future<void> reportRewarded(String arg_id, AdTypeDart arg_type, AdPlatformDart arg_platform, String arg_location, String arg_seq, Map<String?, Object?> arg_properties, String arg_entrance, AdMediationDart arg_mediation, String arg_mediationId) async {
+  Future<void> reportRewarded(
+      String arg_id,
+      AdTypeDart arg_type,
+      AdPlatformDart arg_platform,
+      String arg_location,
+      String arg_seq,
+      Map<String?, Object?> arg_properties,
+      String arg_entrance,
+      AdMediationDart arg_mediation,
+      String arg_mediationId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportRewarded', codec,
+        'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportRewarded',
+        codec,
         binaryMessenger: _binaryMessenger);
-    final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_id, arg_type.index, arg_platform.index, arg_location, arg_seq, arg_properties, arg_entrance, arg_mediation.index, arg_mediationId]) as List<Object?>?;
+    final List<Object?>? replyList = await channel.send(<Object?>[
+      arg_id,
+      arg_type.index,
+      arg_platform.index,
+      arg_location,
+      arg_seq,
+      arg_properties,
+      arg_entrance,
+      arg_mediation.index,
+      arg_mediationId
+    ]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -257,12 +413,31 @@ class DTAdPigeon {
     }
   }
 
-  Future<void> reportConversionByClick(String arg_id, AdTypeDart arg_type, AdPlatformDart arg_platform, String arg_location, String arg_seq, Map<String?, Object?> arg_properties, String arg_entrance, AdMediationDart arg_mediation, String arg_mediationId) async {
+  Future<void> reportConversionByClick(
+      String arg_id,
+      AdTypeDart arg_type,
+      AdPlatformDart arg_platform,
+      String arg_location,
+      String arg_seq,
+      Map<String?, Object?> arg_properties,
+      String arg_entrance,
+      AdMediationDart arg_mediation,
+      String arg_mediationId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportConversionByClick', codec,
+        'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportConversionByClick',
+        codec,
         binaryMessenger: _binaryMessenger);
-    final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_id, arg_type.index, arg_platform.index, arg_location, arg_seq, arg_properties, arg_entrance, arg_mediation.index, arg_mediationId]) as List<Object?>?;
+    final List<Object?>? replyList = await channel.send(<Object?>[
+      arg_id,
+      arg_type.index,
+      arg_platform.index,
+      arg_location,
+      arg_seq,
+      arg_properties,
+      arg_entrance,
+      arg_mediation.index,
+      arg_mediationId
+    ]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -279,12 +454,31 @@ class DTAdPigeon {
     }
   }
 
-  Future<void> reportConversionByLeftApp(String arg_id, AdTypeDart arg_type, AdPlatformDart arg_platform, String arg_location, String arg_seq, Map<String?, Object?> arg_properties, String arg_entrance, AdMediationDart arg_mediation, String arg_mediationId) async {
+  Future<void> reportConversionByLeftApp(
+      String arg_id,
+      AdTypeDart arg_type,
+      AdPlatformDart arg_platform,
+      String arg_location,
+      String arg_seq,
+      Map<String?, Object?> arg_properties,
+      String arg_entrance,
+      AdMediationDart arg_mediation,
+      String arg_mediationId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportConversionByLeftApp', codec,
+        'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportConversionByLeftApp',
+        codec,
         binaryMessenger: _binaryMessenger);
-    final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_id, arg_type.index, arg_platform.index, arg_location, arg_seq, arg_properties, arg_entrance, arg_mediation.index, arg_mediationId]) as List<Object?>?;
+    final List<Object?>? replyList = await channel.send(<Object?>[
+      arg_id,
+      arg_type.index,
+      arg_platform.index,
+      arg_location,
+      arg_seq,
+      arg_properties,
+      arg_entrance,
+      arg_mediation.index,
+      arg_mediationId
+    ]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -301,12 +495,31 @@ class DTAdPigeon {
     }
   }
 
-  Future<void> reportConversionByRewarded(String arg_id, AdTypeDart arg_type, AdPlatformDart arg_platform, String arg_location, String arg_seq, Map<String?, Object?> arg_properties, String arg_entrance, AdMediationDart arg_mediation, String arg_mediationId) async {
+  Future<void> reportConversionByRewarded(
+      String arg_id,
+      AdTypeDart arg_type,
+      AdPlatformDart arg_platform,
+      String arg_location,
+      String arg_seq,
+      Map<String?, Object?> arg_properties,
+      String arg_entrance,
+      AdMediationDart arg_mediation,
+      String arg_mediationId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportConversionByRewarded', codec,
+        'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportConversionByRewarded',
+        codec,
         binaryMessenger: _binaryMessenger);
-    final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_id, arg_type.index, arg_platform.index, arg_location, arg_seq, arg_properties, arg_entrance, arg_mediation.index, arg_mediationId]) as List<Object?>?;
+    final List<Object?>? replyList = await channel.send(<Object?>[
+      arg_id,
+      arg_type.index,
+      arg_platform.index,
+      arg_location,
+      arg_seq,
+      arg_properties,
+      arg_entrance,
+      arg_mediation.index,
+      arg_mediationId
+    ]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -323,12 +536,37 @@ class DTAdPigeon {
     }
   }
 
-  Future<void> reportPaid(String arg_id, AdTypeDart arg_type, AdPlatformDart arg_platform, String arg_location, String arg_seq, double arg_value, String arg_currency, String arg_precision, Map<String?, Object?> arg_properties, String arg_entrance, AdMediationDart arg_mediation, String arg_mediationId) async {
+  Future<void> reportPaid(
+      String arg_id,
+      AdTypeDart arg_type,
+      AdPlatformDart arg_platform,
+      String arg_location,
+      String arg_seq,
+      double arg_value,
+      String arg_currency,
+      String arg_precision,
+      Map<String?, Object?> arg_properties,
+      String arg_entrance,
+      AdMediationDart arg_mediation,
+      String arg_mediationId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportPaid', codec,
+        'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportPaid',
+        codec,
         binaryMessenger: _binaryMessenger);
-    final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_id, arg_type.index, arg_platform.index, arg_location, arg_seq, arg_value, arg_currency, arg_precision, arg_properties, arg_entrance, arg_mediation.index, arg_mediationId]) as List<Object?>?;
+    final List<Object?>? replyList = await channel.send(<Object?>[
+      arg_id,
+      arg_type.index,
+      arg_platform.index,
+      arg_location,
+      arg_seq,
+      arg_value,
+      arg_currency,
+      arg_precision,
+      arg_properties,
+      arg_entrance,
+      arg_mediation.index,
+      arg_mediationId
+    ]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -345,12 +583,35 @@ class DTAdPigeon {
     }
   }
 
-  Future<void> reportPaidWithCountry(String arg_id, AdTypeDart arg_type, AdPlatformDart arg_platform, String arg_location, String arg_seq, AdMediationDart arg_mediation, String arg_mediationId, double arg_value, String arg_precision, String arg_country, Map<String?, Object?> arg_properties) async {
+  Future<void> reportPaidWithCountry(
+      String arg_id,
+      AdTypeDart arg_type,
+      AdPlatformDart arg_platform,
+      String arg_location,
+      String arg_seq,
+      AdMediationDart arg_mediation,
+      String arg_mediationId,
+      double arg_value,
+      String arg_precision,
+      String arg_country,
+      Map<String?, Object?> arg_properties) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportPaidWithCountry', codec,
+        'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportPaidWithCountry',
+        codec,
         binaryMessenger: _binaryMessenger);
-    final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_id, arg_type.index, arg_platform.index, arg_location, arg_seq, arg_mediation.index, arg_mediationId, arg_value, arg_precision, arg_country, arg_properties]) as List<Object?>?;
+    final List<Object?>? replyList = await channel.send(<Object?>[
+      arg_id,
+      arg_type.index,
+      arg_platform.index,
+      arg_location,
+      arg_seq,
+      arg_mediation.index,
+      arg_mediationId,
+      arg_value,
+      arg_precision,
+      arg_country,
+      arg_properties
+    ]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -367,12 +628,31 @@ class DTAdPigeon {
     }
   }
 
-  Future<void> reportLeftApp(String arg_id, AdTypeDart arg_type, AdPlatformDart arg_platform, String arg_location, String arg_seq, Map<String?, Object?> arg_properties, String arg_entrance, AdMediationDart arg_mediation, String arg_mediationId) async {
+  Future<void> reportLeftApp(
+      String arg_id,
+      AdTypeDart arg_type,
+      AdPlatformDart arg_platform,
+      String arg_location,
+      String arg_seq,
+      Map<String?, Object?> arg_properties,
+      String arg_entrance,
+      AdMediationDart arg_mediation,
+      String arg_mediationId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportLeftApp', codec,
+        'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportLeftApp',
+        codec,
         binaryMessenger: _binaryMessenger);
-    final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_id, arg_type.index, arg_platform.index, arg_location, arg_seq, arg_properties, arg_entrance, arg_mediation.index, arg_mediationId]) as List<Object?>?;
+    final List<Object?>? replyList = await channel.send(<Object?>[
+      arg_id,
+      arg_type.index,
+      arg_platform.index,
+      arg_location,
+      arg_seq,
+      arg_properties,
+      arg_entrance,
+      arg_mediation.index,
+      arg_mediationId
+    ]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',

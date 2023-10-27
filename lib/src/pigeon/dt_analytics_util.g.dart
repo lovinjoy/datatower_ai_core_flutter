@@ -20,7 +20,8 @@ class DTAnalyticsUtilPigeon {
 
   Future<void> trackTimerStart(String arg_eventName) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.datatower_ai_core_flutter.DTAnalyticsUtilPigeon.trackTimerStart', codec,
+        'dev.flutter.pigeon.datatower_ai_core_flutter.DTAnalyticsUtilPigeon.trackTimerStart',
+        codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
         await channel.send(<Object?>[arg_eventName]) as List<Object?>?;
@@ -42,7 +43,8 @@ class DTAnalyticsUtilPigeon {
 
   Future<void> trackTimerPause(String arg_eventName) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.datatower_ai_core_flutter.DTAnalyticsUtilPigeon.trackTimerPause', codec,
+        'dev.flutter.pigeon.datatower_ai_core_flutter.DTAnalyticsUtilPigeon.trackTimerPause',
+        codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
         await channel.send(<Object?>[arg_eventName]) as List<Object?>?;
@@ -64,7 +66,8 @@ class DTAnalyticsUtilPigeon {
 
   Future<void> trackTimerResume(String arg_eventName) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.datatower_ai_core_flutter.DTAnalyticsUtilPigeon.trackTimerResume', codec,
+        'dev.flutter.pigeon.datatower_ai_core_flutter.DTAnalyticsUtilPigeon.trackTimerResume',
+        codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
         await channel.send(<Object?>[arg_eventName]) as List<Object?>?;
@@ -84,12 +87,14 @@ class DTAnalyticsUtilPigeon {
     }
   }
 
-  Future<void> trackTimerEnd(String arg_eventName, Map<String?, Object?>? arg_properties) async {
+  Future<void> trackTimerEnd(
+      String arg_eventName, Map<String?, Object?>? arg_properties) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.datatower_ai_core_flutter.DTAnalyticsUtilPigeon.trackTimerEnd', codec,
+        'dev.flutter.pigeon.datatower_ai_core_flutter.DTAnalyticsUtilPigeon.trackTimerEnd',
+        codec,
         binaryMessenger: _binaryMessenger);
-    final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_eventName, arg_properties]) as List<Object?>?;
+    final List<Object?>? replyList = await channel
+        .send(<Object?>[arg_eventName, arg_properties]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',

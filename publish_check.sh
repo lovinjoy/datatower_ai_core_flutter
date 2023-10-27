@@ -1,11 +1,11 @@
 project_path="$(dirname "$0")"
-thin_divider="┠┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄"
-divider="┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-divider_btm="┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+thin_divider="┠┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┄╌╌"
+divider="┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┉┅╍╍"
+divider_btm="┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┉┅╍╍"
 
 echo "    ╭──────────────────────╮"
 echo "    │ Publish check report │"
-echo "┏━━━┷━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "┏━━━┷━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┉┅╍╍"
 
 total_num_api="$(grep -c -E '"[A-Za-z0-9]*_[A-Za-z0-9]*\": DtApiMethod\(' < "$project_path/example/lib/test/dt_methods.dart")"
 echo "┃ Total Number of APIs in dt_methods.dart: \033[4m$total_num_api\033[0m"
@@ -29,9 +29,16 @@ if [[ $stripped_sdk_version != "$stripped_sdk_version_2" ]]; then
 fi
 
 android_sdk_ver=$(grep "com.lovinjoy:datatowerai-core" < "$project_path/android/build.gradle" | sed "s/^.*\"com.lovinjoy:datatowerai-core:\(.*\)\".*$/\1/g")
+android_sdk_ver_suffix=$(echo "$android_sdk_ver"| sed -n "s/.*+$/(dynamic)/gp")
+echo "┃ Used version of \033[1mDT Android\033[0m：\033[4m$android_sdk_ver\033[0m $android_sdk_ver_suffix"
+
 ios_sdk_ver=$(grep "DataTowerAICore" < "$project_path/ios/datatower_ai_core_flutter.podspec" | sed "s/^.*'DataTowerAICore'.*'\(.*\)'/\1/g")
-echo "┃ Used version of \033[1mDT Android\033[0m：\033[4m$android_sdk_ver\033[0m"
-echo "┃ Used version of \033[1mDT iOS\033[0m：\033[4m$ios_sdk_ver\033[0m"
+ios_sdk_ver_suffix=$(echo "$ios_sdk_ver"| sed -n "s/^~>.*/(dynamic)/gp")
+echo "┃ Used version of \033[1mDT iOS\033[0m：\033[4m$ios_sdk_ver\033[0m $ios_sdk_ver_suffix"
+
+if [[ "$android_sdk_ver_suffix" != "$ios_sdk_ver_suffix" ]]; then
+  echo "┃ \033[0;33mThe one used dynamic version but another isn't.\033[0m"
+fi
 
 echo "$thin_divider"
 
@@ -57,7 +64,7 @@ if [[ $num_find_in_changelog == 0 ]]; then
   echo "  \033[0;31m- This version ($stripped_sdk_version) is not listed in \033[1;31mCHANGELOG.md\033[0;31m.\033[0m"
   exit
 else
-  echo "┣━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  echo "┣━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┉┅╍╍"
   echo "┃ CHANGELOG │"
   echo "┠───────────╯"
   changelog_lower_bound=$(grep -FnE -m2 "^# .*" < "$project_path/CHANGELOG.md" | tail -n1 | cut -d ":" -f 1)

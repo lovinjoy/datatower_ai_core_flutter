@@ -390,10 +390,14 @@ class _RunApiDialogState extends State<RunApiDialog> {
         inputFormatters: [
           FilteringTextInputFormatter.allow(RegExp(r"^[0-9]*(\.[0-9]*)?$")),
         ],
-        buildCounter: (_, {required currentLength, required isFocused, maxLength}) => Text(getValue().toString()),
+        buildCounter: (_,
+                {required currentLength, required isFocused, maxLength}) =>
+            Text(getValue().toString()),
       );
     } else {
-      return Text("'$type' is not implemented", style: const TextStyle(color: Colors.redAccent, fontWeight: FontWeight.bold));
+      return Text("'$type' is not implemented",
+          style: const TextStyle(
+              color: Colors.redAccent, fontWeight: FontWeight.bold));
     }
   }
 }
