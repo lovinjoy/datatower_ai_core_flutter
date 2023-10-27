@@ -77,20 +77,20 @@
     [DTAdReport reportLoadEnd:id type:dtType platform:dtPlatform duration:duration result:[result boolValue] seq:seq mediation:dtMediation mediationId:mediationId errorCode:errorCode.intValue errorMessage:errorMessage properties:properties];
 }
 
-- (void)reportPaidId:(nonnull NSString *)id type:(DTAdTypeDart)type platform:(DTAdPlatformDart)platform location:(nonnull NSString *)location seq:(nonnull NSString *)seq value:(nonnull NSString *)value currency:(nonnull NSString *)currency precision:(nonnull NSString *)precision properties:(nonnull NSDictionary<NSString *,id> *)properties entrance:(nonnull NSString *)entrance mediation:(DTAdMediationDart)mediation mediationId:(nonnull NSString *)mediationId error:(FlutterError * _Nullable __autoreleasing * _Nonnull)error {
+- (void)reportPaidId:(nonnull NSString *)id type:(DTAdTypeDart)type platform:(DTAdPlatformDart)platform location:(nonnull NSString *)location seq:(nonnull NSString *)seq value:(NSNumber *)value currency:(nonnull NSString *)currency precision:(nonnull NSString *)precision properties:(nonnull NSDictionary<NSString *,id> *)properties entrance:(nonnull NSString *)entrance mediation:(DTAdMediationDart)mediation mediationId:(nonnull NSString *)mediationId error:(FlutterError * _Nullable __autoreleasing * _Nonnull)error {
     DTAdType dtType = [DTEnumHelper converAdType:type];
     DTAdPlatform dtPlatform = [DTEnumHelper convertPlatformType:platform];
     DTAdMediation dtMediation = [DTEnumHelper convertMediationType:mediation];
 
-    [DTAdReport reportPaid:id type:dtType platform:dtPlatform location:location seq:seq mediation:dtMediation mediationId:mediationId value:value currency:currency precision:precision properties:properties entrance:entrance];
+    [DTAdReport reportPaid:id type:dtType platform:dtPlatform location:location seq:seq mediation:dtMediation mediationId:mediationId value:[value doubleValue] currency:currency precision:precision properties:properties entrance:entrance];
 }
 
-- (void)reportPaidWithCountryId:(nonnull NSString *)id type:(DTAdTypeDart)type platform:(DTAdPlatformDart)platform location:(nonnull NSString *)location seq:(nonnull NSString *)seq mediation:(DTAdMediationDart)mediation mediationId:(nonnull NSString *)mediationId value:(nonnull NSString *)value precision:(nonnull NSString *)precision country:(nonnull NSString *)country properties:(nonnull NSDictionary<NSString *,id> *)properties error:(FlutterError * _Nullable __autoreleasing * _Nonnull)error {
+- (void)reportPaidWithCountryId:(nonnull NSString *)id type:(DTAdTypeDart)type platform:(DTAdPlatformDart)platform location:(nonnull NSString *)location seq:(nonnull NSString *)seq mediation:(DTAdMediationDart)mediation mediationId:(nonnull NSString *)mediationId value:( NSNumber *)value precision:(nonnull NSString *)precision country:(nonnull NSString *)country properties:(nonnull NSDictionary<NSString *,id> *)properties error:(FlutterError * _Nullable __autoreleasing * _Nonnull)error {
     DTAdType dtType = [DTEnumHelper converAdType:type];
     DTAdPlatform dtPlatform = [DTEnumHelper convertPlatformType:platform];
     DTAdMediation dtMediation = [DTEnumHelper convertMediationType:mediation];
 
-    [DTAdReport reportPaid:id type:dtType platform:dtPlatform location:location seq:seq mediation:dtMediation mediationId:mediationId value:value precision:precision country:country properties:properties entrance:@""];
+    [DTAdReport reportPaid:id type:dtType platform:dtPlatform location:location seq:seq mediation:dtMediation mediationId:mediationId value:[value doubleValue] precision:precision country:country properties:properties entrance:@""];
 }
 
 - (void)reportRewardedId:(nonnull NSString *)id type:(DTAdTypeDart)type platform:(DTAdPlatformDart)platform location:(nonnull NSString *)location seq:(nonnull NSString *)seq properties:(nonnull NSDictionary<NSString *,id> *)properties entrance:(nonnull NSString *)entrance mediation:(DTAdMediationDart)mediation mediationId:(nonnull NSString *)mediationId error:(FlutterError * _Nullable __autoreleasing * _Nonnull)error {
