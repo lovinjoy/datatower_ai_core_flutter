@@ -5,7 +5,8 @@ import 'package:datatower_ai_core_flutter/src/base/dt_api.dart';
 
 @DTApi()
 class DT {
-  static const _versionName = "2.0.1";
+  /// Version name, should be equal to 'version' in pubspec.yaml
+  static const _versionName = "2.1.0";
 
   /// 初始化入口
   ///

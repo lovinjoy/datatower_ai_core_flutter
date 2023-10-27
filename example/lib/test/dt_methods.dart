@@ -4,17 +4,19 @@
 // DtApiMethodsGenerator
 // **************************************************************************
 
-import 'package:datatower_ai_core_flutter/api/dt_ad.dart';
 import 'package:datatower_ai_core_flutter/api/dt.dart';
+import 'package:datatower_ai_core_flutter/api/dt_ad.dart';
 import 'package:datatower_ai_core_flutter/api/dt_analytics.dart';
 import 'package:datatower_ai_core_flutter/api/dt_analytics_util.dart';
 
 const List<DtApiMethodHolder> dtApiMethodHolders = [
-  dtApiMethods4DTAdReport,
   dtApiMethods4DT,
+  dtApiMethods4DTAdReport,
   dtApiMethods4DTAnalytics,
   dtApiMethods4DTAnalyticsUtil
 ];
+
+const DtApiMethodHolder dtApiMethods4DT = DtApiMethodHolder("DT", ["initSDK"]);
 
 const DtApiMethodHolder dtApiMethods4DTAdReport =
     DtApiMethodHolder("DTAdReport", [
@@ -33,8 +35,6 @@ const DtApiMethodHolder dtApiMethods4DTAdReport =
   "reportPaidWithCountry",
   "reportLeftApp"
 ]);
-
-const DtApiMethodHolder dtApiMethods4DT = DtApiMethodHolder("DT", ["initSDK"]);
 
 const DtApiMethodHolder dtApiMethods4DTAnalytics =
     DtApiMethodHolder("DTAnalytics", [
@@ -87,6 +87,21 @@ class DtApiMethod {
 }
 
 final Map<String, DtApiMethod> dtApiMethods = {
+  "DT_initSDK": DtApiMethod(
+      name: "DT",
+      orderedParamNames: ["appId", "url"],
+      orderedParam: ["String", "String"],
+      namedParam: {
+        "channel": "String",
+        "isDebug": "bool",
+        "logLevel": "DTLogLevel"
+      },
+      run: (ordered, named) {
+        DT.initSDK(ordered[0], ordered[1],
+            channel: named["channel"],
+            isDebug: named["isDebug"],
+            logLevel: named["logLevel"]);
+      }),
   "DTAdReport_reportLoadBegin": DtApiMethod(
       name: "DTAdReport",
       orderedParamNames: [
@@ -441,7 +456,7 @@ final Map<String, DtApiMethod> dtApiMethods = {
         "String",
         "String",
         "String",
-        "String",
+        "double",
         "String",
         "String"
       ],
@@ -486,7 +501,7 @@ final Map<String, DtApiMethod> dtApiMethods = {
         "String",
         "AdMediationDart",
         "String",
-        "String",
+        "double",
         "String",
         "String"
       ],
@@ -533,17 +548,6 @@ final Map<String, DtApiMethod> dtApiMethods = {
         DTAdReport.reportLeftApp(ordered[0], ordered[1], ordered[2], ordered[3],
             ordered[4], ordered[5], ordered[6],
             properties: named["properties"], entrance: named["entrance"]);
-      }),
-  "DT_initSDK": DtApiMethod(
-      name: "DT",
-      orderedParamNames: ["appId", "url"],
-      orderedParam: ["String", "String"],
-      namedParam: {"channel": "String", "isDebug": "bool", "logLevel": "int"},
-      run: (ordered, named) {
-        DT.initSDK(ordered[0], ordered[1],
-            channel: named["channel"],
-            isDebug: named["isDebug"],
-            logLevel: named["logLevel"]);
       }),
   "DTAnalytics_trackEvent": DtApiMethod(
       name: "DTAnalytics",

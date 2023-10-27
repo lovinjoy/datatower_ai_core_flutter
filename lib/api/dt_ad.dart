@@ -315,7 +315,7 @@ class DTAdReport {
       String mediationId,
       String location,
       String seq,
-      String value,
+      double value,
       String currency,
       String precision,
       {JsonMap? properties,
@@ -356,7 +356,7 @@ class DTAdReport {
     String seq,
     AdMediationDart mediation,
     String mediationId,
-    String value,
+    double value,
     String precision,
     String country, {
     JsonMap? properties,

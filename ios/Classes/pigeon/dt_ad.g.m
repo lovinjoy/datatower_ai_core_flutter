@@ -377,7 +377,7 @@ void DTDTAdPigeonSetup(id<FlutterBinaryMessenger> binaryMessenger, NSObject<DTDT
         DTAdPlatformDart arg_platform = [GetNullableObjectAtIndex(args, 2) integerValue];
         NSString *arg_location = GetNullableObjectAtIndex(args, 3);
         NSString *arg_seq = GetNullableObjectAtIndex(args, 4);
-        NSString *arg_value = GetNullableObjectAtIndex(args, 5);
+        NSNumber *arg_value = GetNullableObjectAtIndex(args, 5);
         NSString *arg_currency = GetNullableObjectAtIndex(args, 6);
         NSString *arg_precision = GetNullableObjectAtIndex(args, 7);
         NSDictionary<NSString *, id> *arg_properties = GetNullableObjectAtIndex(args, 8);
@@ -409,7 +409,7 @@ void DTDTAdPigeonSetup(id<FlutterBinaryMessenger> binaryMessenger, NSObject<DTDT
         NSString *arg_seq = GetNullableObjectAtIndex(args, 4);
         DTAdMediationDart arg_mediation = [GetNullableObjectAtIndex(args, 5) integerValue];
         NSString *arg_mediationId = GetNullableObjectAtIndex(args, 6);
-        NSString *arg_value = GetNullableObjectAtIndex(args, 7);
+        NSNumber *arg_value = GetNullableObjectAtIndex(args, 7);
         NSString *arg_precision = GetNullableObjectAtIndex(args, 8);
         NSString *arg_country = GetNullableObjectAtIndex(args, 9);
         NSDictionary<NSString *, id> *arg_properties = GetNullableObjectAtIndex(args, 10);

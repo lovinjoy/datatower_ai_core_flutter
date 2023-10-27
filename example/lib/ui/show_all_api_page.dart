@@ -218,6 +218,8 @@ class _RunApiDialogState extends State<RunApiDialog> {
       return {"TestMap": "123abc", "Key2": 222, "name": name};
     } else if (type.startsWith("List<String>")) {
       return ["TestProp", "Sword", "helicopter", name ?? "name"];
+    } else if (type.startsWith("double")) {
+      return 1.2;
     } else {
       return null;
     }
@@ -371,8 +373,27 @@ class _RunApiDialogState extends State<RunApiDialog> {
             helperText: "String List: [\"a\", \"b\"]"),
         onChanged: (str) => setValue(jsonDecode(str)),
       );
+    } else if (type.startsWith("double")) {
+      final controller = TextEditingController(text: getValue().toString());
+      return TextField(
+        controller: controller,
+        decoration: InputDecoration(
+            labelText: name,
+            labelStyle: labelStyle,
+            border: const OutlineInputBorder(),
+            helperText: "Double Number, e.g. 1, 2.3, 0.4, .5"),
+        onChanged: (str) {
+          final d = double.tryParse(str);
+          if (d != null) setValue(d);
+        },
+        keyboardType: const TextInputType.numberWithOptions(signed: true),
+        inputFormatters: [
+          FilteringTextInputFormatter.allow(RegExp(r"^[0-9]*(\.[0-9]*)?$")),
+        ],
+        buildCounter: (_, {required currentLength, required isFocused, maxLength}) => Text(getValue().toString()),
+      );
     } else {
-      return Container();
+      return Text("'$type' is not implemented", style: const TextStyle(color: Colors.redAccent, fontWeight: FontWeight.bold));
     }
   }
 }
