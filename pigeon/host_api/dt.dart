@@ -12,7 +12,6 @@ import 'package:pigeon/pigeon.dart';
   objcOptions: ObjcOptions(prefix: 'DT'),
   dartPackageName: 'datatower_ai_core_flutter',
 ))
-
 enum DTLogLevel {
   DEBUG,
   INFO,

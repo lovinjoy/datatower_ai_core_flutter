@@ -22,38 +22,38 @@ class _State extends State<ClickSetText> {
   @override
   Widget build(BuildContext context) {
     return ClickableText(
-      title: widget.title,
-      initText: lastConfirmed ?? "Click to set",
-      onClick: () {
-        return showDialog<String?>(
-          context: context,
-          barrierDismissible: false,
-          builder: (context) => AlertDialog(
-            title: Text(widget.title),
-            content: TextField(
-              controller: TextEditingController()..text = lastConfirmed ?? "",
-              onChanged: (str) => inputted = str,
-              autofocus: true,
-            ),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  inputted = null;
-                  Navigator.pop(context, lastConfirmed);
-                },
-                child: const Text("Cancel"),
-              ),
-              TextButton(
-                onPressed: () {
-                  lastConfirmed = inputted;
-                  Navigator.pop(context, widget.onConfirm(lastConfirmed));
-                },
-                child: const Text("Confirm"),
-              )
-            ],
-          )
-        );
-      }
-    );
+        title: widget.title,
+        initText: lastConfirmed ?? "Click to set",
+        onClick: () {
+          return showDialog<String?>(
+              context: context,
+              barrierDismissible: false,
+              builder: (context) => AlertDialog(
+                    title: Text(widget.title),
+                    content: TextField(
+                      controller: TextEditingController()
+                        ..text = lastConfirmed ?? "",
+                      onChanged: (str) => inputted = str,
+                      autofocus: true,
+                    ),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          inputted = null;
+                          Navigator.pop(context, lastConfirmed);
+                        },
+                        child: const Text("Cancel"),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          lastConfirmed = inputted;
+                          Navigator.pop(
+                              context, widget.onConfirm(lastConfirmed));
+                        },
+                        child: const Text("Confirm"),
+                      )
+                    ],
+                  ));
+        });
   }
 }

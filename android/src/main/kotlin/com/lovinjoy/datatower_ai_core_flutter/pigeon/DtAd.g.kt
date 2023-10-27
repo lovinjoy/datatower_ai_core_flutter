@@ -135,8 +135,8 @@ interface DTAdPigeon {
   fun reportConversionByClick(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, properties: Map<String, Any>, entrance: String, mediation: AdMediationDart, mediationId: String)
   fun reportConversionByLeftApp(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, properties: Map<String, Any>, entrance: String, mediation: AdMediationDart, mediationId: String)
   fun reportConversionByRewarded(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, properties: Map<String, Any>, entrance: String, mediation: AdMediationDart, mediationId: String)
-  fun reportPaid(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, value: String, currency: String, precision: String, properties: Map<String, Any>, entrance: String, mediation: AdMediationDart, mediationId: String)
-  fun reportPaidWithCountry(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, mediation: AdMediationDart, mediationId: String, value: String, precision: String, country: String, properties: Map<String, Any>)
+  fun reportPaid(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, value: Double, currency: String, precision: String, properties: Map<String, Any>, entrance: String, mediation: AdMediationDart, mediationId: String)
+  fun reportPaidWithCountry(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, mediation: AdMediationDart, mediationId: String, value: Double, precision: String, country: String, properties: Map<String, Any>)
   fun reportLeftApp(id: String, type: AdTypeDart, platform: AdPlatformDart, location: String, seq: String, properties: Map<String, Any>, entrance: String, mediation: AdMediationDart, mediationId: String)
 
   companion object {
@@ -456,7 +456,7 @@ interface DTAdPigeon {
             val platformArg = AdPlatformDart.ofRaw(args[2] as Int)!!
             val locationArg = args[3] as String
             val seqArg = args[4] as String
-            val valueArg = args[5] as String
+            val valueArg = args[5] as Double
             val currencyArg = args[6] as String
             val precisionArg = args[7] as String
             val propertiesArg = args[8] as Map<String, Any>
@@ -488,7 +488,7 @@ interface DTAdPigeon {
             val seqArg = args[4] as String
             val mediationArg = AdMediationDart.ofRaw(args[5] as Int)!!
             val mediationIdArg = args[6] as String
-            val valueArg = args[7] as String
+            val valueArg = args[7] as Double
             val precisionArg = args[8] as String
             val countryArg = args[9] as String
             val propertiesArg = args[10] as Map<String, Any>

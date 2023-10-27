@@ -226,7 +226,7 @@ internal object DtAdPigeonImpl: DTAdPigeon {
         platform: AdPlatformDart,
         location: String,
         seq: String,
-        value: String,
+        value: Double,
         currency: String,
         precision: String,
         properties: Map<String, Any>,
@@ -249,7 +249,7 @@ internal object DtAdPigeonImpl: DTAdPigeon {
         seq: String,
         mediation: AdMediationDart,
         mediationId: String,
-        value: String,
+        value: Double,
         precision: String,
         country: String,
         properties: Map<String, Any>

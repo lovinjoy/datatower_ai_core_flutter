@@ -323,7 +323,7 @@ class DTAdPigeon {
     }
   }
 
-  Future<void> reportPaid(String arg_id, AdTypeDart arg_type, AdPlatformDart arg_platform, String arg_location, String arg_seq, String arg_value, String arg_currency, String arg_precision, Map<String?, Object?> arg_properties, String arg_entrance, AdMediationDart arg_mediation, String arg_mediationId) async {
+  Future<void> reportPaid(String arg_id, AdTypeDart arg_type, AdPlatformDart arg_platform, String arg_location, String arg_seq, double arg_value, String arg_currency, String arg_precision, Map<String?, Object?> arg_properties, String arg_entrance, AdMediationDart arg_mediation, String arg_mediationId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportPaid', codec,
         binaryMessenger: _binaryMessenger);
@@ -345,7 +345,7 @@ class DTAdPigeon {
     }
   }
 
-  Future<void> reportPaidWithCountry(String arg_id, AdTypeDart arg_type, AdPlatformDart arg_platform, String arg_location, String arg_seq, AdMediationDart arg_mediation, String arg_mediationId, String arg_value, String arg_precision, String arg_country, Map<String?, Object?> arg_properties) async {
+  Future<void> reportPaidWithCountry(String arg_id, AdTypeDart arg_type, AdPlatformDart arg_platform, String arg_location, String arg_seq, AdMediationDart arg_mediation, String arg_mediationId, double arg_value, String arg_precision, String arg_country, Map<String?, Object?> arg_properties) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.datatower_ai_core_flutter.DTAdPigeon.reportPaidWithCountry', codec,
         binaryMessenger: _binaryMessenger);

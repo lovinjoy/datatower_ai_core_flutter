@@ -18,12 +18,23 @@ class DTIapPigeon {
 
   static const MessageCodec<Object?> codec = StandardMessageCodec();
 
-  Future<void> reportPurchaseSuccess(String arg_order, String arg_sku, double arg_price, String arg_currency, Map<String?, Object?>? arg_properties) async {
+  Future<void> reportPurchaseSuccess(
+      String arg_order,
+      String arg_sku,
+      double arg_price,
+      String arg_currency,
+      Map<String?, Object?>? arg_properties) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.datatower_ai_core_flutter.DTIapPigeon.reportPurchaseSuccess', codec,
+        'dev.flutter.pigeon.datatower_ai_core_flutter.DTIapPigeon.reportPurchaseSuccess',
+        codec,
         binaryMessenger: _binaryMessenger);
-    final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_order, arg_sku, arg_price, arg_currency, arg_properties]) as List<Object?>?;
+    final List<Object?>? replyList = await channel.send(<Object?>[
+      arg_order,
+      arg_sku,
+      arg_price,
+      arg_currency,
+      arg_properties
+    ]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
