@@ -1,0 +1,10 @@
+.dart_tool/
+.idea/
+build/
+local.properties
+.gradle/
+
+lib/src/test/
+build.yaml
+/pigeon/
+/*.sh

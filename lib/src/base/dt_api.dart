@@ -1,0 +1,3 @@
+class DTApi {
+  const DTApi();
+}
