@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <style>
+        :root {
+            background: #fff;
+            color: #000;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                background: #0B111D;
+                color: #F3F3F3;
+            }
+        }
+
+        .shield a { text-decoration: none; }
+        .shield {
+            padding: 0px 5px;
+            text-decoration: none;
+        }
+
+        table, th, td {
+            border-bottom: 1px solid;
+            border-collapse: collapse;
+        }
+        th {
+            padding: 10px 30px;
+        }
+        td {
+            padding: 10px 15px;
+        }
+    </style>
+    <title>DataTower.ai SDK versions</title>
+    <link rel="icon" href="https://dash.datatower.ai/favicon_v2.ico">
+</head>
+<body>
+<!-- Empty body -->
+</body>
+
+<script>
+    const dt_components = ["core"];
+    createDtVersionTable(dt_components);
+
+    function createDtVersionTable(components) {
+        const body = document.body,
+            tbl = document.createElement('table');
+        tbl.align = "center";
+
+        const header = tbl.insertRow().insertCell();
+        header.outerHTML = "<th colSpan=\"2\">DataTower.ai SDK</th>"
+
+        for (let i = 0; i < components.length; i++) {
+            const compLower = components[i].toLowerCase();
+            const tr = tbl.insertRow();
+
+            const th = tr.insertCell();
+            th.outerHTML = "<th>" + firstUpper(compLower) + "</th>"
+
+            const td = tr.insertCell();
+            td.innerHTML = buildAndroidShield(compLower) + buildIosShield(compLower) + buildUnityShield(compLower) + buildFlutterShield(compLower);
+        }
+        body.appendChild(tbl);
+    }
+
+    function firstUpper(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    function sepBy(str, join) {
+        const arr = str.split(" ");
+        return arr.join(join);
+    }
+
+    function buildAndroidShield(name) {
+        return "<span class=\"shield\">" +
+            "<a href=\"https://central.sonatype.com/artifact/ai.datatower/" + sepBy(name, "-") + "\" target=\"_blank\">" +
+                "<img alt=\"DT-" + name + "-Android\" src=\"https://img.shields.io/maven-central/v/ai.datatower/" + sepBy(name, "-") + "?style=for-the-badge&logo=android&logoColor=%2370d68c&label=Android&labelColor=%23dbeffd\">" +
+            "</a>" +
+        "</span>";
+    }
+
+    function buildIosShield(name) {
+        return "<span class=\"shield\">" +
+            "<a href=\"https://cocoapods.org/pods/datatower_ai_" + sepBy(name, "_") + "\" target=\"_blank\">" +
+                "<img alt=\"DT-" + name + "-iOS\" src=\"https://img.shields.io/cocoapods/v/datatower_ai_" + sepBy(name, "_") + "?style=for-the-badge&logo=ios&logoColor=%23000000&label=iOS%20&labelColor=%23f3f3f5\">" +
+            "</a>" +
+        "</span>";
+    }
+
+    function buildUnityShield(name) {
+        return "<span class=\"shield\">" +
+            "<a href=\"https://github.com/datatower-ai/sdk-" + sepBy(name, "-") + "-unity/releases/latest\" target=\"_blank\">" +
+                "<img alt=\"DT-" + name + "-Unity\" src=\"https://img.shields.io/github/v/release/datatower-ai/sdk-" + sepBy(name, "-") + "-unity?style=for-the-badge&logo=unity&logoColor=%23f7f7f7&label=Unity&labelColor=%23000000\">" +
+            "</a>" +
+        "</span>";
+    }
+
+    function buildFlutterShield(name) {
+        return "<span class=\"shield\">" +
+            "<a href=\"https://pub.dev/packages/datatower_ai_" + sepBy(name, "_") + "\" target=\"_blank\">" +
+                "<img alt=\"DT-" + name + "-Unity\" src=\"https://img.shields.io/pub/v/datatower_ai_" + sepBy(name, "_") + "?style=for-the-badge&logo=flutter&logoColor=%2375c5f2&label=Flutter\">" +
+            "</a>" +
+        "</span>";
+    }
+</script>
+</html>
+
+<!-- https://img.shields.io/maven-central/v/ai.datatower/core?style=for-the-badge&logo=android&logoColor=%2370d68c&label=Android&labelColor=%23dbeffd&link=https%3A%2F%2Fcentral.sonatype.com%2Fartifact%2Fcom.lovinjoy%2Fdatatowerai-core -->
+<!-- ![DT Android SDK](https://img.shields.io/maven-central/v/ai.datatower/core?style=for-the-badge&logo=android&logoColor=70d68c&label=Android&labelColor=dbeffd) -->
+
+<!-- https://img.shields.io/cocoapods/v/datatower_ai_core?style=for-the-badge&logo=ios&logoColor=%23000000&label=iOS%20&labelColor=%23f3f3f5&link=https%3A%2F%2Fcocoapods.org%2Fpods%2FDataTowerAICore -->
+<!-- ![DT iOS SDK](https://img.shields.io/cocoapods/v/datatower_ai_core?style=for-the-badge&logo=ios&logoColor=000000&label=iOS&labelColor=f3f3f5) -->
+
+<!-- https://img.shields.io/github/v/release/datatower-ai/sdk-core-unity?style=for-the-badge&logo=unity&logoColor=%23f7f7f7&label=Unity&labelColor=%23000000&link=https%3A%2F%2Fgithub.com%2Flovinjoy%2Fdatatower.ai-core-unity%2Freleases%2Flatest -->
+<!-- ![DT Unity SDK](https://img.shields.io/github/v/release/datatower-ai/sdk-core-unity?style=for-the-badge&logo=unity&logoColor=f7f7f7&label=Unity&labelColor=000000) -->
+
+<!-- https://img.shields.io/pub/v/datatower_ai_core?style=for-the-badge&logo=flutter&logoColor=%2375c5f2&label=Flutter&link=https%3A%2F%2Fpub.dev%2Fpackages%2Fdatatower_ai_core_flutter -->
+<!-- ![DT Flutter SDK](https://img.shields.io/pub/v/datatower_ai_core?style=for-the-badge&logo=flutter&logoColor=2375c5f2&label=Flutter) -->
+                     
