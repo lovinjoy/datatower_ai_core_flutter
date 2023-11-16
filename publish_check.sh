@@ -44,8 +44,16 @@ echo "$thin_divider"
 
 echo "┃ Getting the latest DT iOS/Android version from \033[1mremote...\033[0m"
 android_sdk_remote_ver=$(curl -s https://s01.oss.sonatype.org/content/repositories/releases/ai/datatower/core/maven-metadata.xml | grep "<latest>.*</latest>" | cut -d ">" -f2 | cut -d "<" -f1)
+if [[ -z "$android_sdk_remote_ver" ]]; then
+  android_sdk_remote_ver="\033[4;31mNot Found!\033[0m"
+  version_check_failed=true
+fi
 echo "┃  - [\033[1mDT Android\033[0m | Maven Central] \033[4m$android_sdk_remote_ver\033[0m"
 ios_sdk_remote_ver=$(curl -s https://cocoapods.org/pods/datatower_ai_core | sed -n 's/.*<h1>datatower_ai_core <span>\([0-9a-zA-Z.-]*\)<\/span><\/h1>.*/\1/gp')
+if [[ -z "$ios_sdk_remote_ver" ]]; then
+  ios_sdk_remote_ver="\033[4;31mNot Found!\033[0m"
+  version_check_failed=true
+fi
 echo "┃  - [\033[1mDT iOS\033[0m | CocoaPods] \033[4m$ios_sdk_remote_ver\033[0m"
 
 if [[ $version_check_failed == true ]]; then
