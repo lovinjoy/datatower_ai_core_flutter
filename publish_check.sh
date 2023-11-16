@@ -28,11 +28,11 @@ if [[ $stripped_sdk_version != "$stripped_sdk_version_2" ]]; then
   version_check_failed=true
 fi
 
-android_sdk_ver=$(grep "ai.datatower:core" < "$project_path/android/build.gradle" | sed "s/^.*\"ai.datatower:core:\(.*\)\".*$/\1/g")
+android_sdk_ver=$(grep "ai.datatower:core" < "$project_path/android/build.gradle" | sed -n "s/^.*\"ai.datatower:core:\(.*\)\".*$/\1/gp")
 android_sdk_ver_suffix=$(echo "$android_sdk_ver"| sed -n "s/.*+$/(dynamic)/gp")
 echo "┃ Used version of \033[1mDT Android\033[0m：\033[4m$android_sdk_ver\033[0m $android_sdk_ver_suffix"
 
-ios_sdk_ver=$(grep "datatower_ai_core" < "$project_path/ios/datatower_ai_core.podspec" | sed "s/^.*'datatower_ai_core'.*'\(.*\)'/\1/g")
+ios_sdk_ver=$(grep "datatower_ai_core" < "$project_path/ios/datatower_ai_core_flutter.podspec" | sed -n "s/^.*'datatower_ai_core'.*'\(.*\)'/\1/gp")
 ios_sdk_ver_suffix=$(echo "$ios_sdk_ver"| sed -n "s/^~>.*/(dynamic)/gp")
 echo "┃ Used version of \033[1mDT iOS\033[0m：\033[4m$ios_sdk_ver\033[0m $ios_sdk_ver_suffix"
 
@@ -68,7 +68,11 @@ else
   echo "┃ CHANGELOG │"
   echo "┠───────────╯"
   changelog_lower_bound=$(grep -FnE -m2 "^# .*" < "$project_path/CHANGELOG.md" | tail -n1 | cut -d ":" -f 1)
-  changelog_msg=$(sed -n -e "1,$((changelog_lower_bound-1))p" < ./CHANGELOG.md)
+  if [[ $changelog_lower_bound == 1 ]]; then
+    changelog_msg=$(cat ./CHANGELOG.md)
+  else
+    changelog_msg=$(sed -n -e "1,$((changelog_lower_bound-1))p" < ./CHANGELOG.md)
+  fi
   echo "$changelog_msg" | sed -E "s/^(.*)/┃ \1/g"
 fi
 
