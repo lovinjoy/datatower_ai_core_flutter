@@ -1,4 +1,4 @@
-group 'ai.datatower.datatower_ai_core'
+group 'ai.datatower.core_flutter'
 version '1.0-SNAPSHOT'
 
 buildscript {
@@ -28,7 +28,7 @@ apply plugin: 'kotlin-android'
 
 android {
     if (project.android.hasProperty("namespace")) {
-        namespace 'ai.datatower.datatower_ai_core'
+        namespace 'ai.datatower.core_flutter'
     }
 
     compileSdkVersion 33

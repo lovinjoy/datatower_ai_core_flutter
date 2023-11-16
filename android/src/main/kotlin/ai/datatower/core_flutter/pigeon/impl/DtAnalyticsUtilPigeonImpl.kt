@@ -1,4 +1,4 @@
-package ai.datatower.datatower_ai_core.pigeon.impl
+package ai.datatower.core_flutter.pigeon.impl
 
 import DTAnalyticsUtilPigeon
 import ai.datatower.analytics.DTAnalyticsUtils

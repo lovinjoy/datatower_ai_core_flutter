@@ -1,4 +1,4 @@
-package ai.datatower.datatower_ai_core
+package ai.datatower.core_flutter
 
 import DTPigeon
 import DTAdPigeon
@@ -6,12 +6,12 @@ import DTAnalyticsPigeon
 import DTAnalyticsUtilPigeon
 import DTIapPigeon
 import DTIasPigeon
-import ai.datatower.datatower_ai_core.pigeon.impl.DtAdPigeonImpl
-import ai.datatower.datatower_ai_core.pigeon.impl.DtPigeonImpl
-import ai.datatower.datatower_ai_core.pigeon.impl.DtAnalyticsPigeonImpl
-import ai.datatower.datatower_ai_core.pigeon.impl.DtAnalyticsUtilPigeonImpl
-import ai.datatower.datatower_ai_core.pigeon.impl.DtIapPigeonImpl
-import ai.datatower.datatower_ai_core.pigeon.impl.DtIasPigeonImpl
+import ai.datatower.core_flutter.pigeon.impl.DtAdPigeonImpl
+import ai.datatower.core_flutter.pigeon.impl.DtPigeonImpl
+import ai.datatower.core_flutter.pigeon.impl.DtAnalyticsPigeonImpl
+import ai.datatower.core_flutter.pigeon.impl.DtAnalyticsUtilPigeonImpl
+import ai.datatower.core_flutter.pigeon.impl.DtIapPigeonImpl
+import ai.datatower.core_flutter.pigeon.impl.DtIasPigeonImpl
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 

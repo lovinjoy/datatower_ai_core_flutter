@@ -40,7 +40,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: ai.datatower.datatower_ai_core
+        package: ai.datatower.core_flutter
         pluginClass: DatatowerAiCoreFlutterPlugin
       ios:
         pluginClass: DatatowerAiCoreFlutterPlugin
