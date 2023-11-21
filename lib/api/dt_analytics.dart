@@ -104,7 +104,8 @@ class DTAnalytics {
 
   /// 透传 dt_id 至三方归因平台
   ///
-  /// - [type] 归因平台 DTThirdPartyShareType.ADJUST
+  /// - [type] 归因平台：
+  ///     - ADJUST: 1
   static Future<void> enableThirdPartySharing(int type) {
     return _pigeon.enableThirdPartySharing(type);
   }

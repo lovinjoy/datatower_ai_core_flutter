@@ -29,7 +29,7 @@
 
 ---
 
-# DataTower.ai SDK for Flutter
+# DataTower.ai - Core - Flutter
 
 |             | Android |  iOS  |
 |:-----------:|:-------:|:-----:|
