@@ -67,7 +67,8 @@ enum class AdMediationDart(val raw: Int) {
   COMBO(4),
   TOPON(5),
   TRADPLUS(6),
-  TOBID(7);
+  TOBID(7),
+  ADMOB(8);
 
   companion object {
     fun ofRaw(raw: Int): AdMediationDart? {

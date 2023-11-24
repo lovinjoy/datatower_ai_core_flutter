@@ -18,14 +18,12 @@ class DTAnalyticsPigeon {
 
   static const MessageCodec<Object?> codec = StandardMessageCodec();
 
-  Future<void> trackEvent(
-      String arg_eventName, Map<String?, Object?> arg_properties) async {
+  Future<void> trackEvent(String arg_eventName, Map<String?, Object?> arg_properties) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.datatower_ai_core.DTAnalyticsPigeon.trackEvent',
-        codec,
+        'dev.flutter.pigeon.datatower_ai_core.DTAnalyticsPigeon.trackEvent', codec,
         binaryMessenger: _binaryMessenger);
-    final List<Object?>? replyList = await channel
-        .send(<Object?>[arg_eventName, arg_properties]) as List<Object?>?;
+    final List<Object?>? replyList =
+        await channel.send(<Object?>[arg_eventName, arg_properties]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -44,8 +42,7 @@ class DTAnalyticsPigeon {
 
   Future<void> userSet(Map<String?, Object?> arg_properties) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.datatower_ai_core.DTAnalyticsPigeon.userSet',
-        codec,
+        'dev.flutter.pigeon.datatower_ai_core.DTAnalyticsPigeon.userSet', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
         await channel.send(<Object?>[arg_properties]) as List<Object?>?;
@@ -67,8 +64,7 @@ class DTAnalyticsPigeon {
 
   Future<void> userSetOnce(Map<String?, Object?> arg_properties) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.datatower_ai_core.DTAnalyticsPigeon.userSetOnce',
-        codec,
+        'dev.flutter.pigeon.datatower_ai_core.DTAnalyticsPigeon.userSetOnce', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
         await channel.send(<Object?>[arg_properties]) as List<Object?>?;
@@ -90,8 +86,7 @@ class DTAnalyticsPigeon {
 
   Future<void> userAdd(Map<String?, Object?> arg_properties) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.datatower_ai_core.DTAnalyticsPigeon.userAdd',
-        codec,
+        'dev.flutter.pigeon.datatower_ai_core.DTAnalyticsPigeon.userAdd', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
         await channel.send(<Object?>[arg_properties]) as List<Object?>?;
@@ -113,8 +108,7 @@ class DTAnalyticsPigeon {
 
   Future<void> userUnset(List<String?> arg_properties) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.datatower_ai_core.DTAnalyticsPigeon.userUnset',
-        codec,
+        'dev.flutter.pigeon.datatower_ai_core.DTAnalyticsPigeon.userUnset', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
         await channel.send(<Object?>[arg_properties]) as List<Object?>?;
@@ -136,10 +130,10 @@ class DTAnalyticsPigeon {
 
   Future<void> userDelete() async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.datatower_ai_core.DTAnalyticsPigeon.userDelete',
-        codec,
+        'dev.flutter.pigeon.datatower_ai_core.DTAnalyticsPigeon.userDelete', codec,
         binaryMessenger: _binaryMessenger);
-    final List<Object?>? replyList = await channel.send(null) as List<Object?>?;
+    final List<Object?>? replyList =
+        await channel.send(null) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -158,8 +152,7 @@ class DTAnalyticsPigeon {
 
   Future<void> userAppend(Map<String?, Object?> arg_properties) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.datatower_ai_core.DTAnalyticsPigeon.userAppend',
-        codec,
+        'dev.flutter.pigeon.datatower_ai_core.DTAnalyticsPigeon.userAppend', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
         await channel.send(<Object?>[arg_properties]) as List<Object?>?;
@@ -181,8 +174,7 @@ class DTAnalyticsPigeon {
 
   Future<void> userUniqAppend(Map<String?, Object?> arg_properties) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.datatower_ai_core.DTAnalyticsPigeon.userUniqAppend',
-        codec,
+        'dev.flutter.pigeon.datatower_ai_core.DTAnalyticsPigeon.userUniqAppend', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
         await channel.send(<Object?>[arg_properties]) as List<Object?>?;
@@ -204,10 +196,10 @@ class DTAnalyticsPigeon {
 
   Future<String?> getDataTowerId() async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.datatower_ai_core.DTAnalyticsPigeon.getDataTowerId',
-        codec,
+        'dev.flutter.pigeon.datatower_ai_core.DTAnalyticsPigeon.getDataTowerId', codec,
         binaryMessenger: _binaryMessenger);
-    final List<Object?>? replyList = await channel.send(null) as List<Object?>?;
+    final List<Object?>? replyList =
+        await channel.send(null) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -226,8 +218,7 @@ class DTAnalyticsPigeon {
 
   Future<void> setAccountId(String? arg_id) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.datatower_ai_core.DTAnalyticsPigeon.setAccountId',
-        codec,
+        'dev.flutter.pigeon.datatower_ai_core.DTAnalyticsPigeon.setAccountId', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
         await channel.send(<Object?>[arg_id]) as List<Object?>?;
@@ -249,8 +240,7 @@ class DTAnalyticsPigeon {
 
   Future<void> setFirebaseAppInstanceId(String? arg_id) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.datatower_ai_core.DTAnalyticsPigeon.setFirebaseAppInstanceId',
-        codec,
+        'dev.flutter.pigeon.datatower_ai_core.DTAnalyticsPigeon.setFirebaseAppInstanceId', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
         await channel.send(<Object?>[arg_id]) as List<Object?>?;
@@ -272,8 +262,7 @@ class DTAnalyticsPigeon {
 
   Future<void> setAppsFlyerId(String? arg_id) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.datatower_ai_core.DTAnalyticsPigeon.setAppsFlyerId',
-        codec,
+        'dev.flutter.pigeon.datatower_ai_core.DTAnalyticsPigeon.setAppsFlyerId', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
         await channel.send(<Object?>[arg_id]) as List<Object?>?;
@@ -295,8 +284,7 @@ class DTAnalyticsPigeon {
 
   Future<void> setKochavaId(String? arg_id) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.datatower_ai_core.DTAnalyticsPigeon.setKochavaId',
-        codec,
+        'dev.flutter.pigeon.datatower_ai_core.DTAnalyticsPigeon.setKochavaId', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
         await channel.send(<Object?>[arg_id]) as List<Object?>?;
@@ -318,8 +306,7 @@ class DTAnalyticsPigeon {
 
   Future<void> setAdjustId(String? arg_id) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.datatower_ai_core.DTAnalyticsPigeon.setAdjustId',
-        codec,
+        'dev.flutter.pigeon.datatower_ai_core.DTAnalyticsPigeon.setAdjustId', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
         await channel.send(<Object?>[arg_id]) as List<Object?>?;
@@ -341,8 +328,7 @@ class DTAnalyticsPigeon {
 
   Future<void> enableThirdPartySharing(int arg_type) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.datatower_ai_core.DTAnalyticsPigeon.enableThirdPartySharing',
-        codec,
+        'dev.flutter.pigeon.datatower_ai_core.DTAnalyticsPigeon.enableThirdPartySharing', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
         await channel.send(<Object?>[arg_type]) as List<Object?>?;

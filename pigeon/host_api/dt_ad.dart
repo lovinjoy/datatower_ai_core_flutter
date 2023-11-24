@@ -5,7 +5,7 @@ import 'package:pigeon/pigeon.dart';
   dartOut: 'lib/src/pigeon/dt_ad.g.dart',
   dartOptions: DartOptions(),
   kotlinOut:
-      'android/src/main/kotlin/ai/datatower/datatower_ai_core/pigeon/DtAd.g.kt',
+      'android/src/main/kotlin/ai/datatower/core_flutter/pigeon/DtAd.g.kt',
   kotlinOptions: KotlinOptions(errorClassName: "DtAdFlutterError"),
   objcHeaderOut: 'ios/Classes/pigeon/dt_ad.g.h',
   objcSourceOut: 'ios/Classes/pigeon/dt_ad.g.m',
@@ -34,7 +34,8 @@ enum AdMediationDart {
   COMBO,
   TOPON,
   TRADPLUS,
-  TOBID;
+  TOBID,
+  ADMOB;
 }
 
 enum AdPlatformDart {

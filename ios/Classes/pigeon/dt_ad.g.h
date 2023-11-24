@@ -36,6 +36,7 @@ typedef NS_ENUM(NSUInteger, DTAdMediationDart) {
   DTAdMediationDartTOPON = 5,
   DTAdMediationDartTRADPLUS = 6,
   DTAdMediationDartTOBID = 7,
+  DTAdMediationDartADMOB = 8,
 };
 
 /// Wrapper for DTAdMediationDart to allow for nullability.
