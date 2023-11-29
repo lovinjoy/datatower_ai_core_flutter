@@ -1,4 +1,4 @@
-# 2.1.0
+# 3.0.0
 
 > &#x2753; How to migrate?
 > 1. Changes dependency from `datatower_ai_core_flutter` to `datatower_ai_core`.
